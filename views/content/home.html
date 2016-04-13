@@ -1,0 +1,97 @@
+<section class="container-fluid">
+  <div layout="column" ng-cloak>
+    <md-content layout-padding>
+      <md-toolbar class="md-hue-2 md-whiteframe-1dp">
+        <div class="md-toolbar-tools">
+          <span>Matches</span>
+        </div>
+      </md-toolbar>
+      <div layout-padding class="brd">
+        <div class="search">
+          <md-input-container class="md-block">
+            <!-- Use floating placeholder instead of label -->
+            <md-icon class="material-icons md-24">search</md-icon>
+            <input ng-model="user.search" type="text" placeholder="Search" ng-required="true">
+          </md-input-container>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                <div class="checkbox-optimized">
+                  <md-checkbox class="md-primary"></md-checkbox>
+                </div>
+              </th>
+              <th>Sr No</th>
+              <th>Team1</th>
+              <th>Team2</th>
+              <th>Overs</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="checkbox-optimized">
+                  <md-checkbox class="md-primary"></md-checkbox>
+                </div>
+              </td>
+              <td>1</td>
+              <td>India</td>
+              <td>Pakistan</td>
+              <td>50</td>
+              <td class="action-btn">
+                <md-button class="md-icon-button" aria-label="EDIT">
+                  <md-icon class="material-icons md-18">mode_edit</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Delete">
+                  <md-icon class="material-icons md-18">delete</md-icon>
+                </md-button>
+                <!-- <md-icon class="material-icons md-24">mode_edit</md-icon>
+                <md-icon class="material-icons md-24">delete</md-icon> -->
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="checkbox-optimized">
+                  <md-checkbox class="md-primary"></md-checkbox>
+                </div>
+              </td>
+              <td>2</td>
+              <td>India</td>
+              <td>Pakistan</td>
+              <td>50</td>
+              <td class="action-btn">
+                <md-button class="md-icon-button" aria-label="EDIT">
+                  <md-icon class="material-icons md-18">mode_edit</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Delete">
+                  <md-icon class="material-icons md-18">delete</md-icon>
+                </md-button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="checkbox-optimized">
+                  <md-checkbox class="md-primary"></md-checkbox>
+                </div>
+              </td>
+              <td>3</td>
+              <td>India</td>
+              <td>Pakistan</td>
+              <td>50</td>
+              <td class="action-btn">
+                <md-button class="md-icon-button" aria-label="EDIT">
+                  <md-icon class="material-icons md-18">mode_edit</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Delete">
+                  <md-icon class="material-icons md-18">delete</md-icon>
+                </md-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </md-content>
+  </div>
+</section>

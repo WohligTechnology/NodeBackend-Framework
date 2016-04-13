@@ -1,0 +1,12 @@
+<div layout-fill layout="column">
+  <!-- <md-toolbar class="md-theme-indigo">
+    <div class="md-toolbar-tools">
+      <span>Sortvest</span>
+    </div>
+  </md-toolbar> -->
+  <md-list>
+    <md-list-item class="{{menu.classis}}" ng-repeat="menu in navigation" ui-sref="{{menu.link}}">
+        {{menu.name}}
+    </md-list-item>
+  </md-list>
+</div>

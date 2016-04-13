@@ -1,0 +1,7 @@
+<div layout-fill layout="column" ng-controller="headerctrl">
+  <md-list>
+    <md-list-item class="{{menu.classis}}" ng-repeat="menu in navigation" ui-sref="{{menu.anchor}}">
+        {{menu.name}}
+    </md-list-item>
+  </md-list>
+</div>

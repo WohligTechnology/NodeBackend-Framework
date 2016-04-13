@@ -1,0 +1,50 @@
+<section class="container-fluid">
+  <div layout="column" ng-cloak>
+    <md-content layout-padding>
+      <md-toolbar class="md-hue-2 md-whiteframe-1dp">
+        <div class="md-toolbar-tools">
+          <span>Edit Match</span>
+        </div>
+      </md-toolbar>
+      <div layout-padding class="brd">
+        <form name="projectForm">
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Team1 Name</label>
+              <input required md-no-asterisk name="team1" ng-model="project.team1">
+              <div ng-messages="projectForm.team1.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Team2 Name</label>
+              <input required md-no-asterisk name="team2" ng-model="project.team2">
+              <div ng-messages="projectForm.team2.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Tournament</label>
+              <input required type="text" name="Tournament" ng-model="project.tournament" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+              <div ng-messages="projectForm.tournament.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Overs</label>
+              <input required type="text" step="any" name="overs" ng-model="project.overs" min="800" max="4999" ng-pattern="/^1234$/" />
+              <div ng-messages="projectForm.overs.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+          </div>
+        </form>
+        <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <md-button class="md-raised md-primary">Submit</md-button>
+        </div>
+      </div>
+    </md-content>
+  </div>
+</section>
