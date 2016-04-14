@@ -11,20 +11,25 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   $httpProvider.defaults.withCredentials = true;
   $stateProvider
     .state('home', {
-    url: "/home",
-    templateUrl: "views/template.html",
-    controller: 'HomeCtrl'
-  })
+      url: "/home",
+      templateUrl: "views/template.html",
+      controller: 'HomeCtrl'
+    })
     .state('creatematch', {
-    url: "/creatematch",
-    templateUrl: "views/template.html",
-    controller: 'CreateMatchCtrl'
-  })
+      url: "/creatematch",
+      templateUrl: "views/template.html",
+      controller: 'CreateMatchCtrl'
+    })
+    .state('login', {
+      url: "/login",
+      templateUrl: "views/templateplain.html",
+      controller: 'LoginCtrl'
+    })
     .state('editmatch', {
-    url: "/editmatch",
-    templateUrl: "views/template.html",
-    controller: 'EditMatchCtrl'
-  });
+      url: "/editmatch",
+      templateUrl: "views/template.html",
+      controller: 'EditMatchCtrl'
+    });
   $urlRouterProvider.otherwise("/home");
   $locationProvider.html5Mode(isproduction);
 });
@@ -51,26 +56,26 @@ firstapp.directive('img', function($compile, $parse) {
 });
 
 firstapp.directive('fancyboxBox', function($document) {
-    return {
-        restrict: 'EA',
-        replace: false,
-        link: function(scope, element, attr) {
-            var $element = $(element);
-            var target;
-            if (attr.rel) {
-               target = $("[rel='" + attr.rel + "']");
-            } else {
-                target = element;
-            }
+  return {
+    restrict: 'EA',
+    replace: false,
+    link: function(scope, element, attr) {
+      var $element = $(element);
+      var target;
+      if (attr.rel) {
+        target = $("[rel='" + attr.rel + "']");
+      } else {
+        target = element;
+      }
 
-            target.fancybox({
-                openEffect: 'fade',
-                closeEffect: 'fade',
-                closeBtn: true,
-                helpers: {
-                    media: {}
-                }
-            });
+      target.fancybox({
+        openEffect: 'fade',
+        closeEffect: 'fade',
+        closeBtn: true,
+        helpers: {
+          media: {}
         }
-    };
+      });
+    }
+  };
 });

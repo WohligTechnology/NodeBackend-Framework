@@ -10,11 +10,18 @@
 
       </md-toolbar>
       <div layout-padding class="brd">
-        <div class="search">
-          <md-input-container class="md-block">
+        <div layout="row">
+          <md-input-container class="md-block search" flex-gt-sm>
             <!-- Use floating placeholder instead of label -->
             <md-icon class="material-icons md-24">search</md-icon>
             <input ng-model="user.search" type="text" placeholder="Search" ng-required="true">
+          </md-input-container>
+          <span flex="" class="flex"></span>
+          <md-input-container class="md-block" style="margin-right: 10px;">
+            <label>Size</label>
+            <md-select ng-model="size">
+              <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
+            </md-select>
           </md-input-container>
         </div>
         <table class="table">
@@ -47,9 +54,15 @@
               <td>India won</td>
               <td class="action-btn">
                 <md-button class="md-icon-button" aria-label="EDIT">
+                  <md-tooltip md-direction="top">
+                    Edit
+                  </md-tooltip>
                   <md-icon class="material-icons md-18" ui-sref="creatematch">mode_edit</md-icon>
                 </md-button>
                 <md-button class="md-icon-button" aria-label="Delete">
+                  <md-tooltip md-direction="top">
+                    Delete
+                  </md-tooltip>
                   <md-icon class="material-icons md-18">delete</md-icon>
                 </md-button>
                 <!-- <md-icon class="material-icons md-24">mode_edit</md-icon>

@@ -6,9 +6,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     console.log("Testing Consoles");
 
     $scope.template = TemplateService.changecontent("home");
-    $scope.menutitle = NavigationService.makeactive("Home");
+    $scope.menutitle = NavigationService.makeactive("Dashboard");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.sizes = [
+      "10",
+      "20",
+      "30",
+      "50"
+    ];
+
   })
   .controller('CreateMatchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -20,6 +27,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
+  .controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("login");
+    $scope.menutitle = NavigationService.makeactive("Login");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    TemplateService.header="";
+    TemplateService.footer="";
+    TemplateService.sidemenu="";
+  })
   .controller('EditMatchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
 
@@ -30,7 +50,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-  .controller('headerctrl', function($scope, TemplateService,$timeout,$log, $mdSidenav) {
+  .controller('headerctrl', function($scope, TemplateService, $timeout, $log, $mdSidenav) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
       $(window).scrollTop(0);

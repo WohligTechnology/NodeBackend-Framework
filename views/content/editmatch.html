@@ -72,19 +72,14 @@
                     <div layout="row">
                       <md-input-container class="switch-mrg">
                         <md-switch ng-model="data.cb1" aria-label="Switch 1">
-                          Match Suspend
+                          Wicket
                         </md-switch>
                       </md-input-container>
                     </div>
-                    <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                    <!-- <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                       <md-button class="md-raised md-primary">Save</md-button>
-                    </div>
+                    </div> -->
                   </form>
-                  <div class="editmatch-text">
-                    <p class="text-center">
-                      INDIA NEED <span class="bold">19</span> RUNS IN <span class="bold">5</span> Ball.
-                    </p>
-                  </div>
                 </md-content>
               </md-tab>
               <md-tab label="Pakistan">
@@ -95,15 +90,29 @@
                   <form name="projectForm">
                     <div layout-gt-sm="row">
                       <md-input-container class="md-block" flex-gt-sm>
-                        <label>Team1 Name</label>
-                        <input required md-no-asterisk name="team1" ng-model="project.team1">
+                        <label>Runs</label>
+                        <input required md-no-asterisk name="team1" disabled="disabled" value="0">
                         <div ng-messages="projectForm.team1.$error">
                           <div ng-message="required">This is required.</div>
                         </div>
                       </md-input-container>
                       <md-input-container class="md-block" flex-gt-sm>
-                        <label>Team2 Name</label>
-                        <input required md-no-asterisk name="team2" ng-model="project.team2">
+                        <label>Wicket</label>
+                        <input required md-no-asterisk name="team2" disabled="disabled" value="0">
+                        <div ng-messages="projectForm.team2.$error">
+                          <div ng-message="required">This is required.</div>
+                        </div>
+                      </md-input-container>
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>Overs</label>
+                        <input required md-no-asterisk name="team2" disabled="disabled" value="0">
+                        <div ng-messages="projectForm.team2.$error">
+                          <div ng-message="required">This is required.</div>
+                        </div>
+                      </md-input-container>
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>Ball</label>
+                        <input required md-no-asterisk name="team2" disabled="disabled" value="0">
                         <div ng-messages="projectForm.team2.$error">
                           <div ng-message="required">This is required.</div>
                         </div>
@@ -111,31 +120,43 @@
                     </div>
                     <div layout-gt-sm="row">
                       <md-input-container class="md-block" flex-gt-sm>
-                        <label>Tournament</label>
-                        <input required type="text" name="Tournament" ng-model="project.tournament">
+                        <label>No of Runs</label>
+                        <input required type="number" name="Tournament" ng-model="project.tournament" />
                         <div ng-messages="projectForm.tournament.$error">
                           <div ng-message="required">This is required.</div>
                         </div>
                       </md-input-container>
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Overs</label>
-                        <input required type="text" step="any" name="overs" ng-model="project.overs">
+                        <input required type="number" step="any" name="overs" ng-model="project.overs" />
                         <div ng-messages="projectForm.overs.$error">
                           <div ng-message="required">This is required.</div>
                         </div>
                       </md-input-container>
                       <md-input-container class="md-block" flex-gt-sm>
-                        <label>Overs</label>
-                        <input required type="text" step="any" name="overs" ng-model="project.overs">
-                        <div ng-messages="projectForm.overs.$error">
+                        <label>Wickets</label>
+                        <input required type="wickets" step="any" name="wickets" ng-model="project.overs" />
+                        <div ng-messages="projectForm.wickets.$error">
                           <div ng-message="required">This is required.</div>
                         </div>
                       </md-input-container>
                     </div>
-                    <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                      <md-button class="md-raised md-primary">Submit</md-button>
+                    <div layout="row">
+                      <md-input-container class="switch-mrg">
+                        <md-switch ng-model="data.cb1" aria-label="Switch 1">
+                          Match Suspend
+                        </md-switch>
+                      </md-input-container>
                     </div>
+                    <!-- <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                      <md-button class="md-raised md-primary">Save</md-button>
+                    </div> -->
                   </form>
+                  <!-- <div class="editmatch-text">
+                    <p class="text-center">
+                      INDIA NEED <span class="bold">19</span> RUNS IN <span class="bold">5</span> Ball.
+                    </p>
+                  </div> -->
                 </md-content>
               </md-tab>
             </md-tabs>
@@ -206,39 +227,176 @@
     <div layout-padding class="brd">
       <md-tabs md-dynamic-height md-border-bottom>
         <md-tab label="FIRST INNING">
-          <md-content layout-padding>
-            <div class="title">
-              <md-button class="md-fab md-mini pull-right" aria-label="Add">
-                <md-icon>add</md-icon>
-              </md-button>
-              <h4>CREATE NEW SESSION</h4>
-            </div>
-            <div class="cont-made">
-              <div class="row">
-                <div class="col-md-2"><div class="overs-title">
-                  10
-                </div></div>
-                <div class="col-md-2">
-                  
+          <div layout-fill class="inset" ng-cloak paddi layout-align="space-around">
+            <md-content layout-padding>
+              <!-- <div class="title">
+                <h4>CREATE NEW SESSION</h4>
+              </div> -->
+              <div class="cont-made">
+                <div class="box-main">
+                  <div class="row">
+                    <div class="col-xs-2">
+                      <div class="overs-title">
+                        10 Ovrs
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="box">150</div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="box">151</div>
+                    </div>
+                    <div class="col-xs-offset-5 col-xs-1">
+                      <div class="btn-iconcustom">
+                        <div class="check-done">
+                          <md-button class="md-icon-button" aria-label="done">
+                            <md-tooltip md-direction="top">
+                              Done
+                            </md-tooltip>
+                            <md-icon class="material-icons md-18">done</md-icon>
+                          </md-button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-3"></div>
-                <div class="col-md-"></div>
+                <div class="box-main">
+                  <div class="row">
+                    <div class="col-xs-2">
+                      <div class="overs-title">
+                        6 Ovrs
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="box">150</div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="box">151</div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="complete text-center bold">Completed</div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="box">80</div>
+                    </div>
+                    <div class="col-xs-1">
+                      <div class="btn-iconcustom">
+                        <md-button class="md-icon-button" aria-label="Delete">
+                          <md-tooltip md-direction="top">
+                            Delete
+                          </md-tooltip>
+                          <md-icon class="material-icons md-18">delete</md-icon>
+                        </md-button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <md-button class="md-accent md-fab md-mini md-fab-bottom-right" aria-label="Add">
+                  <md-tooltip md-direction="top">
+                    Add
+                  </md-tooltip>
+                  <md-icon>add</md-icon>
+                </md-button> -->
               </div>
-            </div>
-          </md-content>
+            </md-content>
+          </div>
         </md-tab>
-        <md-tab label="SECOND INNING">
-          <md-content layout-padding>
-            <div class="title">
-              <md-button class="md-fab md-mini pull-right" aria-label="Add">
-                <md-icon>add</md-icon>
-              </md-button>
-              <h4>CREATE NEW SESSION</h4>
-            </div>
-            .
-          </md-content>
+        <md-tab label="Second INNING">
+          <div layout-fill class="inset" ng-cloak paddi layout-align="space-around">
+            <md-content layout-padding>
+              <!-- <div class="title">
+                <h4>CREATE NEW SESSION</h4>
+              </div> -->
+              <div class="cont-made">
+                <div class="box-main">
+                  <div class="row">
+                    <div class="col-xs-2">
+                      <div class="overs-title">
+                        10 Ovrs
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="box">150</div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="box">151</div>
+                    </div>
+                    <div class="col-xs-offset-5 col-xs-1">
+                      <div class="btn-iconcustom">
+                        <div class="check-done">
+                          <md-button class="md-icon-button" aria-label="done">
+                            <md-tooltip md-direction="top">
+                              Done
+                            </md-tooltip>
+                            <md-icon class="material-icons md-18">done</md-icon>
+                          </md-button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="box-main">
+                  <div class="row">
+                    <div class="col-xs-2">
+                      <div class="overs-title">
+                        6 Ovrs
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="box">150</div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="box">151</div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="complete text-center bold">Completed</div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="box">80</div>
+                    </div>
+                    <div class="col-xs-1">
+                      <div class="btn-iconcustom">
+                        <md-button class="md-icon-button" aria-label="Delete">
+                          <md-tooltip md-direction="top">
+                            Delete
+                          </md-tooltip>
+                          <md-icon class="material-icons md-18">delete</md-icon>
+                        </md-button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <md-button class="md-accent md-fab md-mini md-fab-bottom-right" aria-label="Add">
+                  <md-tooltip md-direction="top">
+                    Add
+                  </md-tooltip>
+                  <md-icon>add</md-icon>
+                </md-button> -->
+              </div>
+            </md-content>
+          </div>
         </md-tab>
       </md-tabs>
   </md-content>
+  </div>
+  <div class="editmatch-text">
+    <p class="text-center">
+      INDIA NEED <span class="bold">19</span> RUNS IN <span class="bold">5</span> Ball.
+    </p>
+  </div>
+  <div class="cmd">
+    <div class="brd">
+      <div class="title-custom">
+        <h4 class="title">Edit</h4>
+      </div>
+      <div class="layout-padding">
+        <md-input-container class="md-block" md-no-float>
+          <input required md-no-asterisk name="team2" value="0">
+          <div ng-messages="projectForm.team2.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </div>
   </div>
 </section>

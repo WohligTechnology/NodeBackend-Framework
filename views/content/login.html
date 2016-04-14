@@ -1,0 +1,56 @@
+<div class="page-signin">
+  <div class="signin-header">
+    <div class="container text-center">
+      <section class="logo main-logo">
+        <a href="#/">
+          <h1 class="logo"><span class="color-white">Stal</span>wart</h1>
+        </a>
+      </section>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <div class="signin-body">
+          <div layout-padding class="brd">
+            <div class="login">
+              <h3 class="title text-uppercase">Login</h3>
+            </div>
+            <form name="projectForm">
+              <md-input-container class="md-block">
+                <!-- Use floating placeholder instead of label -->
+                <md-icon class="email">email</md-icon>
+                <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+                <div ng-messages="userForm.email.$error">
+                  <div ng-message="required"> - Please enter a email</div>
+                  <div ng-message="email"> - Please enter a valid email</div>
+                </div>
+              </md-input-container>
+              <md-input-container class="md-block">
+                <!-- Use floating placeholder instead of label -->
+                <md-icon class="email">vpn_key</md-icon>
+                <input ng-model="user.password" type="password" placeholder="Password" ng-required="true">
+                <div ng-messages="userForm.password.$error">
+                  <div ng-message="required"> - Please enter a Password</div>
+                </div>
+              </md-input-container>
+              <md-input-container class="md-block">
+                <label>Select Type</label>
+                <md-select name="myModel" ng-model="myModel" required>
+                  <md-option value="1">Admin</md-option>
+                  <md-option value="2">User</md-option>
+                </md-select>
+                <div class="errors" ng-messages="myForm.myModel.$error" ng-if="myForm.$dirty">
+                  <div ng-message="required">Required</div>
+                </div>
+              </md-input-container>
+            </form>
+            <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+              <md-button class="md-raised md-primary">Login</md-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@
 @import "../bower_components/fancyBox/source/jquery.fancybox.css";
 @import "../bower_components/material-design-icons/iconfont/material-icons.css";
 /* Bootstrap Variables Goes Here */
-$brand-primary: #0d9dff !default;
+$brand-primary: #3e50b4 !default;
 $brand-success: #84ce3c !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
@@ -18,6 +18,15 @@ img.loading {
   opacity: 1;
   width: 32px !important;
   height: auto;
+}
+@font-face {
+  font-family: "Orkney";
+  src: url("../fonts/Orkney-Light.otf");
+}
+a {
+  &:hover {
+    text-decoration: none;
+  }
 }
 .input-lg,
 .input-group-lg > .form-control,
@@ -33,11 +42,20 @@ img {
   opacity: 0;
   @include transition(all 300ms ease);
 }
+.logo {
+  font-family: "Orkney";
+  h1 {
+    font-size: 55px;
+  }
+}
 img.doneLoading {
   opacity: 1;
 }
 nav li:hover .dropdown-menu {
   display: block;
+}
+.text-uppercase {
+  text-transform: uppercase;
 }
 a {
   cursor: pointer;
@@ -55,6 +73,9 @@ a {
 .form-control {
   border-radius: 0;
   @include box-shadow(none);
+}
+a {
+  color: #3e50b4;
 }
 .form-control:focus {
   border-color: $brand-primary;
@@ -75,11 +96,17 @@ md-checkbox:last-of-type {
   margin-bottom: 0;
 }
 .navbar-header {
-  padding-top: 30px;
+  padding-top: 36px;
   a {
     font-size: 30px;
     text-transform: uppercase;
   }
+  .md-toolbar-tools .md-button {
+    margin-top: 5px;
+  }
+}
+.color-white {
+  color: #fff;
 }
 @font-face {
   font-family: 'Material Icons';
@@ -156,12 +183,68 @@ md-checkbox:last-of-type {
     font-size: 16px;
   }
 }
-.switch-mrg {
+switch-mrg {
   margin-left: 10px;
 }
 .title-country {
   text-transform: uppercase;
 }
+.cont-made {
+  border: 1px solid #ddd;
+  padding: 6px 8px 5px;
+  // margin-bottom: 80px;
+  .box-main + .box-main {
+    border-top: 1px solid #F5F5F5;
+  }
+  .box-main {
+    padding: 10px;
+    margin: 0;
+    .overs-title {
+      padding: 3px;
+    }
+    .box {
+      border: 1px solid #ddd;
+      width: 40px;
+      padding: 2px;
+      text-align: center;
+      font-weight: 600;
+      margin: 0 auto;
+    }
+  }
+}
+.btn-iconcustom {
+  .md-button.md-icon-button {
+    height: 25px;
+    min-width: 0;
+    min-height: 0;
+    line-height: 0;
+    padding: 2px;
+    width: 25px;
+  }
+}
+.page-signin .signin-header {
+  padding: 40px 0;
+  background-color: #fed65c;
+  margin-bottom: 30px;
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+.title-custom {
+  padding: 10px;
+  background: #000;
+  color: #fff;
+  h4 {
+    margin: 0;
+  }
+}
+// .title-custom {
+//     border-bottom: 1px solid #ddd;
+//     margin: 0 10px;
+//     text-transform: uppercase;
+// }
 //bootstrap forms
 /* Start writing sass here */
 @import "fancybox-override";
