@@ -27,22 +27,24 @@
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Tournament</label>
-              <input required type="text" name="Tournament" ng-model="project.tournament" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+              <input required md-no-asterisk type="text" name="Tournament" ng-model="project.tournament" />
               <div ng-messages="projectForm.tournament.$error">
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
-              <label>Overs</label>
-              <input required type="text" step="any" name="overs" ng-model="project.overs" min="800" max="4999" ng-pattern="/^1234$/" />
-              <div ng-messages="projectForm.overs.$error">
-                <div ng-message="required">This is required.</div>
+              <label>No of Overs</label>
+              <input required type="number" step="any" name="overs" ng-model="project.overs" min="800"
+                     max="4999" ng-pattern="/^1234$/" />
+              <div ng-messages="userForm.overs.$error">
+                <div ng-message="required"> - Please enter a valid overs</div>
               </div>
             </md-input-container>
           </div>
         </form>
         <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-          <md-button class="md-raised md-primary">Submit</md-button>
+          <md-button class="md-raised md-primary">Save</md-button>
+          <md-button class="md-raised md-primary" ui-sref="editmatch">Edit Match</md-button>
         </div>
       </div>
     </md-content>

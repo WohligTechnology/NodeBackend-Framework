@@ -1,13 +1,16 @@
 <header ng-controller="headerctrl">
   <nav class="navbar">
-    <div class="navbar-header">
-      <md-button ng-click="toggleLeft()" class="md-primary">
-        Toggle left
-      </md-button>
-    </div>
     <!-- <div class="container"> -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#/home"><img src="img/logo.png" alt="logo" width="100"> </a>
+      <!-- <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
+        Toggle left
+      </md-button> -->
+      <md-button class="md-icon-button" md-ink-ripple="#000000" aria-label="Menu" ng-click="toggleLeft()" hide-gt-md>
+        <i class="material-icons black">menu</i>
+      </md-button>
+    </div>
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/home">Stalwart </a>
     </div>
   </nav>
 </header>

@@ -2,13 +2,13 @@
 <md-toolbar>
   <div class="template header md-toolbar-tools" ng-include="template.header"></div>
 </md-toolbar>
-<md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="left">
-  <div ng-include="template.sidemenu" class="template sidemenu"></div>
-</md-sidenav>
-<section layout="row" flex>
-<!-- <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop md-whiteframe="4">
+<!-- <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="left">
   <div ng-include="template.sidemenu" class="template sidemenu"></div>
 </md-sidenav> -->
+<section layout="row" flex>
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop md-whiteframe="4">
+  <div ng-include="template.sidemenu" class="template sidemenu"></div>
+</md-sidenav>
 <md-content flex>
   <div ng-include="template.content" class="template content"></div>
 </md-content>

@@ -10,7 +10,8 @@ else {
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function() {
-  var navigation = [{
+  var navigation = [
+    {
     name: "Dashboard",
     classis: "active",
     anchor: "home"
@@ -20,15 +21,12 @@ var navigationservice = angular.module('navigationservice', [])
     //   link: "#/home"
     // }]
   }
-  ,{
-    name: "Create Match",
-    classis: "active",
-    anchor: "creatematch"
-  },{
-    name: "Edit Match",
-    classis: "active",
-    anchor: "editmatch"
-  }];
+  // ,{
+  //   name: "Create Match",
+  //   classis: "active",
+  //   anchor: "creatematch"
+  // }
+];
 
   return {
     getnav: function() {
