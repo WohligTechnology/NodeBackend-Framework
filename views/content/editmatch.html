@@ -304,9 +304,9 @@
         <md-tab label="Second INNING">
           <div layout-fill class="inset" ng-cloak paddi layout-align="space-around">
             <md-content layout-padding>
-              <!-- <div class="title">
+              <div class="title">
                 <h4>CREATE NEW SESSION</h4>
-              </div> -->
+              </div>
               <div class="cont-made">
                 <div class="box-main">
                   <div class="row">
@@ -396,6 +396,13 @@
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
+        <div layout="row">
+          <md-input-container class="switch-mrg">
+            <md-switch ng-model="data.cb2" aria-label="Switch 1">
+              Favorites
+            </md-switch>
+          </md-input-container>
+        </div>
       </div>
     </div>
   </div>
