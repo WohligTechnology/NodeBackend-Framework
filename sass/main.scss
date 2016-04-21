@@ -232,13 +232,64 @@ switch-mrg {
     }
   }
 }
-.title-custom {
-  padding: 10px;
-  background: #000;
-  color: #fff;
-  h4 {
+sidemenu {
+  .md-no-style.md-button {
     margin: 0;
   }
+}
+.borderless {
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  td {
+    border: 0!important;
+  }
+}
+.cmd {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background: #000;
+  z-index: 99;
+  color: #fff;
+  md-input-container.md-default-theme .md-input,
+  md-input-container .md-input {
+    color: #fff;
+  }
+  md-input-container {
+    margin: 0 !important;
+  }
+  md-input-container .md-input {
+    border-color: transparent;
+  }
+  .title-custom {
+    padding: 10px;
+    background: #fff;
+    color: #000;
+    h4 {
+      margin: 0;
+    }
+  }
+  md-switch {
+    padding-left: 32px;
+  }
+}
+.minhght {
+  min-height: 420px;
+}
+.fixed-top {
+  position: fixed;
+  z-index: 99;
+}
+.fixed-left {
+  position: fixed!important;
+  margin-top: 65px;
+}
+.pad-left {
+  padding-left: 320px;
+  padding-top: 65px;
 }
 // .title-custom {
 //     border-bottom: 1px solid #ddd;

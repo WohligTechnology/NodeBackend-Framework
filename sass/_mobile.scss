@@ -1,5 +1,35 @@
 @media (max-width : 1280px) {
   .md-sidenav-left {
-      margin-top: 64px;
+    margin-top: 64px;
+  }
+  .pad-left {
+    padding-left: 0;
+  }
+  .navbar-header {
+    padding-top: 38px;
+  }
+}
+@media (max-width: $screen-xs-max) {
+  .navbar {
+    margin-bottom: 10px;
+    .navbar-header {
+      padding-top: 0;
+      display: inline-flex;
+    }
+  }
+  .action-btn {
+    min-width: 80px;
+    display: inline-block;
+  }
+  .scroll {
+    .table > thead > tr > th {
+      border-bottom: 0 solid #ddd;
+    }
+  }
+  .md-sidenav-left {
+    margin-top: 56px;
+  }
+  .scroll {
+    overflow-x: scroll;
   }
 }
