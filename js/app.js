@@ -25,10 +25,10 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       templateUrl: "views/templateplain.html",
       controller: 'LoginCtrl'
     })
-    .state('editmatch', {
-      url: "/editmatch",
+    .state('matchupdates', {
+      url: "/matchupdates",
       templateUrl: "views/template.html",
-      controller: 'EditMatchCtrl'
+      controller: 'MatchUpdatesCtrl'
     });
   $urlRouterProvider.otherwise("/home");
   $locationProvider.html5Mode(isproduction);

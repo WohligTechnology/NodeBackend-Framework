@@ -42,6 +42,9 @@ img {
   opacity: 0;
   @include transition(all 300ms ease);
 }
+.margin-zero{
+  margin: 0
+}
 .logo {
   font-family: "Orkney";
   h1 {
@@ -76,6 +79,9 @@ a {
 }
 a {
   color: #3e50b4;
+}
+a.navbar-brand.logo:hover {
+    color: darken(#fff, 10%);
 }
 .form-control:focus {
   border-color: $brand-primary;
@@ -261,8 +267,11 @@ sidemenu {
   md-input-container {
     margin: 0 !important;
   }
+  .md-errors-spacer {
+    display: none;
+  }
   md-input-container .md-input {
-    border-color: transparent;
+    border-color: #fff;
   }
   .title-custom {
     padding: 10px;
@@ -274,6 +283,7 @@ sidemenu {
   }
   md-switch {
     padding-left: 32px;
+    margin: 0;
   }
 }
 .minhght {

@@ -15,7 +15,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       "30",
       "50"
     ];
-
   })
   .controller('CreateMatchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -40,13 +39,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.footer="";
     TemplateService.sidemenu="";
   })
-  .controller('EditMatchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('MatchUpdatesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
 
     console.log("Testing Consoles");
 
-    $scope.template = TemplateService.changecontent("editmatch");
-    $scope.menutitle = NavigationService.makeactive("Edit Match");
+    $scope.template = TemplateService.changecontent("matchupdates");
+    $scope.menutitle = NavigationService.makeactive("Match Updates");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
