@@ -1,0 +1,123 @@
+<section class="container-fluid">
+  <div layout="column" ng-cloak>
+    <md-content layout-padding>
+      <md-toolbar class="md-hue-2 md-whiteframe-1dp">
+        <div class="md-toolbar-tools">
+          <span>Admin User</span>
+          <span flex="" class="flex"></span>
+          <md-button class="md-raised pull-right" ui-sref="adminuserdetail">Create User</md-button>
+        </div>
+      </md-toolbar>
+      <div layout-padding class="brd">
+        <div layout="row">
+          <md-input-container class="md-block search" flex-gt-sm>
+            <md-icon class="material-icons md-24">search</md-icon>
+            <input ng-model="user.search" type="text" placeholder="Search" ng-required="true">
+          </md-input-container>
+          <span flex="" class="flex"></span>
+          <md-input-container class="md-block" style="margin-right: 10px;">
+            <label>Size</label>
+            <md-select ng-model="size">
+              <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div class="scroll">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <div class="checkbox-optimized text-center">
+                    <md-checkbox class="md-primary"></md-checkbox>
+                  </div>
+                </th>
+                <th>Sr No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="checkbox-optimized text-center">
+                    <md-checkbox class="md-primary"></md-checkbox>
+                  </div>
+                </td>
+                <td>1</td>
+                <td>Mahesh Mauraya</td>
+                <td>mahesh@wohlig.com</td>
+                <td>Enable</td>
+                <td class="action-btn">
+                  <md-button class="md-icon-button" aria-label="EDIT">
+                    <md-tooltip md-direction="top">
+                      Edit
+                    </md-tooltip>
+                    <md-icon class="material-icons md-18" ui-sref="creatematch">mode_edit</md-icon>
+                  </md-button>
+                  <md-button class="md-icon-button" aria-label="Delete">
+                    <md-tooltip md-direction="top">
+                      Delete
+                    </md-tooltip>
+                    <md-icon class="material-icons md-18">delete</md-icon>
+                  </md-button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="checkbox-optimized text-center">
+                    <md-checkbox class="md-primary"></md-checkbox>
+                  </div>
+                </td>
+                <td>2</td>
+                <td>Rakesh Mauraya</td>
+                <td>mahesh@wohlig.com</td>
+                <td>Enable</td>
+                <td class="action-btn">
+                  <md-button class="md-icon-button" aria-label="EDIT">
+                    <md-tooltip md-direction="top">
+                      Edit
+                    </md-tooltip>
+                    <md-icon class="material-icons md-18" ui-sref="creatematch">mode_edit</md-icon>
+                  </md-button>
+                  <md-button class="md-icon-button" aria-label="Delete">
+                    <md-tooltip md-direction="top">
+                      Delete
+                    </md-tooltip>
+                    <md-icon class="material-icons md-18">delete</md-icon>
+                  </md-button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="checkbox-optimized text-center">
+                    <md-checkbox class="md-primary"></md-checkbox>
+                  </div>
+                </td>
+                <td>3</td>
+                <td>Mahesh Mauraya</td>
+                <td>mahesh@wohlig.com</td>
+                <td>Enable</td>
+                <td class="action-btn">
+                  <md-button class="md-icon-button" aria-label="EDIT">
+                    <md-tooltip md-direction="top">
+                      Edit
+                    </md-tooltip>
+                    <md-icon class="material-icons md-18" ui-sref="creatematch">mode_edit</md-icon>
+                  </md-button>
+                  <md-button class="md-icon-button" aria-label="Delete">
+                    <md-tooltip md-direction="top">
+                      Delete
+                    </md-tooltip>
+                    <md-icon class="material-icons md-18">delete</md-icon>
+                  </md-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </md-content>
+  </div>
+</section>

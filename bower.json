@@ -33,7 +33,7 @@
     "angular-material": "~1.0.7",
     "moment": "~2.10.3",
     "highcharts-ng": "~0.0.8",
-    "angular-messages": "~1.4.3",
+    "angular-messages": "~1.5.5",
     "angular-momentjs": "~0.2.2",
     "angular-aria": "~1.5.3",
     "material-design-icons": "~2.2.3"

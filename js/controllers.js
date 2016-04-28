@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngMaterial'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngMaterial', 'ngMessages'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -7,6 +7,110 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.template = TemplateService.changecontent("home");
     $scope.menutitle = NavigationService.makeactive("Dashboard");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.sizes = [
+      "10",
+      "20",
+      "30",
+      "50"
+    ];
+  })
+  .controller('AdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("adminuser");
+    $scope.menutitle = NavigationService.makeactive("Admin User");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.sizes = [
+      "10",
+      "20",
+      "30",
+      "50"
+    ];
+  })
+  .controller('UserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("user");
+    $scope.menutitle = NavigationService.makeactive("User");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.sizes = [
+      "10",
+      "20",
+      "30",
+      "50"
+    ];
+  })
+  .controller('UserDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("userdetail");
+    $scope.menutitle = NavigationService.makeactive("User");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    // $scope.project = {
+    //   cb1: true,
+    //   cb4: true,
+    //   cb5: false
+    // };
+    $scope.message = 'disable';
+    $scope.onChange = function(statusState) {
+      $scope.message = statusState;
+    };
+  })
+  .controller('AdminUserDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("adminuserdetail");
+    $scope.menutitle = NavigationService.makeactive("Admin User");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    // $scope.project = {
+    //   cb1: true,
+    //   cb4: true,
+    //   cb5: false
+    // };
+    $scope.message = 'disable';
+    $scope.onChange = function(statusState) {
+      $scope.message = statusState;
+    };
+  })
+  .controller('NotificationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("notification");
+    $scope.menutitle = NavigationService.makeactive("Notification");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.sizes = [
+      "10",
+      "20",
+      "30",
+      "50"
+    ];
+  })
+  .controller('NotificationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("notificationdetail");
+    $scope.menutitle = NavigationService.makeactive("Notification");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.sizes = [
@@ -35,9 +139,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Login");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    TemplateService.header="";
-    TemplateService.footer="";
-    TemplateService.sidemenu="";
+    TemplateService.header = "";
+    TemplateService.footer = "";
+    TemplateService.sidemenu = "";
   })
   .controller('MatchUpdatesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file

@@ -15,6 +15,36 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       templateUrl: "views/template.html",
       controller: 'HomeCtrl'
     })
+    .state('user', {
+      url: "/user",
+      templateUrl: "views/template.html",
+      controller: 'UserCtrl'
+    })
+    .state('userdetail', {
+      url: "/userdetail",
+      templateUrl: "views/template.html",
+      controller: 'UserDetailCtrl'
+    })
+    .state('adminuser', {
+      url: "/adminuser",
+      templateUrl: "views/template.html",
+      controller: 'AdminUserCtrl'
+    })
+    .state('adminuserdetail', {
+      url: "/adminuserdetail",
+      templateUrl: "views/template.html",
+      controller: 'AdminUserDetailCtrl'
+    })
+    .state('notification', {
+      url: "/notification",
+      templateUrl: "views/template.html",
+      controller: 'NotificationCtrl'
+    })
+    .state('notificationdetail', {
+      url: "/notificationdetail",
+      templateUrl: "views/template.html",
+      controller: 'NotificationDetailCtrl'
+    })
     .state('creatematch', {
       url: "/creatematch",
       templateUrl: "views/template.html",

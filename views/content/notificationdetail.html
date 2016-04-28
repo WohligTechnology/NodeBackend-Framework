@@ -1,0 +1,43 @@
+<section class="container-fluid">
+  <div layout="column" ng-cloak>
+    <md-content layout-padding>
+      <md-toolbar class="md-hue-2 md-whiteframe-1dp">
+        <div class="md-toolbar-tools">
+          <span>Create Notification</span>
+        </div>
+      </md-toolbar>
+      <div layout-padding class="brd">
+        <form name="projectForm">
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Sr No.</label>
+              <input required name="no" ng-model="project.no">
+              <div ng-messages="projectForm.no.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>title</label>
+              <input required name="title" ng-model="project.title">
+              <div ng-messages="projectForm.title.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+          </div>
+
+          <div layout-gt-sm="row">
+            <md-input-container>
+              <md-switch ng-model="project.status" aria-label="Status" ng-change="onChange(project.status)">
+                Status {{ message }}
+              </md-switch>
+            </md-input-container>
+          </div>
+          <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary">Save</md-button>
+            <md-button class="md-raised md-primary">Cancel</md-button>
+          </div>
+        </form>
+      </div>
+    </md-content>
+  </div>
+</section>

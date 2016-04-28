@@ -1,0 +1,63 @@
+<section class="container-fluid">
+  <div layout="column" ng-cloak>
+    <md-content layout-padding>
+      <md-toolbar class="md-hue-2 md-whiteframe-1dp">
+        <div class="md-toolbar-tools">
+          <span>Create Admin</span>
+        </div>
+      </md-toolbar>
+      <div layout-padding class="brd">
+        <form name="projectForm">
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Name</label>
+              <input required name="name" ng-model="project.name">
+              <div ng-messages="projectForm.name.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Email</label>
+              <input required type="email" name="email" ng-model="project.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+              <div ng-messages="projectForm.email.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                  Your email must be between 10 and 100 characters long and look like an e-mail address.
+                </div>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Password</label>
+              <input required md-no-asterisk type="password" name="password" ng-model="project.password" />
+              <div ng-messages="projectForm.password.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Confirm Password</label>
+              <input required md-no-asterisk type="password" name="password" ng-model="project.password" />
+              <div ng-messages="projectForm.password.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-input-container>
+              <md-switch ng-model="project.status" aria-label="Status" ng-change="onChange(project.status)">
+                Status {{ message }}
+              </md-switch>
+            </md-input-container>
+            <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date">
+            </md-datepicker>
+          </div>
+          <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary">Save</md-button>
+            <md-button class="md-raised md-primary">Cancel</md-button>
+          </div>
+        </form>
+      </div>
+    </md-content>
+  </div>
+</section>

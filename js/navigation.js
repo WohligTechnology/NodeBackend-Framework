@@ -1,32 +1,30 @@
 var adminURL = "";
-if(isproduction)
-{
-  adminURL =  "http://www.wohlig.co.in/demo/index.php";
-}
-else {
+if (isproduction) {
+  adminURL = "http://www.wohlig.co.in/demo/index.php";
+} else {
   adminURL = "http://localhost/demo/index.php";
 }
 
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function() {
-  var navigation = [
-    {
+  var navigation = [{
     name: "Dashboard",
     classis: "active",
     anchor: "home"
-    // subnav: [{
-    //   name: "Subnav1",
-    //   classis: "active",
-    //   link: "#/home"
-    // }]
-  }
-  // ,{
-  //   name: "Create Match",
-  //   classis: "active",
-  //   anchor: "creatematch"
-  // }
-];
+  }, {
+    name: "Admin User",
+    classis: "active",
+    anchor: "adminuser"
+  }, {
+    name: "User",
+    classis: "active",
+    anchor: "user"
+  }, {
+    name: "Notification",
+    classis: "active",
+    anchor: "notification"
+  }];
 
   return {
     getnav: function() {
