@@ -1,12 +1,12 @@
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngMaterial', 'ngMessages'])
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('MatchesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
 
     console.log("Testing Consoles");
 
-    $scope.template = TemplateService.changecontent("home");
-    $scope.menutitle = NavigationService.makeactive("Dashboard");
+    $scope.template = TemplateService.changecontent("matches");
+    $scope.menutitle = NavigationService.makeactive("Matches");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.sizes = [

@@ -9,9 +9,9 @@ var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function() {
   var navigation = [{
-    name: "Dashboard",
+    name: "Matches",
     classis: "active",
-    anchor: "home"
+    anchor: "matches"
   }, {
     name: "Admin User",
     classis: "active",
