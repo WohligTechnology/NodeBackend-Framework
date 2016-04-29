@@ -25,8 +25,14 @@ function extractChar(string) {
     } else {
         returnVal.type = "incorrectType";
     }
-    returnVal.string = returnVal.string.toUpperCase();
-    returnVal.number = parseInt(returnVal.number);
+    if (returnVal.string) {
+        returnVal.string = returnVal.string.toUpperCase();
+    }
+
+    if (returnVal.number) {
+        returnVal.number = parseInt(returnVal.number);
+    }
+
     return returnVal;
 }
 
@@ -106,7 +112,7 @@ command.directive('command', function($document) {
                                         returnVal.incrementWicket = 1;
                                     }
                                     if (extractedChar.string == "M") {
-                                        returnVal.incrementRuns = -1*extractedChar.number;
+                                        returnVal.incrementRuns = -1 * extractedChar.number;
                                     }
                                 }
 
