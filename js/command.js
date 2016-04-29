@@ -84,7 +84,7 @@ command.directive('command', function($document) {
                                         returnVal.changeBat = true;
                                     }
                                     if (extractedChar.string == "CHANGEFAV") {
-                                        returnVal.changeFavorite = true;
+                                        returnVal.changeFavourite = true;
                                     }
 
                                 } else if (extractedChar.type == "numberOnly") {
