@@ -1,4 +1,4 @@
-var adminURL = "http://192.168.1.111:1337/";
+var adminURL = "http://localhost:1337/";
 var imgpath = adminURL + "upload/readFile";
 var uploadURL = adminURL + "upload";
 // if (isproduction) {

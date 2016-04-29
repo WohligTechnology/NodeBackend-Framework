@@ -36,7 +36,7 @@ function extractChar(string) {
     return returnVal;
 }
 
-command.directive('command', function($document) {
+command.directive('command', function($document, $http) {
     return {
         restrict: 'E',
         replace: false,
@@ -112,7 +112,7 @@ command.directive('command', function($document) {
                                         returnVal.incrementWicket = 1;
                                     }
                                     if (extractedChar.string == "M") {
-                                        returnVal.incrementRuns = -1 * extractedChar.number;
+                                        returnVal.incrementRun = -1 * extractedChar.number;
                                     }
                                 }
 
@@ -257,6 +257,10 @@ command.directive('command', function($document) {
                             returnVal.rate2 = returnVal.rate2 / 100;
                         }
                         console.log(returnVal);
+                        returnVal._id = "57238ec6b089c933a122b4be";
+                        $http.post(adminURL + "session/change", returnVal).then(function(data) {
+
+                        });
                     } else {
                         console.log("INCORRECT COMMAND");
                     }
@@ -264,6 +268,8 @@ command.directive('command', function($document) {
                 }
 
             };
+
+
         }
     };
 });
