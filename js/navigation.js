@@ -1,4 +1,6 @@
-var adminURL = "";
+var adminURL = "http://192.168.1.111/";
+var imgpath = adminURL + "upload/readFile";
+var uploadURL = adminURL + "upload";
 if (isproduction) {
   adminURL = "http://www.wohlig.co.in/demo/index.php";
 } else {
@@ -41,5 +43,27 @@ var navigationservice = angular.module('navigationservice', [])
       return menuname;
     },
 
+    notifications: function(callback) {
+      $http({
+        url: adminURL + 'notification/getAll',
+        method: 'POST'
+      }).sucess(callback);
+    },
+    saveNotificationContent: function(notificationData, callback) {
+      $http({
+        url: adminURL + 'notification/save',
+        method: 'POST',
+        withCredentials: true,
+        data: notificationData
+      }).sucess(callback);
+    },
+    insertData: function(notificationArr, callback) {
+      $http({
+        url: adminURL + 'notification/insertData',
+        method: 'POST',
+        withCredentials: true,
+        data: notificationArr
+      }).sucess(callback);
+    },
   };
 });
