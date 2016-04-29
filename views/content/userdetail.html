@@ -7,51 +7,59 @@
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
-        <form name="projectForm">
+        <form name="userForm">
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Name</label>
               <input required name="name" ng-model="project.name">
-              <div ng-messages="projectForm.name.$error">
+              <div ng-messages="userForm.name.$error">
                 <div ng-message="required">This is required.</div>
               </div>
-
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
-             <label>Phone</label>
-             <input name="phone" ng-model="project.phone" required minlength="10" maxlength="10">
-             <div class="hint" ng-show="showHints">How can we reach you?</div>
-             <div ng-messages="projectForm.phone.$error">
-               <div ng-message-exp="['required', 'minlength', 'maxlength']">
-                 Your phone must be between 10 number long and look like an e-mail addressand put vaild email id.
-               </div>
-             </div>
-           </md-input-container>
+              <label>Phone</label>
+              <input type="tel" name="phone" ng-model="project.phone" required minlength="10" maxlength="10">
+              <div class="hint" ng-show="showHints">How can we reach you?</div>
+              <div ng-messages="userForm.phone.$error">
+                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                  Your phone must be between 10 number long and look like an e-mail addressand put vaild email id.
+                </div>
+              </div>
+            </md-input-container>
           </div>
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Password</label>
               <input required md-no-asterisk type="password" name="password" ng-model="project.password" />
-              <div ng-messages="projectForm.password.$error">
+              <div ng-messages="userForm.password.$error">
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
               <label>Confirm Password</label>
-              <input required md-no-asterisk type="password" name="password" ng-model="project.password" />
-              <div ng-messages="projectForm.password.$error">
+              <input required md-no-asterisk type="password" name="confirmpassword" ng-model="project.confirmpassword" />
+              <div ng-messages="userForm.confirmpassword.$error">
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
-            <md-input-container>
-              <md-switch ng-model="project.status" aria-label="Status" ng-change="onChange(project.status)">
-                Status {{ message }}
-              </md-switch>
-            </md-input-container>
-            <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date">
-            </md-datepicker>
+            <div class="col-md-6">
+              <md-input-container>
+                <md-switch ng-model="project.status" aria-label="Status" ng-change="onChange(project.status)">
+                  Status {{ message }}
+                </md-switch>
+              </md-input-container>
+            </div>
+          </div>
+          <div layout-gt-sm="row">
+            <div class="col-md-6">
+              <div class="colors">
+                <label>Expiry</label>
+              </div>
+              <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date">
+              </md-datepicker>
+            </div>
           </div>
           <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
             <md-button class="md-raised md-primary">Save</md-button>

@@ -42,8 +42,8 @@ img {
   opacity: 0;
   @include transition(all 300ms ease);
 }
-.margin-zero{
-  margin: 0
+.margin-zero {
+  margin: 0;
 }
 .logo {
   font-family: "Orkney";
@@ -81,7 +81,7 @@ a {
   color: #3e50b4;
 }
 a.navbar-brand.logo:hover {
-    color: darken(#fff, 10%);
+  color: darken(#fff, 10%);
 }
 .form-control:focus {
   border-color: $brand-primary;
@@ -303,11 +303,12 @@ sidemenu {
   padding-left: 320px;
   padding-top: 65px;
 }
-// .title-custom {
-//     border-bottom: 1px solid #ddd;
-//     margin: 0 10px;
-//     text-transform: uppercase;
-// }
+.colors {
+  label {
+    color: rgba(0,0,0,0.54);
+    font-size: 12px;
+  }
+}
 //bootstrap forms
 /* Start writing sass here */
 @import "fancybox-override";

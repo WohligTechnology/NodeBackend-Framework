@@ -6,7 +6,6 @@ var firstapp = angular.module('firstapp', [
   'navigationservice',
   'command'
 ]);
-
 firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
   // for http request with session
   $httpProvider.defaults.withCredentials = true;
@@ -16,13 +15,18 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       templateUrl: "views/template.html",
       controller: 'MatchesCtrl'
     })
+    .state('team', {
+      url: "/team",
+      templateUrl: "views/template.html",
+      controller: 'TeamCtrl'
+    })
     .state('user', {
       url: "/user",
       templateUrl: "views/template.html",
       controller: 'UserCtrl'
     })
     .state('createuser', {
-      url: "/createuser/id",
+      url: "/createuser",
       templateUrl: "views/template.html",
       controller: 'CreateUserCtrl'
     })
@@ -37,7 +41,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       controller: 'AdminUserCtrl'
     })
     .state('createadminuser', {
-      url: "/createadminuser/id",
+      url: "/createadminuser",
       templateUrl: "views/template.html",
       controller: 'CreateAdminUserCtrl'
     })
@@ -62,7 +66,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       controller: 'EditNotificationCtrl'
     })
     .state('creatematch', {
-      url: "/creatematch/id",
+      url: "/creatematch",
       templateUrl: "views/template.html",
       controller: 'CreateMatchCtrl'
     })

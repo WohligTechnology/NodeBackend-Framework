@@ -7,19 +7,19 @@
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
-        <form name="projectForm">
+        <form name="matchForm">
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Team1 Name</label>
               <input required md-no-asterisk name="team1" ng-model="project.team1">
-              <div ng-messages="projectForm.team1.$error">
+              <div ng-messages="matchForm.team1.$error">
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
               <label>Team2 Name</label>
               <input required md-no-asterisk name="team2" ng-model="project.team2">
-              <div ng-messages="projectForm.team2.$error">
+              <div ng-messages="matchForm.team2.$error">
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
@@ -28,7 +28,7 @@
             <md-input-container class="md-block" flex-gt-sm>
               <label>Tournament</label>
               <input required md-no-asterisk type="text" name="Tournament" ng-model="project.tournament" />
-              <div ng-messages="projectForm.tournament.$error">
+              <div ng-messages="matchForm.tournament.$error">
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
@@ -43,7 +43,7 @@
           </div>
         </form>
         <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-          <md-button class="md-raised md-primary">Save</md-button>
+          <md-button class="md-raised md-primary" ng-click="submitForm(project)">Save</md-button>
           <md-button class="md-raised md-primary" ui-sref="matchupdates">Match Updates</md-button>
         </div>
       </div>

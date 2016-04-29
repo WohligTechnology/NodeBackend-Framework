@@ -5,9 +5,10 @@
         <div class="md-toolbar-tools">
           <span>Admin User</span>
           <span flex="" class="flex"></span>
-          <md-button class="md-raised pull-right" ui-sref="createuseradmin">Create Admin User</md-button>
+          <md-button class="md-raised pull-right" ui-sref="createadminuser">Create Admin User</md-button>
         </div>
       </md-toolbar>
+
       <div layout-padding class="brd">
         <div layout="row">
           <md-input-container class="md-block search" flex-gt-sm>
@@ -27,86 +28,35 @@
             <thead>
               <tr>
                 <th>
-                  <div class="checkbox-optimized text-center">
-                    <md-checkbox class="md-primary"></md-checkbox>
+                  <md-tooltip md-direction="top">
+                    Select All
+                  </md-tooltip>
+                  <div class="checkbox-optimized text-center" >
+                    <md-checkbox class="md-primary" aria-label="Select All"></md-checkbox>
                   </div>
                 </th>
-                <th>Sr No</th>
-                <th>Name</th>
                 <th>Email</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr ng-repeat="data in adminuser">
                 <td>
                   <div class="checkbox-optimized text-center">
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
                 </td>
-                <td>1</td>
-                <td>Mahesh Mauraya</td>
-                <td>mahesh@wohlig.com</td>
-                <td>Enable</td>
+                <td>{{data.email}}</td>
+                <td>{{data.status}}</td>
                 <td class="action-btn">
                   <md-button class="md-icon-button" aria-label="EDIT">
                     <md-tooltip md-direction="top">
                       Edit
                     </md-tooltip>
-                    <md-icon class="material-icons md-18" ui-sref="edituseradmin">mode_edit</md-icon>
+                    <md-icon class="material-icons md-18" ui-sref="edituseradmin({id:useradmin._id})}">mode_edit</md-icon>
                   </md-button>
-                  <md-button class="md-icon-button" aria-label="Delete">
-                    <md-tooltip md-direction="top">
-                      Delete
-                    </md-tooltip>
-                    <md-icon class="material-icons md-18">delete</md-icon>
-                  </md-button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="checkbox-optimized text-center">
-                    <md-checkbox class="md-primary"></md-checkbox>
-                  </div>
-                </td>
-                <td>2</td>
-                <td>Rakesh Mauraya</td>
-                <td>mahesh@wohlig.com</td>
-                <td>Enable</td>
-                <td class="action-btn">
-                  <md-button class="md-icon-button" aria-label="EDIT">
-                    <md-tooltip md-direction="top">
-                      Edit
-                    </md-tooltip>
-                    <md-icon class="material-icons md-18" ui-sref="creatematch">mode_edit</md-icon>
-                  </md-button>
-                  <md-button class="md-icon-button" aria-label="Delete">
-                    <md-tooltip md-direction="top">
-                      Delete
-                    </md-tooltip>
-                    <md-icon class="material-icons md-18">delete</md-icon>
-                  </md-button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="checkbox-optimized text-center">
-                    <md-checkbox class="md-primary"></md-checkbox>
-                  </div>
-                </td>
-                <td>3</td>
-                <td>Mahesh Mauraya</td>
-                <td>mahesh@wohlig.com</td>
-                <td>Enable</td>
-                <td class="action-btn">
-                  <md-button class="md-icon-button" aria-label="EDIT">
-                    <md-tooltip md-direction="top">
-                      Edit
-                    </md-tooltip>
-                    <md-icon class="material-icons md-18" ui-sref="creatematch">mode_edit</md-icon>
-                  </md-button>
-                  <md-button class="md-icon-button" aria-label="Delete">
+                  <md-button class="md-icon-button" aria-label="Delete" ng-click="deleteAdminUsers(useradmin._id)">
                     <md-tooltip md-direction="top">
                       Delete
                     </md-tooltip>

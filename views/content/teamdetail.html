@@ -7,37 +7,21 @@
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
-        <form name="adminForm">
+        <form name="notificationForm">
           <div layout-gt-sm="row">
             <div class="col-md-6">
               <md-input-container class="md-block" flex-gt-sm>
-                <label>Email</label>
-                <input required type="email" name="email" ng-model="project.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
-                <div ng-messages="adminForm.email.$error" role="alert">
-                  <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                    Your email must be between 10 and 100 characters long and look like an e-mail address.
-                  </div>
-                </div>
+                <label>Sr No.</label>
+                <input required name="no" ng-model="project.no">
               </md-input-container>
             </div>
           </div>
           <div layout-gt-sm="row">
             <div class="col-md-6">
               <md-input-container class="md-block" flex-gt-sm>
-                <label>Password</label>
-                <input required md-no-asterisk type="password" name="password" ng-model="project.password" />
-                <div ng-messages="adminForm.password.$error">
-                  <div ng-message="required">This is required.</div>
-                </div>
-              </md-input-container>
-            </div>
-          </div>
-          <div layout-gt-sm="row">
-            <div class="col-md-6">
-              <md-input-container class="md-block" flex-gt-sm>
-                <label>Confirm Password</label>
-                <input required md-no-asterisk type="password" name="confirmpassword" ng-model="project.confirmpassword" />
-                <div ng-messages="adminForm.confirmpassword.$error">
+                <label>Team Name</label>
+                <input required name="title" ng-model="project.title">
+                <div ng-messages="notificationForm.title.$error">
                   <div ng-message="required">This is required.</div>
                 </div>
               </md-input-container>
@@ -54,7 +38,7 @@
           </div>
           <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
             <md-button class="md-raised md-primary" ng-click="submitForm(project)">Save</md-button>
-            <md-button class="md-raised md-primary" ui-sref="adminuser">Cancel</md-button>
+            <md-button class="md-raised md-primary" ui-serf="team">Cancel</md-button>
           </div>
         </form>
       </div>
