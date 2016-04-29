@@ -25,7 +25,7 @@ function extractChar(string) {
     } else {
         returnVal.type = "incorrectType";
     }
-    returnVal.string = _.upperCase(returnVal.string);
+    returnVal.string = returnVal.string.toUpperCase();
     returnVal.number = parseInt(returnVal.number);
     return returnVal;
 }
@@ -56,6 +56,7 @@ command.directive('command', function($document) {
                                 console.log("Nothing as well");
                             } else {
                                 extractedChar = extractChar(commandArr[0]);
+                                console.log(extractedChar);
                                 if (extractedChar.type == "incorrectType") {
                                     console.log("IncorrectType");
                                 } else if (extractedChar.type == "stringOnly") {
