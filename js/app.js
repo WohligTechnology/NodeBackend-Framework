@@ -20,35 +20,55 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       templateUrl: "views/template.html",
       controller: 'UserCtrl'
     })
-    .state('userdetail', {
-      url: "/userdetail",
+    .state('createuser', {
+      url: "/createuser/id",
       templateUrl: "views/template.html",
-      controller: 'UserDetailCtrl'
+      controller: 'CreateUserCtrl'
+    })
+    .state('edituser', {
+      url: "/edituser/id",
+      templateUrl: "views/template.html",
+      controller: 'EditUserCtrl'
     })
     .state('adminuser', {
       url: "/adminuser",
       templateUrl: "views/template.html",
       controller: 'AdminUserCtrl'
     })
-    .state('adminuserdetail', {
-      url: "/adminuserdetail",
+    .state('createadminuser', {
+      url: "/createadminuser/id",
       templateUrl: "views/template.html",
-      controller: 'AdminUserDetailCtrl'
+      controller: 'CreateAdminUserCtrl'
+    })
+    .state('editadminuser', {
+      url: "/editadminuser/id",
+      templateUrl: "views/template.html",
+      controller: 'EditAdminUserCtrl'
     })
     .state('notification', {
       url: "/notification",
       templateUrl: "views/template.html",
       controller: 'NotificationCtrl'
     })
-    .state('notificationdetail', {
-      url: "/notificationdetail",
+    .state('createnotification', {
+      url: "/createnotification",
       templateUrl: "views/template.html",
-      controller: 'NotificationDetailCtrl'
+      controller: 'CreateNotificationCtrl'
+    })
+    .state('editnotification', {
+      url: "/editnotification",
+      templateUrl: "views/template.html",
+      controller: 'EditNotificationCtrl'
     })
     .state('creatematch', {
-      url: "/creatematch",
+      url: "/creatematch/id",
       templateUrl: "views/template.html",
       controller: 'CreateMatchCtrl'
+    })
+    .state('editmatch', {
+      url: "/editmatch/id",
+      templateUrl: "views/template.html",
+      controller: 'EditMatchCtrl'
     })
     .state('login', {
       url: "/login",

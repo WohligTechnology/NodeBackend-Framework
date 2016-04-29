@@ -3,7 +3,7 @@
     <md-content layout-padding>
       <md-toolbar class="md-hue-2 md-whiteframe-1dp">
         <div class="md-toolbar-tools">
-          <span>Create Notification</span>
+          <span>{{page.header}}</span>
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
@@ -16,6 +16,8 @@
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>title</label>
               <input required name="title" ng-model="project.title">

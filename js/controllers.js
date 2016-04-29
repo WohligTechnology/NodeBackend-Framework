@@ -48,7 +48,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       "50"
     ];
   })
-  .controller('UserDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('CreateUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
 
     console.log("Testing Consoles");
@@ -57,7 +57,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("User");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-
+    $scope.page = {
+        header: "Create User"
+    };
     // $scope.project = {
     //   cb1: true,
     //   cb4: true,
@@ -68,7 +70,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.message = statusState;
     };
   })
-  .controller('AdminUserDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("userdetail");
+    $scope.menutitle = NavigationService.makeactive("User");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.page = {
+        header: "Edit User"
+    };
+    $scope.message = 'disable';
+    $scope.onChange = function(statusState) {
+      $scope.message = statusState;
+    };
+  })
+  .controller('CreateAdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
 
     console.log("Testing Consoles");
@@ -77,7 +97,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Admin User");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.page = {
+        header: "Create Admin User"
+    };
+    // $scope.project = {
+    //   cb1: true,
+    //   cb4: true,
+    //   cb5: false
+    // };
+    $scope.message = 'disable';
+    $scope.onChange = function(statusState) {
+      $scope.message = statusState;
+    };
+  })
 
+  .controller('EditAdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("adminuserdetail");
+    $scope.menutitle = NavigationService.makeactive("Admin User");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.page = {
+        header: "Edit Admin User"
+    };
     // $scope.project = {
     //   cb1: true,
     //   cb4: true,
@@ -104,7 +149,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       "50"
     ];
   })
-  .controller('NotificationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('CreateNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
 
     console.log("Testing Consoles");
@@ -113,12 +158,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Notification");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    $scope.sizes = [
-      "10",
-      "20",
-      "30",
-      "50"
-    ];
+    $scope.page = {
+        header: "Create Notification"
+    };
+  })
+  .controller('EditNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("notificationdetail");
+    $scope.menutitle = NavigationService.makeactive("Notification");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.page = {
+        header: "Edit Notification"
+    };
   })
   .controller('CreateMatchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -129,6 +184,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Create Match");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.page = {
+        header: "Create Match"
+    };
+  })
+  .controller('EditMatchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("creatematch");
+    $scope.menutitle = NavigationService.makeactive("Create Match");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.page = {
+        header: "Edit Match"
+    };
   })
   .controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
