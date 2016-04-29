@@ -16,6 +16,7 @@ var jsArray = [
     './bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
     './bower_components/angular-material/angular-material.js',
     './bower_components/angular-aria/angular-aria.js',
+    './js/command.js',
     './js/app.js',
     './js/controllers.js',
     './js/templateservice.js',
