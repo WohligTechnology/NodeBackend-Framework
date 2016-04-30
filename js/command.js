@@ -93,7 +93,7 @@ command.directive('command', function($document, $http) {
 
                                 } else if (extractedChar.type == "stringNumber") {
                                     if (extractedChar.string == "S") {
-                                        returnVal.sessionRuns = extractedChar.number;
+                                        returnVal.run = extractedChar.number;
                                     }
                                     if (extractedChar.string == "N") {
                                         returnVal.incrementRun = extractedChar.number;
@@ -134,7 +134,7 @@ command.directive('command', function($document, $http) {
                             } else if (extractedChar.type == "numberOnly") {
                                 if (extractedChar2.type == "stringNumber" && extractedChar2.string == "S") {
                                     returnVal.incrementRun = extractedChar.number;
-                                    returnVal.sessionRuns = extractedChar2.number;
+                                    returnVal.run = extractedChar2.number;
                                     returnVal.incrementBall = 1;
 
                                 } else if (extractedChar2.type == "numberOnly") {
@@ -145,23 +145,23 @@ command.directive('command', function($document, $http) {
                             } else if (extractedChar.type == "stringNumber") {
                                 if (extractedChar.string == "N" && extractedChar2.string == "S" && extractedChar2.type == "stringNumber") {
                                     returnVal.incrementRun = extractedChar.number;
-                                    returnVal.sessionRuns = extractedChar2.number;
+                                    returnVal.run = extractedChar2.number;
                                 }
                                 if (extractedChar.string == "W" && extractedChar2.string == "S" && extractedChar2.type == "stringNumber") {
                                     returnVal.incrementRun = extractedChar.number;
                                     returnVal.incrementWicket = 1;
-                                    returnVal.sessionRuns = extractedChar2.number;
+                                    returnVal.run = extractedChar2.number;
                                     returnVal.incrementBall = 1;
                                 }
                                 if (extractedChar.string == "WN" && extractedChar2.string == "S" && extractedChar2.type == "stringNumber") {
                                     returnVal.incrementRun = extractedChar.number;
                                     returnVal.incrementWicket = 1;
-                                    returnVal.sessionRuns = extractedChar2.number;
+                                    returnVal.run = extractedChar2.number;
                                 }
                                 if (extractedChar.string == "NW" && extractedChar2.string == "S" && extractedChar2.type == "stringNumber") {
                                     returnVal.incrementRun = extractedChar.number;
                                     returnVal.incrementWicket = 1;
-                                    returnVal.sessionRuns = extractedChar2.number;
+                                    returnVal.run = extractedChar2.number;
                                 }
                             }
 
@@ -211,7 +211,7 @@ command.directive('command', function($document, $http) {
                             extractedChar3 = extractChar(commandArr[2]);
                             extractedChar4 = extractChar(commandArr[3]);
                             if (extractedChar4.type == "stringNumber" && extractedChar4.string == "S") {
-                                returnVal.sessionRuns = extractedChar4.number;
+                                returnVal.run = extractedChar4.number;
                             }
                             if (extractedChar2.type == "numberOnly" && extractedChar3.type == "numberOnly") {
                                 returnVal.rate1 = extractedChar2.number;
