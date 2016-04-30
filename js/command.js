@@ -42,6 +42,7 @@ command.directive('command', function($document, $http) {
         replace: false,
         templateUrl: 'views/directive/command.html',
         link: function(scope, element, attr) {
+            var matchID = "57235d6f78e708d44687cee5";
             scope.command = {
                 input: ""
             };
@@ -84,7 +85,12 @@ command.directive('command', function($document, $http) {
                                         returnVal.changeBat = true;
                                     }
                                     if (extractedChar.string == "CHANGEFAV") {
-                                        returnVal.changeFavourite = true;
+                                        $http.post(adminURL + "session/changeFavourite", {
+                                            _id: matchID,
+                                            changeFavourite: true
+                                        }).then(function() {
+                                            console.log("Favorite Changed ");
+                                        });
                                     }
 
                                 } else if (extractedChar.type == "numberOnly") {
@@ -93,7 +99,7 @@ command.directive('command', function($document, $http) {
 
                                 } else if (extractedChar.type == "stringNumber") {
                                     if (extractedChar.string == "S") {
-                                        returnVal.sessionRuns = extractedChar.number;
+                                        returnVal.run = extractedChar.number;
                                     }
                                     if (extractedChar.string == "N") {
                                         returnVal.incrementRun = extractedChar.number;
@@ -126,15 +132,27 @@ command.directive('command', function($document, $http) {
                                 console.log("IncorrectType");
                             } else if (extractedChar.type == "stringOnly") {
                                 if (extractedChar.string == "CREATES" && extractedChar2.type == "numberOnly") {
-                                    returnVal.createSession = extractedChar2.number;
+
+                                    $http.post(adminURL + "session/createSession", {
+                                        _id: matchID,
+                                        overs: extractedChar2.number
+                                    }).then(function() {
+                                        console.log("New Session Created for Over " + extractedChar2.number);
+                                    });
                                 }
                                 if (extractedChar.string == "DELS" && extractedChar2.type == "numberOnly") {
-                                    returnVal.deleteSession = extractedChar2.number;
+
+                                    $http.post(adminURL + "session/deleteSession", {
+                                        _id: matchID,
+                                        overs: extractedChar2.number
+                                    }).then(function() {
+                                        console.log("Deleted Session for Over " + extractedChar2.number);
+                                    });
                                 }
                             } else if (extractedChar.type == "numberOnly") {
                                 if (extractedChar2.type == "stringNumber" && extractedChar2.string == "S") {
                                     returnVal.incrementRun = extractedChar.number;
-                                    returnVal.sessionRuns = extractedChar2.number;
+                                    returnVal.run = extractedChar2.number;
                                     returnVal.incrementBall = 1;
 
                                 } else if (extractedChar2.type == "numberOnly") {
@@ -145,23 +163,23 @@ command.directive('command', function($document, $http) {
                             } else if (extractedChar.type == "stringNumber") {
                                 if (extractedChar.string == "N" && extractedChar2.string == "S" && extractedChar2.type == "stringNumber") {
                                     returnVal.incrementRun = extractedChar.number;
-                                    returnVal.sessionRuns = extractedChar2.number;
+                                    returnVal.run = extractedChar2.number;
                                 }
                                 if (extractedChar.string == "W" && extractedChar2.string == "S" && extractedChar2.type == "stringNumber") {
                                     returnVal.incrementRun = extractedChar.number;
                                     returnVal.incrementWicket = 1;
-                                    returnVal.sessionRuns = extractedChar2.number;
+                                    returnVal.run = extractedChar2.number;
                                     returnVal.incrementBall = 1;
                                 }
                                 if (extractedChar.string == "WN" && extractedChar2.string == "S" && extractedChar2.type == "stringNumber") {
                                     returnVal.incrementRun = extractedChar.number;
                                     returnVal.incrementWicket = 1;
-                                    returnVal.sessionRuns = extractedChar2.number;
+                                    returnVal.run = extractedChar2.number;
                                 }
                                 if (extractedChar.string == "NW" && extractedChar2.string == "S" && extractedChar2.type == "stringNumber") {
                                     returnVal.incrementRun = extractedChar.number;
                                     returnVal.incrementWicket = 1;
-                                    returnVal.sessionRuns = extractedChar2.number;
+                                    returnVal.run = extractedChar2.number;
                                 }
                             }
 
@@ -211,7 +229,7 @@ command.directive('command', function($document, $http) {
                             extractedChar3 = extractChar(commandArr[2]);
                             extractedChar4 = extractChar(commandArr[3]);
                             if (extractedChar4.type == "stringNumber" && extractedChar4.string == "S") {
-                                returnVal.sessionRuns = extractedChar4.number;
+                                returnVal.run = extractedChar4.number;
                             }
                             if (extractedChar2.type == "numberOnly" && extractedChar3.type == "numberOnly") {
                                 returnVal.rate1 = extractedChar2.number;
@@ -257,7 +275,7 @@ command.directive('command', function($document, $http) {
                             returnVal.rate2 = returnVal.rate2 / 100;
                         }
                         console.log(returnVal);
-                        returnVal._id = "57238ec6b089c933a122b4be";
+                        returnVal._id = matchID;
                         $http.post(adminURL + "session/change", returnVal).then(function(data) {
 
                         });
