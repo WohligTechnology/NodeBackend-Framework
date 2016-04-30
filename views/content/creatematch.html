@@ -9,37 +9,50 @@
       <div layout-padding class="brd">
         <form name="matchForm">
           <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Team1 Name</label>
-              <input required md-no-asterisk name="team1" ng-model="project.team1">
-              <div ng-messages="matchForm.team1.$error">
-                <div ng-message="required">This is required.</div>
-              </div>
-            </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Team2 Name</label>
-              <input required md-no-asterisk name="team2" ng-model="project.team2">
-              <div ng-messages="matchForm.team2.$error">
-                <div ng-message="required">This is required.</div>
-              </div>
-            </md-input-container>
+            <div class="col-md-6">
+              <md-input-container class="md-block">
+                <label>team1</label>
+                <md-select name="team1" ng-model="project.team1" required>
+                  <md-option value="1">India</md-option>
+                  <md-option value="2">Pakistan</md-option>
+                </md-select>
+                <div class="errors" ng-messages="matchForm.team1.$error" ng-if="matchForm.$dirty">
+                  <div ng-message="required">Required</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div class="col-md-6">
+              <md-input-container class="md-block">
+                <label>team2</label>
+                <md-select name="team2" ng-model="project.team2" required>
+                  <md-option value="1">India</md-option>
+                  <md-option value="2">Pakistan</md-option>
+                </md-select>
+                <div class="errors" ng-messages="matchForm.team1.$error" ng-if="matchForm.$dirty">
+                  <div ng-message="required">Required</div>
+                </div>
+              </md-input-container>
+            </div>
           </div>
           <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Tournament</label>
-              <input required md-no-asterisk type="text" name="Tournament" ng-model="project.tournament" />
-              <div ng-messages="matchForm.tournament.$error">
-                <div ng-message="required">This is required.</div>
-              </div>
-            </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>No of Overs</label>
-              <input required type="number" step="any" name="overs" ng-model="project.overs" min="800"
-                     max="4999" ng-pattern="/^1234$/" />
-              <div ng-messages="userForm.overs.$error">
-                <div ng-message="required"> - Please enter a valid overs</div>
-              </div>
-            </md-input-container>
+            <div class="col-md-6">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Tournament</label>
+                <input required md-no-asterisk type="text" name="Tournament" ng-model="project.tournament" />
+                <div ng-messages="matchForm.tournament.$error">
+                  <div ng-message="required">This is required.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div class="col-md-6">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>No of Overs</label>
+                <input required type="number" step="any" name="overs" ng-model="project.overs"/>
+                <div ng-messages="userForm.overs.$error">
+                  <div ng-message="required"> - Please enter a valid overs</div>
+                </div>
+              </md-input-container>
+            </div>
           </div>
         </form>
         <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>

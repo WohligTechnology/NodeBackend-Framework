@@ -20,6 +20,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       templateUrl: "views/template.html",
       controller: 'TeamCtrl'
     })
+    .state('createteam', {
+      url: "/createteam",
+      templateUrl: "views/template.html",
+      controller: 'CreateTeamCtrl'
+    })
+    .state('editteam', {
+      url: "/editteam",
+      templateUrl: "views/template.html",
+      controller: 'EditTeamCtrl'
+    })
     .state('user', {
       url: "/user",
       templateUrl: "views/template.html",
@@ -31,7 +41,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       controller: 'CreateUserCtrl'
     })
     .state('edituser', {
-      url: "/edituser/id",
+      url: "/edituser/:id",
       templateUrl: "views/template.html",
       controller: 'EditUserCtrl'
     })
@@ -46,7 +56,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       controller: 'CreateAdminUserCtrl'
     })
     .state('editadminuser', {
-      url: "/editadminuser/id",
+      url: "/editadminuser/:id",
       templateUrl: "views/template.html",
       controller: 'EditAdminUserCtrl'
     })
@@ -61,7 +71,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       controller: 'CreateNotificationCtrl'
     })
     .state('editnotification', {
-      url: "/editnotification",
+      url: "/editnotification/:id",
       templateUrl: "views/template.html",
       controller: 'EditNotificationCtrl'
     })

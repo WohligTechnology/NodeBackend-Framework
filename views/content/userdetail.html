@@ -3,7 +3,7 @@
     <md-content layout-padding>
       <md-toolbar class="md-hue-2 md-whiteframe-1dp">
         <div class="md-toolbar-tools">
-          <span>Create User</span>
+          <span>{{page.header}}</span>
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
@@ -17,12 +17,11 @@
               </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
-              <label>Phone</label>
-              <input type="tel" name="phone" ng-model="project.phone" required minlength="10" maxlength="10">
-              <div class="hint" ng-show="showHints">How can we reach you?</div>
-              <div ng-messages="userForm.phone.$error">
+              <label>Mobile</label>
+              <input type="tel" name="mobile" ng-model="project.mobile" required minlength="10" maxlength="10">
+              <div ng-messages="userForm.mobile.$error">
                 <div ng-message-exp="['required', 'minlength', 'maxlength']">
-                  Your phone must be between 10 number long and look like an e-mail addressand put vaild email id.
+                  Your phone must be between 10 number long.
                 </div>
               </div>
             </md-input-container>
@@ -41,29 +40,32 @@
               <div ng-messages="userForm.confirmpassword.$error">
                 <div ng-message="required">This is required.</div>
               </div>
+              <div ng-show="nomatch">
+                Password does not match.
+              </div>
             </md-input-container>
           </div>
-          <div layout-gt-sm="row">
+          <!-- <div layout-gt-sm="row">
             <div class="col-md-6">
               <md-input-container>
                 <md-switch ng-model="project.status" aria-label="Status" ng-change="onChange(project.status)">
-                  Status {{ message }}
+                  Status
                 </md-switch>
               </md-input-container>
             </div>
-          </div>
+          </div> -->
           <div layout-gt-sm="row">
             <div class="col-md-6">
               <div class="colors">
                 <label>Expiry</label>
               </div>
-              <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date">
+              <md-datepicker ng-model="project.expiry" md-placeholder="Enter date">
               </md-datepicker>
             </div>
           </div>
           <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button class="md-raised md-primary">Save</md-button>
-            <md-button class="md-raised md-primary">Cancel</md-button>
+            <md-button class="md-raised md-primary" ng-click="submitForm(project,userForm)">Save</md-button>
+            <md-button class="md-raised md-primary" ui-sref="user">Cancel</md-button>
           </div>
         </form>
       </div>

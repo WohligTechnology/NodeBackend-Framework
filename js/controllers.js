@@ -1,26 +1,12 @@
+var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngMaterial', 'ngMessages'])
-
-.controller('MatchesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-  //Used to name the .html file
-
-  console.log("Testing Consoles");
-
-  $scope.template = TemplateService.changecontent("matches");
-  $scope.menutitle = NavigationService.makeactive("Matches");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-  $scope.sizes = [
-    "10",
-    "20",
-    "30",
-    "50"
-  ];
-})
-
-.controller('AdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('MatchesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
-    $scope.template = TemplateService.changecontent("adminuser");
-    $scope.menutitle = NavigationService.makeactive("Admin User");
+
+    console.log("Testing Consoles");
+
+    $scope.template = TemplateService.changecontent("matches");
+    $scope.menutitle = NavigationService.makeactive("Matches");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.sizes = [
@@ -29,28 +15,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       "30",
       "50"
     ];
+  })
 
-    $scope.userForm = {};
-    $scope.allUsersRecord = function() {
-      NavigationService.adminuserViewAll($scope.userForm, function(data) {
-        // $scope.useredata = data.data;
-        // console.log('$scope.userdata', data.data);
+.controller('AdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("adminuser");
+    $scope.menutitle = NavigationService.makeactive("Admin User");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.adminuserForm = {};
+    $scope.adminuserdata = [];
+    $scope.adminusers = [];
+    $scope.sizes = [
+      "10",
+      "20",
+      "30",
+      "50"
+    ];
+
+    $scope.loadAdminUsers = function() {
+      NavigationService.getAllAdminUsers(function(data) {
+        console.log(data);
+        $scope.adminusers = data.data.data;
       });
-    };
-    $scope.allUsersRecord();
-
-    $scope.deleteAdminUsers = function(formValid) {
-      console.log('formvalid', formValid);
-      NavigationService.deleteadminuserData({
-        id: formValid
-      }, function(data) {
-        console.log('delete data:', data);
+    }
+    $scope.loadAdminUsers();
+    $scope.deleteAdminUsers = function(id) {
+      NavigationService.deleteAdminUsersData(id, function(data) {
+        console.log(data);
         if (data.value === true) {
-          $scope.allUsersRecord();
+          $scope.loadAdminUsers();
         }
-      });
+      })
     };
-
   })
   .controller('UserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -61,12 +58,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("User");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.userdata = [];
+    $scope.users = [];
     $scope.sizes = [
       "10",
       "20",
       "30",
       "50"
     ];
+
+    $scope.loadUsers = function() {
+      NavigationService.getAllUsers(function(data) {
+        console.log(data);
+        $scope.users = data.data.data;
+      });
+    }
+    $scope.loadUsers();
+    $scope.deleteUser = function(id) {
+      NavigationService.deleteUsersData(id, function(data) {
+        console.log(data);
+        if (data.value === true) {
+          $scope.loadUsers();
+        }
+      })
+    };
   })
   .controller('TeamCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -75,14 +91,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Team");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.teamForm = {};
+    $scope.teamdata = [];
+    $scope.teams = [];
     $scope.sizes = [
       "10",
       "20",
       "30",
       "50"
     ];
+    $scope.loadTeams = function() {
+      NavigationService.getAllTeam(function(data) {
+        console.log(data);
+        $scope.teams = data.data.data;
+      });
+    }
+    $scope.loadTeams();
+    $scope.deleteTeam = function(id) {
+      NavigationService.deleteTeamData(id, function(data) {
+        console.log(data);
+        if (data.value === true) {
+          $scope.loadTeam();
+        }
+      })
+    };
   })
-  .controller('CreateTeamCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('CreateTeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
     //Used to name the .html file
 
     console.log("Testing Consoles");
@@ -94,87 +128,113 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.page = {
       header: "Create Team"
     };
-  })
-  .controller('EditTeamCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-    //Used to name the .html file
-
-    console.log("Testing Consoles");
-
-    $scope.template = TemplateService.changecontent("teamdetail");
-    $scope.menutitle = NavigationService.makeactive("Team");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-    $scope.page = {
-      header: "Edit Team"
-    };
-    $scope.message = 'disable';
-    $scope.onChange = function(statusState) {
-      $scope.message = statusState;
-    };
-  })
-  .controller('CreateUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-    //Used to name the .html file
-
-    console.log("Testing Consoles");
-
-    $scope.template = TemplateService.changecontent("userdetail");
-    $scope.menutitle = NavigationService.makeactive("User");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-    $scope.page = {
-      header: "Create User"
-    };
-    $scope.message = 'disable';
-    $scope.onChange = function(statusState) {
-      $scope.message = statusState;
-    };
-    $scope.userSubmitForm = function(formValid) {
-      console.log('form values: ', $scope.userForm);
-      if (formValid.$valid) {
-        NavigationService.userCreateSubmit($scope.userForm, function(data) {
-          console.log('userForm', $scope.userForm);
-        });
-        $state.go("users");
-      }
-    };
-  })
-  .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-    //Used to name the .html file
-
-    console.log("Testing Consoles");
-
-    $scope.template = TemplateService.changecontent("userdetail");
-    $scope.menutitle = NavigationService.makeactive("User");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-
-    $scope.page = {
-      header: "Edit User"
-    };
-    $scope.message = 'disable';
-    $scope.onChange = function(statusState) {
-      $scope.message = statusState;
-    };
-    NavigationService.getUserEditDetail($stateParams.id, function(data) {
-      $scope.userForm = data.data;
-      console.log('userForm', $scope.userForm);
-    });
-
+    $scope.teamForm = {};
     $scope.submitForm = function(formValid) {
-      console.log('form values: ', $scope.userForm);
-      if (formValid.$valid) {
-        NavigationService.editAdminUserSubmit($scope.userForm, function(data) {
-          console.log('my edit users', $scope.userForm);
-          $state.go("users");
-        });
-
-      } else {
-
-      }
+      console.log('form values: ', formValid);
+      NavigationService.teamCreateSubmit(formValid, function(data) {
+        console.log(data);
+      })
+      $state.go("team");
     };
   })
 
-.controller('CreateAdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+.controller('EditTeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+  //Used to name the .html file
+
+  console.log("Testing Consoles");
+
+  $scope.template = TemplateService.changecontent("teamdetail");
+  $scope.menutitle = NavigationService.makeactive("Team");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.page = {
+    header: "Edit Team"
+  };
+  $scope.message = 'disable';
+  $scope.onChange = function(statusState) {
+    $scope.message = statusState;
+  };
+})
+
+.controller('CreateUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+  //Used to name the .html file
+
+  console.log("Testing Consoles");
+
+  $scope.template = TemplateService.changecontent("userdetail");
+  $scope.menutitle = NavigationService.makeactive("User");
+  TemplateService.title = $scope.menutitle;
+  $scope.userForm = {};
+  $scope.nomatch = false;
+  $scope.navigation = NavigationService.getnav();
+  $scope.page = {
+    header: "Create User"
+  };
+  $scope.message = 'disable';
+  $scope.onChange = function(statusState) {
+    $scope.message = statusState;
+  };
+
+  $scope.submitForm = function(input, formValid) {
+    $scope.nomatch = false;
+    console.log('form values: ', formValid);
+    console.log(input);
+    if (formValid.$valid) {
+      if (input.password == input.confirmpassword) {
+        NavigationService.userCreateSubmit(input, function(data) {
+          console.log(data);
+          $state.go("user");
+        })
+      } else {
+        $scope.nomatch = true;
+      }
+    } else {
+
+    }
+
+  };
+})
+
+.controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+  //Used to name the .html file
+
+  console.log("Testing Consoles");
+
+  $scope.template = TemplateService.changecontent("userdetail");
+  $scope.menutitle = NavigationService.makeactive("User");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.userForm = {};
+  $scope.page = {
+    header: "Edit User"
+  };
+  $scope.nomatch = false;
+  $scope.message = 'disable';
+  $scope.onChange = function(statusState) {
+    $scope.message = statusState;
+  };
+  $scope.adminForm = {};
+
+  NavigationService.getOneUser($stateParams.id, function(data) {
+    $scope.project = data.data;
+    console.log('userForm', $scope.adminForm);
+  });
+
+  $scope.submitForm = function(input, formValid) {
+    console.log('form values: ', $scope.project);
+    if (input.password == input.confirmpassword) {
+      NavigationService.editUserSubmit(input, formValid, function(data) {
+        console.log(data);
+        $state.go("user");
+      })
+    } else {
+      $scope.nomatch = true;
+    }
+
+  };
+})
+
+.controller('CreateAdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
   //Used to name the .html file
 
   console.log("Testing Consoles");
@@ -187,6 +247,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.page = {
     header: "Create Admin User"
   };
+  $scope.accesslevels = [
+    "Admin",
+    "Operator"
+  ];
   $scope.message = 'disable';
   $scope.onChange = function(statusState) {
     $scope.message = statusState;
@@ -200,7 +264,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 })
 
-.controller('EditAdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('EditAdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
   //Used to name the .html file
 
   console.log("Testing Consoles");
@@ -212,30 +276,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.page = {
     header: "Edit Admin User"
   };
+  $scope.accesslevels = [
+    "Admin",
+    "Operator"
+  ];
   $scope.message = 'disable';
   $scope.onChange = function(statusState) {
     $scope.message = statusState;
   };
-  NavigationService.getAdminUserEditDetail($stateParams.id, function(data) {
-    $scope.userForm = data.data;
-    console.log('userForm', $scope.userForm);
+  $scope.adminForm = {};
+
+  NavigationService.getOneAdminUser($stateParams.id, function(data) {
+    $scope.project = data.data;
+    console.log('adminForm', $scope.adminForm);
   });
 
   $scope.submitForm = function(formValid) {
-    console.log('form values: ', $scope.userForm);
-    if (formValid.$valid) {
-      NavigationService.editAdminUserSubmit($scope.userForm, function(data) {
-        console.log('my edit users', $scope.userForm);
-        $state.go("users");
-      });
+    console.log('form values: ', $scope.project);
+    NavigationService.editAdminUserSubmit(formValid, function(data) {
+      console.log(data);
+    });
 
-    } else {
-
-    }
+    $state.go("adminuser");
   };
 })
 
-.controller('NotificationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('NotificationCtrl', function($scope, TemplateService, NavigationService, $stateParams, $timeout, $state) {
     //Used to name the .html file
 
     console.log("Testing Consoles");
@@ -246,18 +312,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
     $scope.notificationForm = {};
     $scope.notificationdata = [];
+    $scope.notications = [];
     $scope.sizes = [
       "10",
       "20",
       "30",
       "50"
     ];
+    $scope.loadNotification = function() {
+      NavigationService.getAllNotification(function(data) {
+        console.log(data);
+        $scope.notifications = data.data.data;
+      });
+    }
+    $scope.loadNotification();
+    $scope.deleteNotification = function(id) {
+      NavigationService.deleteNotificationData(id, function(data) {
+        console.log(data);
+        if (data.value === true) {
+          $scope.loadNotification();
+        }
+      })
+    };
   })
   .controller('CreateNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
-    //Used to name the .html file
-
-    console.log("Testing Consoles");
-
     $scope.template = TemplateService.changecontent("notificationdetail");
     $scope.menutitle = NavigationService.makeactive("Notification");
     TemplateService.title = $scope.menutitle;
@@ -274,48 +352,67 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $state.go("notification");
     };
   })
-  .controller('EditNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-    //Used to name the .html file
 
-    console.log("Testing Consoles");
+.controller('EditNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+  //Used to name the .html file
 
-    $scope.template = TemplateService.changecontent("notificationdetail");
-    $scope.menutitle = NavigationService.makeactive("Notification");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-    $scope.page = {
-      header: "Edit Notification"
-    };
-  })
-  .controller('CreateMatchCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
-    //Used to name the .html file
+  console.log("Testing Consoles");
 
-    console.log("Testing Consoles");
+  $scope.template = TemplateService.changecontent("notificationedit");
+  $scope.menutitle = NavigationService.makeactive("Notification");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.notificationForm = {};
+  $scope.page = {
+    header: "Edit Notification"
+  };
+  NavigationService.getOneNotification($stateParams.id, function(data) {
+    $scope.project = data.data;
+    console.log('notificationForm', $scope.notificationForm);
+  });
 
-    $scope.template = TemplateService.changecontent("creatematch");
-    $scope.menutitle = NavigationService.makeactive("Create Match");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-    $scope.page = {
-      header: "Create Match"
-    };
+  $scope.submitForm = function(formValid) {
+    console.log('form values: ', $scope.project);
 
-    $scope.adminForm = {};
-    $scope.page = {
-      header: "Create Admin User"
-    };
-    $scope.message = 'disable';
-    $scope.onChange = function(statusState) {
-      $scope.message = statusState;
-    };
-    $scope.submitForm = function(formValid) {
-      console.log('form values: ', formValid);
-      NavigationService.matchCreateSubmit(formValid, function(data) {
-        console.log(data);
-      })
-      $state.go("matches");
-    };
-  })
+    NavigationService.editNotificationSubmit(formValid, function(data) {
+      // console.log('notification', $scope.notificationForm);
+      console.log(data);
+    });
+
+    $state.go("notification");
+  };
+})
+
+.controller('CreateMatchCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+  //Used to name the .html file
+
+  console.log("Testing Consoles");
+
+  $scope.template = TemplateService.changecontent("creatematch");
+  $scope.menutitle = NavigationService.makeactive("Create Match");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.page = {
+    header: "Create Match"
+  };
+
+  $scope.adminForm = {};
+  $scope.page = {
+    header: "Create Admin User"
+  };
+  $scope.message = 'disable';
+  $scope.onChange = function(statusState) {
+    $scope.message = statusState;
+  };
+  $scope.submitForm = function(formValid) {
+    console.log('form values: ', formValid);
+    $scope.project.team1 = undefined;
+    $scope.project.team2 = undefined;
+    NavigationService.matchCreateSubmit(formValid, function(data) {
+      console.log(data);
+    })
+  };
+})
 
 .controller('EditMatchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file
@@ -354,7 +451,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-  .controller('headerctrl', function($scope, TemplateService, $timeout, $log, $mdSidenav) {
+  .controller('headerctrl', function($scope, TemplateService, $timeout, $log, $mdSidenav, $uibModal) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
       $(window).scrollTop(0);
@@ -405,4 +502,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           $log.debug("close LEFT is done");
         });
     };
+
+    // var modalInstance = '';
+    // $scope.callback = "";
+    // globalfunction.confDel = function(callback) {
+    //   modalInstance = $uibModal.open({
+    //     animation: $scope.animationsEnabled,
+    //     templateUrl: 'views/modal/confDelete.html',
+    //     size: 'sm',
+    //     scope: $scope
+    //   });
+    //
+    //   modalInstance.result.then(function(selectedItem) {
+    //     $scope.selected = selectedItem;
+    //   }, function() {
+    //   });
+    //   $scope.callback = callback;
+    // };
   });

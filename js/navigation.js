@@ -1,4 +1,4 @@
-var adminURL = "http://localhost:1337/";
+var adminURL = "http://192.168.1.104:1337/";
 var imgpath = adminURL + "upload/readFile";
 var uploadURL = adminURL + "upload";
 // if (isproduction) {
@@ -14,6 +14,10 @@ var navigationservice = angular.module('navigationservice', [])
     name: "Matches",
     classis: "active",
     anchor: "matches"
+  },{
+    name: "Team",
+    classis: "active",
+    anchor: "team"
   }, {
     name: "Admin User",
     classis: "active",
@@ -43,14 +47,87 @@ var navigationservice = angular.module('navigationservice', [])
       return menuname;
     },
 
-    notificationViewAll: function(callback) {
+    getAllTeam: function(callback) {
+      $http({
+        url: adminURL + 'team/findLimited',
+        method: 'POST',
+        data: {
+          "search": "",
+          "pagesize": 10,
+          "pagenumber": 1,
+        }
+      }).success(callback);
+    },
+
+    teamCreateSubmit: function(formData, callback) {
+      console.log('form data: ', formData);
+      $http({
+        url: adminURL + 'team/save',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "name": formData.name,
+        }
+      }).success(callback);
+    },
+    //
+    // insertData: function(notificationArr, callback) {
+    //   $http({
+    //     url: adminURL + 'notificationtext/insertData',
+    //     method: 'POST',
+    //     withCredentials: true,
+    //     data: notificationArr
+    //   }).sucess(callback);
+    // },
+
+    deleteTeamData: function(id, callback) {
+      // console.log('form data: ', formData);
+      $http({
+        url: adminURL + 'team/delete',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "_id": id
+        }
+      }).success(callback);
+    },
+    getOneTeam: function(id, callback) {
+      $http({
+        url: adminURL + 'team/findone',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "_id": id
+        }
+      }).success(callback);
+    },
+    editTeamSubmit: function(formData, callback) {
+      console.log(formData);
+      $http({
+        url: adminURL + 'team/save',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "_id": formData._id,
+          "title": formData.title
+        }
+      }).success(callback);
+    },
+
+    getAllNotification: function(callback) {
       $http({
         url: adminURL + 'notificationtext/findLimited',
-        method: 'POST'
-      }).sucess(callback);
+        method: 'POST',
+        data: {
+          "search": "",
+          "pagesize": 10,
+          "pagenumber": 1,
+        }
+      }).success(callback);
     },
+
     notificationCreateSubmit: function(formData, callback) {
-      // console.log('form data: ', formData);
+      console.log('form data: ', formData);
       $http({
         url: adminURL + 'notificationtext/save',
         method: 'POST',
@@ -60,6 +137,7 @@ var navigationservice = angular.module('navigationservice', [])
         }
       }).success(callback);
     },
+
     insertData: function(notificationArr, callback) {
       $http({
         url: adminURL + 'notificationtext/insertData',
@@ -68,40 +146,62 @@ var navigationservice = angular.module('navigationservice', [])
         data: notificationArr
       }).sucess(callback);
     },
-    deleteNotificationData: function(formData, callback) {
+
+    deleteNotificationData: function(id, callback) {
       // console.log('form data: ', formData);
       $http({
         url: adminURL + 'notificationtext/delete',
         method: 'POST',
         withCredentials: true,
         data: {
-          "_id": formData.id,
+          "_id": id
         }
       }).success(callback);
     },
-
-
-
-    adminuserViewAll: function(formData, callback) {
-      // console.log('form data: ', formData);
+    getOneNotification: function(id, callback) {
       $http({
-        url: adminURL + 'adminuser/findLimited',
+        url: adminURL + 'notificationtext/findone',
         method: 'POST',
         withCredentials: true,
         data: {
-          "name": formData.name,
-          "email": formData.email,
+          "_id": id
         }
       }).success(callback);
     },
-    deleteadminuserData: function(formData, callback) {
+    editNotificationSubmit: function(formData, callback) {
+      console.log(formData);
+      $http({
+        url: adminURL + 'notificationtext/save',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "_id": formData._id,
+          "title": formData.title
+        }
+      }).success(callback);
+    },
+
+
+    getAllAdminUsers: function(callback) {
+      $http({
+        url: adminURL + 'adminuser/findLimited',
+        method: 'POST',
+        data: {
+          "search": "",
+          "pagesize": 10,
+          "pagenumber": 1,
+        }
+      }).success(callback);
+    },
+
+    deleteAdminUsersData: function(id, callback) {
       // console.log('form data: ', formData);
       $http({
         url: adminURL + 'adminuser/delete',
         method: 'POST',
         withCredentials: true,
         data: {
-          "_id": formData.id
+          "_id": id
         }
       }).success(callback);
     },
@@ -115,13 +215,14 @@ var navigationservice = angular.module('navigationservice', [])
           "email": formData.email,
           "password": formData.password,
           "status": formData.status,
+          "accesslevel": formData.accesslevel,
         }
       }).success(callback);
     },
-    getAdminUserEditDetail: function(id, callback) {
-      // console.log('form data: ', formData);
+
+    getOneAdminUser: function(id, callback) {
       $http({
-        url: adminURL + 'adminuser/getOne',
+        url: adminURL + 'adminuser/findone',
         method: 'POST',
         withCredentials: true,
         data: {
@@ -130,39 +231,41 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
     editAdminUserSubmit: function(formData, callback) {
-      // console.log('form data: ', formData);
+      console.log(formData);
       $http({
         url: adminURL + 'adminuser/save',
         method: 'POST',
         withCredentials: true,
         data: {
           "_id": formData._id,
-          "name": formData.name,
-          "email": formData.email
+          "email": formData.email,
+          "password": formData.password,
+          "status": formData.status,
+          "accesslevel": formData.accesslevel,
         }
       }).success(callback);
     },
 
-    userViewAll: function(formData, callback) {
-      // console.log('form data: ', formData);
+    getAllUsers: function(callback) {
       $http({
         url: adminURL + 'user/findLimited',
         method: 'POST',
-        withCredentials: true,
         data: {
-          "name": formData.name,
-          "email": formData.email,
+          "search": "",
+          "pagesize": 10,
+          "pagenumber": 1,
         }
       }).success(callback);
     },
-    deleteuserData: function(formData, callback) {
+
+    deleteUsersData: function(id, callback) {
       // console.log('form data: ', formData);
       $http({
         url: adminURL + 'user/delete',
         method: 'POST',
         withCredentials: true,
         data: {
-          "_id": formData.id
+          "_id": id
         }
       }).success(callback);
     },
@@ -173,16 +276,17 @@ var navigationservice = angular.module('navigationservice', [])
         method: 'POST',
         withCredentials: true,
         data: {
-          "email": formData.email,
+          "name": formData.name,
+          "mobile": formData.mobile,
           "password": formData.password,
           "status": formData.status,
+          "expiry": formData.expiry,
         }
       }).success(callback);
     },
-    getUserEditDetail: function(id, callback) {
-      // console.log('form data: ', formData);
+    getOneUser: function(id, callback) {
       $http({
-        url: adminURL + 'user/getOne',
+        url: adminURL + 'user/findone',
         method: 'POST',
         withCredentials: true,
         data: {
@@ -191,7 +295,7 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
     editUserSubmit: function(formData, callback) {
-      // console.log('form data: ', formData);
+      console.log(formData);
       $http({
         url: adminURL + 'user/save',
         method: 'POST',
@@ -199,71 +303,9 @@ var navigationservice = angular.module('navigationservice', [])
         data: {
           "_id": formData._id,
           "name": formData.name,
-          "email": formData.email
-        }
-      }).success(callback);
-    },
-
-
-    matchViewAll: function(formData, callback) {
-      // console.log('form data: ', formData);
-      $http({
-        url: adminURL + 'match/findLimited',
-        method: 'POST',
-        withCredentials: true,
-        data: {
-          "name": formData.name,
-          "email": formData.email,
-        }
-      }).success(callback);
-    },
-    deletematchData: function(formData, callback) {
-      // console.log('form data: ', formData);
-      $http({
-        url: adminURL + 'match/delete',
-        method: 'POST',
-        withCredentials: true,
-        data: {
-          "_id": formData.id
-        }
-      }).success(callback);
-    },
-    matchCreateSubmit: function(formData, callback) {
-      // console.log('form data: ', formData);
-      $http({
-        url: adminURL + 'match/save',
-        method: 'POST',
-        withCredentials: true,
-        data: {
-          "team1": formData.team1,
-          "team2": formData.team2,
-          "tournament": formData.tournament,
-          "overs": formData.overs,
-        }
-      }).success(callback);
-    },
-    getmatchEditDetail: function(id, callback) {
-      // console.log('form data: ', formData);
-      $http({
-        url: adminURL + 'adminuser/getOne',
-        method: 'POST',
-        withCredentials: true,
-        data: {
-          "_id": id
-        }
-      }).success(callback);
-    },
-    editMatchSubmit: function(formData, callback) {
-      // console.log('form data: ', formData);
-      $http({
-        url: adminURL + 'adminuser/save',
-        method: 'POST',
-        withCredentials: true,
-        data: {
-          "team1": formData.team1,
-          "team2": formData.team2,
-          "tournament": formData.tournament,
-          "overs": formData.overs,
+          "mobile": formData.mobile,
+          "password": formData.password,
+          "expiry": formData.expiry,
         }
       }).success(callback);
     },
