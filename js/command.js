@@ -42,6 +42,7 @@ command.directive('command', function($document, $http) {
         replace: false,
         templateUrl: 'views/directive/command.html',
         link: function(scope, element, attr) {
+            var matchID = "57235d6f78e708d44687cee5";
             scope.command = {
                 input: ""
             };
@@ -84,7 +85,8 @@ command.directive('command', function($document, $http) {
                                         returnVal.changeBat = true;
                                     }
                                     if (extractedChar.string == "CHANGEFAV") {
-                                        $http(adminURL + "session/changeFavourite", {
+                                        $http.post(adminURL + "session/changeFavourite", {
+                                            _id: matchID,
                                             changeFavourite: true
                                         }).then(function() {
                                             console.log("Favorite Changed ");
@@ -131,7 +133,8 @@ command.directive('command', function($document, $http) {
                             } else if (extractedChar.type == "stringOnly") {
                                 if (extractedChar.string == "CREATES" && extractedChar2.type == "numberOnly") {
 
-                                    $http(adminURL + "session/createSession", {
+                                    $http.post(adminURL + "session/createSession", {
+                                        _id: matchID,
                                         overs: extractedChar2.number
                                     }).then(function() {
                                         console.log("New Session Created for Over " + extractedChar2.number);
@@ -139,7 +142,8 @@ command.directive('command', function($document, $http) {
                                 }
                                 if (extractedChar.string == "DELS" && extractedChar2.type == "numberOnly") {
 
-                                    $http(adminURL + "session/deleteSession", {
+                                    $http.post(adminURL + "session/deleteSession", {
+                                        _id: matchID,
                                         overs: extractedChar2.number
                                     }).then(function() {
                                         console.log("Deleted Session for Over " + extractedChar2.number);
@@ -271,7 +275,7 @@ command.directive('command', function($document, $http) {
                             returnVal.rate2 = returnVal.rate2 / 100;
                         }
                         console.log(returnVal);
-                        returnVal._id = "57238ec6b089c933a122b4be";
+                        returnVal._id = matchID;
                         $http.post(adminURL + "session/change", returnVal).then(function(data) {
 
                         });
