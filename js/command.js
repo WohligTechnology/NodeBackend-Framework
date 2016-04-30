@@ -84,7 +84,11 @@ command.directive('command', function($document, $http) {
                                         returnVal.changeBat = true;
                                     }
                                     if (extractedChar.string == "CHANGEFAV") {
-                                        returnVal.changeFavourite = true;
+                                        $http(adminURL + "session/changeFavourite", {
+                                            changeFavourite: true
+                                        }).then(function() {
+                                            console.log("Favorite Changed ");
+                                        });
                                     }
 
                                 } else if (extractedChar.type == "numberOnly") {
@@ -126,10 +130,20 @@ command.directive('command', function($document, $http) {
                                 console.log("IncorrectType");
                             } else if (extractedChar.type == "stringOnly") {
                                 if (extractedChar.string == "CREATES" && extractedChar2.type == "numberOnly") {
-                                    returnVal.createSession = extractedChar2.number;
+
+                                    $http(adminURL + "session/createSession", {
+                                        overs: extractedChar2.number
+                                    }).then(function() {
+                                        console.log("New Session Created for Over " + extractedChar2.number);
+                                    });
                                 }
                                 if (extractedChar.string == "DELS" && extractedChar2.type == "numberOnly") {
-                                    returnVal.deleteSession = extractedChar2.number;
+
+                                    $http(adminURL + "session/deleteSession", {
+                                        overs: extractedChar2.number
+                                    }).then(function() {
+                                        console.log("Deleted Session for Over " + extractedChar2.number);
+                                    });
                                 }
                             } else if (extractedChar.type == "numberOnly") {
                                 if (extractedChar2.type == "stringNumber" && extractedChar2.string == "S") {
