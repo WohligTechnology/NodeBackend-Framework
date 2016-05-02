@@ -51,7 +51,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="match in matches">{{}}
-        <!-- <td>
+                <!-- <td>
                   <div class="checkbox-optimized">
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
@@ -77,7 +77,7 @@
                     <md-tooltip md-direction="top">
                       Update Match
                     </md-tooltip>
-                    <md-icon class="material-icons md-18" ui-sref="matchupdates">sync</md-icon>
+                    <md-icon class="material-icons md-18" ui-sref="matchupdates({id:match._id})">sync</md-icon>
                   </md-button>
                   <!-- <md-icon class="material-icons md-24">mode_edit</md-icon>
                 <md-icon class="material-icons md-24">delete</md-icon> -->

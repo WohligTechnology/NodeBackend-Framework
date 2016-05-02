@@ -12,6 +12,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.matchForm = {};
+  $scope.data = {};
   $scope.matchdata = [];
   $scope.matches = [];
   $scope.sizes = [
@@ -23,6 +24,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.loadMatches = function() {
     NavigationService.getAllMatches(function(data) {
+      console.log(data.data.data);
       $scope.matches = data.data.data;
     });
   }
@@ -445,14 +447,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
   $scope.teams = [];
   NavigationService.getTeams(function(data) {
-    $scope.teams = data.data.data;
+    $scope.teams = data.data;
   })
   $scope.submitForm = function(formValid) {
     console.log('form values: ', formValid);
     NavigationService.matchesCreateSubmit(formValid, function(data) {
-      console.log(data);
-    })
-    $state.go("matches");
+        console.log(data);
+      })
+      $state.go("matches");
   };
 })
 

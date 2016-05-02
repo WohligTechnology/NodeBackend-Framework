@@ -112,7 +112,7 @@ var navigationservice = angular.module('navigationservice', [])
         method: 'POST',
         data: {
           "search": "",
-          "pagesize": 10,
+          "pagesize": 5000,
           "pagenumber": 1,
         }
       }).success(callback);
@@ -180,7 +180,7 @@ var navigationservice = angular.module('navigationservice', [])
         method: 'POST',
         data: {
           "search": "",
-          "pagesize": 10,
+          "pagesize": 500,
           "pagenumber": 1,
         }
       }).success(callback);
@@ -244,7 +244,7 @@ var navigationservice = angular.module('navigationservice', [])
         method: 'POST',
         data: {
           "search": "",
-          "pagesize": 10,
+          "pagesize": 5000,
           "pagenumber": 1,
         }
       }).success(callback);
@@ -307,7 +307,7 @@ var navigationservice = angular.module('navigationservice', [])
         method: 'POST',
         data: {
           "search": "",
-          "pagesize": 10,
+          "pagesize": 500,
           "pagenumber": 1,
         }
       }).success(callback);
