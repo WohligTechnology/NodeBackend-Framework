@@ -91,7 +91,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       controller: 'LoginCtrl'
     })
     .state('matchupdates', {
-      url: "/matchupdates",
+      url: "/matchupdates/:id",
       templateUrl: "views/template.html",
       controller: 'MatchUpdatesCtrl'
     });

@@ -12,7 +12,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.matchForm = {};
-  $scope.data = {};
   $scope.matchdata = [];
   $scope.matches = [];
   $scope.sizes = [
@@ -24,7 +23,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.loadMatches = function() {
     NavigationService.getAllMatches(function(data) {
-      console.log(data.data.data);
+      console.log(data);
       $scope.matches = data.data.data;
     });
   }
@@ -452,9 +451,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.submitForm = function(formValid) {
     console.log('form values: ', formValid);
     NavigationService.matchesCreateSubmit(formValid, function(data) {
-        console.log(data);
-      })
-      $state.go("matches");
+      console.log(data);
+    })
+    $state.go("matches");
   };
 })
 
@@ -506,7 +505,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.footer = "";
     TemplateService.sidemenu = "";
   })
-  .controller('MatchUpdatesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('MatchUpdatesCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
     //Used to name the .html file
 
     console.log("Testing Consoles");
@@ -515,6 +514,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Match Updates");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.matchForm = {};
+    // $scope.teams = [];
+    // NavigationService.getTeams(function(data) {
+    //   $scope.teams = data.data;
+    // })
+    NavigationService.getOneMatch($stateParams.id, function(data) {
+      console.log(data);
+      $scope.project = data.data.data;
+      console.log('project', $scope.project);
+    });
+
+    $scope.submitForm = function(formValid) {
+      console.log('form values: ', $scope.project);
+
+      NavigationService.editMatchSubmit(formValid, function(data) {
+        // console.log('notification', $scope.notificationForm);
+        console.log(data);
+      });
+    };
   })
   .controller('headerctrl', function($scope, TemplateService, $timeout, $log, $mdSidenav, $uibModal) {
     $scope.template = TemplateService;

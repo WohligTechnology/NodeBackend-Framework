@@ -10,38 +10,38 @@
       <div class="row">
         <div class="col-md-7">
           <md-tabs md-dynamic-height md-border-bottom>
-            <md-tab label="India">
+            <md-tab label="{{project.team1}}">
               <md-content>
                 <md-container class="md-block" layout-align="center center">
                   <h4>First Innings</h4>
                 </md-container>
-                <form name="projectForm">
+                <form name="matchForm">
                   <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Runs</label>
-                      <input required md-no-asterisk name="team1" disabled="disabled" value="0">
-                      <div ng-messages="projectForm.team1.$error">
+                      <input required md-no-asterisk name="team1" disabled="disabled" value="0" ng-model="project.team1">
+                      <div ng-messages="matchForm.team1.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Wicket</label>
                       <input required md-no-asterisk name="team2" disabled="disabled" value="0">
-                      <div ng-messages="projectForm.team2.$error">
+                      <div ng-messages="matchForm.team2.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Overs</label>
                       <input required md-no-asterisk name="team2" disabled="disabled" value="0">
-                      <div ng-messages="projectForm.team2.$error">
+                      <div ng-messages="matchForm.team2.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Ball</label>
                       <input required md-no-asterisk name="team2" disabled="disabled" value="0">
-                      <div ng-messages="projectForm.team2.$error">
+                      <div ng-messages="matchForm.team2.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
@@ -50,21 +50,21 @@
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>No of Runs</label>
                       <input required type="number" name="Tournament" ng-model="project.tournament" />
-                      <div ng-messages="projectForm.tournament.$error">
+                      <div ng-messages="matchForm.tournament.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Overs</label>
                       <input required type="number" step="any" name="overs" ng-model="project.overs" />
-                      <div ng-messages="projectForm.overs.$error">
+                      <div ng-messages="matchForm.overs.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Wickets</label>
                       <input required type="wickets" step="any" name="wickets" ng-model="project.overs" />
-                      <div ng-messages="projectForm.wickets.$error">
+                      <div ng-messages="matchForm.wickets.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
@@ -72,7 +72,7 @@
                   <md-input-container class="md-block">
                     <label>Comment</label>
                     <input required type="text" name="Comment" ng-model="project.comment" />
-                    <div ng-messages="projectForm.comment.$error">
+                    <div ng-messages="matchForm.comment.$error">
                       <div ng-message="required">This is required.</div>
                     </div>
                   </md-input-container>
@@ -94,12 +94,12 @@
                 <md-container class="md-block" layout-align="center center">
                   <h4>Second Innings</h4>
                 </md-container>
-                <form name="projectForm">
+                <form name="matchForm">
                   <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Runs</label>
                       <input required md-no-asterisk name="team1" disabled="disabled" value="0">
-                      <div ng-messages="projectForm.team1.$error">
+                      <div ng-messages="matchForm.team1.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
 
@@ -107,21 +107,21 @@
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Wicket</label>
                       <input required md-no-asterisk name="team2" disabled="disabled" value="0">
-                      <div ng-messages="projectForm.team2.$error">
+                      <div ng-messages="matchForm.team2.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Overs</label>
                       <input required md-no-asterisk name="team2" disabled="disabled" value="0">
-                      <div ng-messages="projectForm.team2.$error">
+                      <div ng-messages="matchForm.team2.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Ball</label>
                       <input required md-no-asterisk name="team2" disabled="disabled" value="0">
-                      <div ng-messages="projectForm.team2.$error">
+                      <div ng-messages="matchForm.team2.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
@@ -130,21 +130,21 @@
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>No of Runs</label>
                       <input required type="number" name="Tournament" ng-model="project.tournament" />
-                      <div ng-messages="projectForm.tournament.$error">
+                      <div ng-messages="matchForm.tournament.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Overs</label>
                       <input required type="number" step="any" name="overs" ng-model="project.overs" />
-                      <div ng-messages="projectForm.overs.$error">
+                      <div ng-messages="matchForm.overs.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Wickets</label>
                       <input required type="wickets" step="any" name="wickets" ng-model="project.overs" />
-                      <div ng-messages="projectForm.wickets.$error">
+                      <div ng-messages="matchForm.wickets.$error">
                         <div ng-message="required">This is required.</div>
                       </div>
                     </md-input-container>
@@ -152,7 +152,7 @@
                   <md-input-container class="md-block">
                     <label>Comment</label>
                     <input required type="text" name="Comment" ng-model="project.comment" />
-                    <div ng-messages="projectForm.comment.$error">
+                    <div ng-messages="matchForm.comment.$error">
                       <div ng-message="required">This is required.</div>
                     </div>
                   </md-input-container>
@@ -193,19 +193,19 @@
                   </div>
                 </div>
                 <div class="country-form">
-                  <form name="projectForm">
+                  <form name="matchForm">
                     <div layout-gt-sm="row">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Rates</label>
                         <input required type="number" name="rates" ng-model="project.rates">
-                        <div ng-messages="projectForm.rates.$error">
+                        <div ng-messages="matchForm.rates.$error">
                           <div ng-message="required">This is required.</div>
                         </div>
                       </md-input-container>
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Rates</label>
                         <input required type="number" name="rates" ng-model="project.rates">
-                        <div ng-messages="projectForm.rates.$error">
+                        <div ng-messages="matchForm.rates.$error">
                           <div ng-message="required">This is required.</div>
                         </div>
                       </md-input-container>
@@ -214,14 +214,14 @@
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Rates</label>
                         <input required type="number" name="rates" ng-model="project.rates">
-                        <div ng-messages="projectForm.rates.$error">
+                        <div ng-messages="matchForm.rates.$error">
                           <div ng-message="required">This is required.</div>
                         </div>
                       </md-input-container>
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Rates</label>
                         <input required type="number" name="rates" ng-model="project.rates">
-                        <div ng-messages="projectForm.rates.$error">
+                        <div ng-messages="matchForm.rates.$error">
                           <div ng-message="required">This is required.</div>
                         </div>
                       </md-input-container>
