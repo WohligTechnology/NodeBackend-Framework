@@ -1,4 +1,4 @@
-var adminURL = "http://192.168.1.112:1337/";
+var adminURL = "http://192.168.1.126:1337/";
 var imgpath = adminURL + "upload/readFile";
 var uploadURL = adminURL + "upload";
 // if (isproduction) {
@@ -55,12 +55,6 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
-    getTeams: function(callback) {
-      $http({
-        url: adminURL + 'team/find',
-        method: 'POST'
-      }).success(callback);
-    },
     teamCreateSubmit: function(formData, callback) {
       console.log('form data: ', formData);
       $http({
@@ -72,6 +66,16 @@ var navigationservice = angular.module('navigationservice', [])
         }
       }).success(callback);
     },
+    //
+    // insertData: function(notificationArr, callback) {
+    //   $http({
+    //     url: adminURL + 'notificationtext/insertData',
+    //     method: 'POST',
+    //     withCredentials: true,
+    //     data: notificationArr
+    //   }).sucess(callback);
+    // },
+
     deleteTeamData: function(id, callback) {
       // console.log('form data: ', formData);
       $http({
@@ -101,7 +105,7 @@ var navigationservice = angular.module('navigationservice', [])
         withCredentials: true,
         data: {
           "_id": formData._id,
-          "name": formData.name,
+          "name": formData.name
         }
       }).success(callback);
     },

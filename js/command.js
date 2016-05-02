@@ -81,10 +81,10 @@ command.directive('command', function($document, $http) {
                                         returnVal.incrementBall = -1;
                                     }
 
-                                    if (extractedChar.string == "CHANGEBAT") {
+                                    if (extractedChar.string == "CB") {
                                         returnVal.changeBat = true;
                                     }
-                                    if (extractedChar.string == "CHANGEFAV") {
+                                    if (extractedChar.string == "CF") {
                                         $http.post(adminURL + "session/changeFavourite", {
                                             _id: matchID,
                                             changeFavourite: true
