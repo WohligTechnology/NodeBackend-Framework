@@ -1,4 +1,4 @@
-var adminURL = "http://192.168.1.104:1337/";
+var adminURL = "http://192.168.1.112:1337/";
 var imgpath = adminURL + "upload/readFile";
 var uploadURL = adminURL + "upload";
 // if (isproduction) {
@@ -14,7 +14,7 @@ var navigationservice = angular.module('navigationservice', [])
     name: "Matches",
     classis: "active",
     anchor: "matches"
-  },{
+  }, {
     name: "Team",
     classis: "active",
     anchor: "team"
@@ -59,6 +59,12 @@ var navigationservice = angular.module('navigationservice', [])
       }).success(callback);
     },
 
+    getTeams: function(callback) {
+      $http({
+        url: adminURL + 'team/find',
+        method: 'POST'
+      }).success(callback);
+    },
     teamCreateSubmit: function(formData, callback) {
       console.log('form data: ', formData);
       $http({
@@ -70,16 +76,6 @@ var navigationservice = angular.module('navigationservice', [])
         }
       }).success(callback);
     },
-    //
-    // insertData: function(notificationArr, callback) {
-    //   $http({
-    //     url: adminURL + 'notificationtext/insertData',
-    //     method: 'POST',
-    //     withCredentials: true,
-    //     data: notificationArr
-    //   }).sucess(callback);
-    // },
-
     deleteTeamData: function(id, callback) {
       // console.log('form data: ', formData);
       $http({
@@ -109,7 +105,7 @@ var navigationservice = angular.module('navigationservice', [])
         withCredentials: true,
         data: {
           "_id": formData._id,
-          "title": formData.title
+          "name": formData.name,
         }
       }).success(callback);
     },
@@ -306,6 +302,69 @@ var navigationservice = angular.module('navigationservice', [])
           "mobile": formData.mobile,
           "password": formData.password,
           "expiry": formData.expiry,
+        }
+      }).success(callback);
+    },
+    getAllMatches: function(callback) {
+      $http({
+        url: adminURL + 'match/find',
+        method: 'POST',
+        data: {
+          "search": "",
+          "pagesize": 10,
+          "pagenumber": 1,
+        }
+      }).success(callback);
+    },
+
+    deleteMatchesData: function(id, callback) {
+      // console.log('form data: ', formData);
+      $http({
+        url: adminURL + 'match/delete',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "_id": id
+        }
+      }).success(callback);
+    },
+    matchesCreateSubmit: function(formData, callback) {
+      // console.log('form data: ', formData);
+      $http({
+        url: adminURL + 'match/save',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "cupName": formData.cupName,
+          "status": formData.status,
+          "team1": formData.team1,
+          "team2": formData.team2,
+          "overs": formData.overs,
+        }
+      }).success(callback);
+    },
+    getOneMatch: function(id, callback) {
+      $http({
+        url: adminURL + 'match/findOneForBackend',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "_id": id
+        }
+      }).success(callback);
+    },
+    editMatchSubmit: function(formData, callback) {
+      console.log(formData);
+      $http({
+        url: adminURL + 'match/save',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "cupName": formData.cupName,
+          "status": formData.status,
+          "team1": formData.team1,
+          "team2": formData.team2,
+          "overs": formData.overs,
         }
       }).success(callback);
     },

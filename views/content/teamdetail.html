@@ -8,25 +8,18 @@
       </md-toolbar>
       <div layout-padding class="brd">
         <form name="teamForm">
-          <!-- <div layout-gt-sm="row">
-            <div class="col-md-6">
-              <md-input-container class="md-block" flex-gt-sm>
-                <label>Sr No.</label>
-                <input required name="no" ng-model="project.no">
-              </md-input-container>
-            </div>
-          </div> -->
           <div layout-gt-sm="row">
             <div class="col-md-6">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Team Name</label>
-                <input required name="title" ng-model="project.title">
-                <div ng-messages="teamForm.title.$error">
+                <input required name="title" ng-model="project.name">
+                <div ng-messages="teamForm.name.$error">
                   <div ng-message="required">This is required.</div>
                 </div>
               </md-input-container>
             </div>
           </div>
+
           <!-- <div layout-gt-sm="row">
             <div class="col-md-6">
               <md-input-container>

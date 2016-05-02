@@ -15,6 +15,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       templateUrl: "views/template.html",
       controller: 'MatchesCtrl'
     })
+    .state('creatematch', {
+      url: "/creatematch",
+      templateUrl: "views/template.html",
+      controller: 'CreateMatchCtrl'
+    })
+    .state('editmatch', {
+      url: "/editmatch/:id",
+      templateUrl: "views/template.html",
+      controller: 'EditMatchCtrl'
+    })
     .state('team', {
       url: "/team",
       templateUrl: "views/template.html",
@@ -26,7 +36,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       controller: 'CreateTeamCtrl'
     })
     .state('editteam', {
-      url: "/editteam",
+      url: "/editteam/:id",
       templateUrl: "views/template.html",
       controller: 'EditTeamCtrl'
     })
@@ -74,16 +84,6 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       url: "/editnotification/:id",
       templateUrl: "views/template.html",
       controller: 'EditNotificationCtrl'
-    })
-    .state('creatematch', {
-      url: "/creatematch",
-      templateUrl: "views/template.html",
-      controller: 'CreateMatchCtrl'
-    })
-    .state('editmatch', {
-      url: "/editmatch/id",
-      templateUrl: "views/template.html",
-      controller: 'EditMatchCtrl'
     })
     .state('login', {
       url: "/login",

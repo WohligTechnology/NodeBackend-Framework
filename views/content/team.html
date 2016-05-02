@@ -7,7 +7,6 @@
           <span flex="" class="flex"></span>
           <md-button class="md-raised pull-right" ui-sref="createteam">Create Team</md-button>
         </div>
-
       </md-toolbar>
       <div layout-padding class="brd">
         <div layout="row">
@@ -30,12 +29,14 @@
               <tr>
                 <th>
                   <div class="checkbox-optimized text-center">
+                    <md-tooltip md-direction="top">
+                      Select All
+                    </md-tooltip>
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
                 </th>
                 <!-- <th>Sr No</th> -->
                 <th>Team</th>
-                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -46,14 +47,13 @@
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
                 </td>
-                <!-- <td>1</td> -->
                 <td>{{team.name}}</td>
                 <td class="action-btn">
                   <md-button class="md-icon-button" aria-label="EDIT">
                     <md-tooltip md-direction="top">
                       Edit
                     </md-tooltip>
-                    <md-icon class="material-icons md-18" ui-sref="editmatch">mode_edit</md-icon>
+                    <md-icon class="material-icons md-18" ui-sref="editteam({id:team._id})">mode_edit</md-icon>
                   </md-button>
                   <md-button class="md-icon-button" aria-label="Delete">
                     <md-tooltip md-direction="top">
@@ -61,14 +61,6 @@
                     </md-tooltip>
                     <md-icon class="material-icons md-18" ng-click="deleteTeam(team._id)">delete</md-icon>
                   </md-button>
-                  <md-button class="md-icon-button" aria-label="Update Match">
-                    <md-tooltip md-direction="top">
-                      Update Match
-                    </md-tooltip>
-                    <md-icon class="material-icons md-18" ui-sref="matchupdates">sync</md-icon>
-                  </md-button>
-                  <!-- <md-icon class="material-icons md-24">mode_edit</md-icon>
-                <md-icon class="material-icons md-24">delete</md-icon> -->
                 </td>
               </tr>
             </tbody>
