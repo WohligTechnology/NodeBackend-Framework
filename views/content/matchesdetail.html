@@ -11,22 +11,22 @@
           <div layout-gt-sm="row">
             <div class="col-md-6">
               <md-input-container class="md-block">
-                <label>team1</label>
+                <label>Team1</label>
                 <md-select name="team1" ng-model="project.team1" required>
-                  <md-option value="1">India</md-option>
-                  <md-option value="2">Pakistan</md-option>
+                  <md-option ng-repeat="team in teams" value="{{team._id}}">{{team.name}}</md-option>
                 </md-select>
                 <div class="errors" ng-messages="matchForm.team1.$error" ng-if="matchForm.$dirty">
                   <div ng-message="required">Required</div>
                 </div>
               </md-input-container>
             </div>
+          </div>
+          <div layout-gt-sm="row">
             <div class="col-md-6">
               <md-input-container class="md-block">
-                <label>team2</label>
+                <label>Team2</label>
                 <md-select name="team2" ng-model="project.team2" required>
-                  <md-option value="1">India</md-option>
-                  <md-option value="2">Pakistan</md-option>
+                  <md-option ng-repeat="team in teams" value="{{team._id}}">{{team.name}}</md-option>
                 </md-select>
                 <div class="errors" ng-messages="matchForm.team1.$error" ng-if="matchForm.$dirty">
                   <div ng-message="required">Required</div>
@@ -38,20 +38,29 @@
             <div class="col-md-6">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Tournament</label>
-                <input required md-no-asterisk type="text" name="Tournament" ng-model="project.tournament" />
-                <div ng-messages="matchForm.tournament.$error">
+                <input required md-no-asterisk type="text" name="Tournament" ng-model="project.cupName" />
+                <div class="errors" ng-messages="matchForm.cupName.$error" ng-if="matchForm.$dirty">
                   <div ng-message="required">This is required.</div>
                 </div>
               </md-input-container>
             </div>
+          </div>
+          <div layout-gt-sm="row">
             <div class="col-md-6">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>No of Overs</label>
-                <input required type="number" step="any" name="overs" ng-model="project.overs"/>
-                <div ng-messages="userForm.overs.$error">
+                <input required type="number" step="any" name="overs" ng-model="project.overs" />
+                <div ng-messages="matchForm.overs.$error" ng-if="matchForm.$dirty">
                   <div ng-message="required"> - Please enter a valid overs</div>
                 </div>
               </md-input-container>
+            </div>
+          </div>
+          <div layout-gt-sm="row">
+            <div class="col-md-6">
+              <md-switch ng-model="project.status" aria-label="Status" ng-change="onChange(project.status)">
+                Status
+              </md-switch>
             </div>
           </div>
         </form>

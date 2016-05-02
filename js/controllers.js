@@ -1,21 +1,42 @@
 var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngMaterial', 'ngMessages'])
-  .controller('MatchesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-    //Used to name the .html file
 
-    console.log("Testing Consoles");
 
-    $scope.template = TemplateService.changecontent("matches");
-    $scope.menutitle = NavigationService.makeactive("Matches");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-    $scope.sizes = [
-      "10",
-      "20",
-      "30",
-      "50"
-    ];
-  })
+.controller('MatchesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  console.log("Testing Consoles");
+
+  $scope.template = TemplateService.changecontent("matches");
+  $scope.menutitle = NavigationService.makeactive("Matches");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.matchForm = {};
+  $scope.matchdata = [];
+  $scope.matches = [];
+  $scope.sizes = [
+    "10",
+    "20",
+    "30",
+    "50"
+  ];
+
+  $scope.loadMatches = function() {
+    NavigationService.getAllMatches(function(data) {
+      console.log(data);
+      $scope.matches = data.data;
+    });
+  }
+  $scope.loadMatches();
+  $scope.deleteMatches = function(id) {
+    NavigationService.deleteMatchesData(id, function(data) {
+      console.log(data);
+      if (data.value === true) {
+        $scope.loadMatches();
+      }
+    })
+  };
+})
 
 .controller('AdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
     //Used to name the .html file
@@ -129,6 +150,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       header: "Create Team"
     };
     $scope.teamForm = {};
+    $scope.message = 'disable';
+    $scope.onChange = function(statusState) {
+      $scope.message = statusState;
+    };
     $scope.submitForm = function(formValid) {
       console.log('form values: ', formValid);
       NavigationService.teamCreateSubmit(formValid, function(data) {
@@ -138,7 +163,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
   })
 
-.controller('EditTeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+.controller('EditTeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
   //Used to name the .html file
 
   console.log("Testing Consoles");
@@ -153,6 +178,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.message = 'disable';
   $scope.onChange = function(statusState) {
     $scope.message = statusState;
+  };
+
+  $scope.teamForm = {};
+
+  NavigationService.getOneTeam($stateParams.id, function(data) {
+    $scope.project = data.data;
+    console.log('teamForm', $scope.teamForm);
+  });
+
+  $scope.submitForm = function(formValid) {
+    console.log('form values: ', $scope.project);
+
+    NavigationService.editTeamSubmit(formValid, function(data) {
+      // console.log('notification', $scope.notificationForm);
+      console.log(data);
+    });
+
+    $state.go("team");
   };
 })
 
@@ -195,7 +238,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 })
 
-.controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+.controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
   //Used to name the .html file
 
   console.log("Testing Consoles");
@@ -217,19 +260,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   NavigationService.getOneUser($stateParams.id, function(data) {
     $scope.project = data.data;
+    $scope.project.expiry = new Date(data.data.expiry)
     console.log('userForm', $scope.adminForm);
   });
 
   $scope.submitForm = function(input, formValid) {
     console.log('form values: ', $scope.project);
+    // if (formValid.$valid) {
     if (input.password == input.confirmpassword) {
-      NavigationService.editUserSubmit(input, formValid, function(data) {
+      NavigationService.editUserSubmit(input, function(data) {
         console.log(data);
         $state.go("user");
       })
     } else {
       $scope.nomatch = true;
     }
+    // } else {
+    //
+    // }
 
   };
 })
@@ -388,43 +436,60 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   console.log("Testing Consoles");
 
-  $scope.template = TemplateService.changecontent("creatematch");
-  $scope.menutitle = NavigationService.makeactive("Create Match");
+  $scope.template = TemplateService.changecontent("matchesdetail");
+  $scope.menutitle = NavigationService.makeactive("Matches");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.matchForm = {};
   $scope.page = {
     header: "Create Match"
   };
-
-  $scope.adminForm = {};
-  $scope.page = {
-    header: "Create Admin User"
-  };
-  $scope.message = 'disable';
-  $scope.onChange = function(statusState) {
-    $scope.message = statusState;
-  };
+  $scope.teams = [];
+  NavigationService.getTeams(function(data) {
+    $scope.teams = data.data;
+  })
   $scope.submitForm = function(formValid) {
     console.log('form values: ', formValid);
-    $scope.project.team1 = undefined;
-    $scope.project.team2 = undefined;
-    NavigationService.matchCreateSubmit(formValid, function(data) {
-      console.log(data);
-    })
+    NavigationService.matchesCreateSubmit(formValid, function(data) {
+        console.log(data);
+      })
+      // $state.go("matches");
   };
 })
 
-.controller('EditMatchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('EditMatchCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
   //Used to name the .html file
 
   console.log("Testing Consoles");
 
-  $scope.template = TemplateService.changecontent("creatematch");
-  $scope.menutitle = NavigationService.makeactive("Create Match");
+  $scope.template = TemplateService.changecontent("matchesdetail");
+  $scope.menutitle = NavigationService.makeactive("Matches");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.page = {
     header: "Edit Match"
+  };
+  $scope.matchForm = {};
+  $scope.teams = [];
+  NavigationService.getTeams(function(data) {
+    $scope.teams = data.data;
+  })
+  NavigationService.getOneMatch($stateParams.id, function(data) {
+    console.log("get one");
+    console.log(data);
+    $scope.project = data.data;
+    console.log('project', $scope.project);
+  });
+
+  $scope.submitForm = function(formValid) {
+    console.log('form values: ', $scope.project);
+
+    NavigationService.editMatchSubmit(formValid, function(data) {
+      // console.log('notification', $scope.notificationForm);
+      console.log(data);
+    });
+
+    $state.go("matches");
   };
 })
 
