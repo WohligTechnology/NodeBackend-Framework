@@ -309,6 +309,14 @@ sidemenu {
     font-size: 12px;
   }
 }
+.delete-all {
+  .checkbox-optimized {
+    display: inline-block;
+  }
+  .deleteall {
+    display: inline-block;
+  }
+}
 //bootstrap forms
 /* Start writing sass here */
 @import "fancybox-override";

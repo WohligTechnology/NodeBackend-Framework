@@ -9,9 +9,8 @@
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
-        <div layout="row">
+        <!-- <div layout="row">
           <md-input-container class="md-block search" flex-gt-sm>
-            <!-- Use floating placeholder instead of label -->
             <md-icon class="material-icons md-24">search</md-icon>
             <input ng-model="user.search" type="text" placeholder="Search" ng-required="true">
           </md-input-container>
@@ -22,16 +21,27 @@
               <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
             </md-select>
           </md-input-container>
-        </div>
+        </div> -->
         <div class="scroll">
           <table class="table">
             <thead>
               <tr>
-                <th>
-                  <div class="checkbox-optimized text-center">
+                <!-- <th class="delete-all">
+                  <div class="checkbox-optimized">
+                    <md-tooltip md-direction="top">
+                      Select all
+                    </md-tooltip>
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
-                </th>
+                  <div class="deleteall">
+                    <md-button class="md-icon-button" aria-label="Delete Selected">
+                      <md-tooltip md-direction="top">
+                        Delete Selected
+                      </md-tooltip>
+                      <md-icon class="material-icons md-24">delete</md-icon>
+                    </md-button>
+                  </div>
+                </th> -->
                 <th>Team1</th>
                 <th>Team2</th>
                 <th>Status</th>
@@ -40,14 +50,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="match in matches">
-                <td>
-                  <div class="checkbox-optimized text-center">
+              <tr ng-repeat="match in matches">{{}}
+        <!-- <td>
+                  <div class="checkbox-optimized">
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
-                </td>
-                <td>{{match.team1}}</td>
-                <td>{{match.team2}}</td>
+                </td> -->
+                <td>{{match.team1.name}}</td>
+                <td>{{match.team2.name}}</td>
                 <td>{{match.status}}</td>
                 <td>{{match.overs}}</td>
                 <td class="action-btn">

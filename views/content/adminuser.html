@@ -9,7 +9,7 @@
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
-        <div layout="row">
+        <!-- <div layout="row">
           <md-input-container class="md-block search" flex-gt-sm>
             <md-icon class="material-icons md-24">search</md-icon>
             <input ng-model="user.search" type="text" placeholder="Search" ng-required="true">
@@ -21,19 +21,19 @@
               <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
             </md-select>
           </md-input-container>
-        </div>
+        </div> -->
         <div class="scroll">
           <table class="table">
             <thead>
               <tr>
-                <th>
+                <!-- <th>
                   <md-tooltip md-direction="top">
                     Select All
                   </md-tooltip>
                   <div class="checkbox-optimized text-center">
                     <md-checkbox class="md-primary" aria-label="Select All"></md-checkbox>
                   </div>
-                </th>
+                </th> -->
                 <th>Email</th>
                 <th>Status</th>
                 <th>Access Level</th>
@@ -42,11 +42,11 @@
             </thead>
             <tbody>
               <tr ng-repeat="adminuser in adminusers">
-                <td>
+                <!-- <td>
                   <div class="checkbox-optimized text-center">
                     <md-checkbox class="md-primary"  aria-label="Select"></md-checkbox>
                   </div>
-                </td>
+                </td> -->
                 <td>{{adminuser.email}}</td>
                 <td>{{adminuser.status}}</td>
                 <td>{{adminuser.accesslevel}}</td>

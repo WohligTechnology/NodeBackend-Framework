@@ -23,14 +23,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.loadMatches = function() {
     NavigationService.getAllMatches(function(data) {
-      console.log(data);
-      $scope.matches = data.data;
+      $scope.matches = data.data.data;
     });
   }
   $scope.loadMatches();
   $scope.deleteMatches = function(id) {
     NavigationService.deleteMatchesData(id, function(data) {
-      console.log(data);
+
       if (data.value === true) {
         $scope.loadMatches();
       }
@@ -124,7 +123,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.loadTeams = function() {
       NavigationService.getAllTeam(function(data) {
         console.log(data);
-        $scope.teams = data.data.data;
+        $scope.teams = data.data;
       });
     }
     $scope.loadTeams();
@@ -446,14 +445,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
   $scope.teams = [];
   NavigationService.getTeams(function(data) {
-    $scope.teams = data.data;
+    $scope.teams = data.data.data;
   })
   $scope.submitForm = function(formValid) {
     console.log('form values: ', formValid);
     NavigationService.matchesCreateSubmit(formValid, function(data) {
-        console.log(data);
-      })
-      // $state.go("matches");
+      console.log(data);
+    })
+    $state.go("matches");
   };
 })
 
@@ -475,7 +474,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.teams = data.data;
   })
   NavigationService.getOneMatch($stateParams.id, function(data) {
-    console.log("get one");
     console.log(data);
     $scope.project = data.data;
     console.log('project', $scope.project);

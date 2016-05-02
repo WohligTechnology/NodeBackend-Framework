@@ -49,13 +49,9 @@ var navigationservice = angular.module('navigationservice', [])
 
     getAllTeam: function(callback) {
       $http({
-        url: adminURL + 'team/findLimited',
+        url: adminURL + 'team/find',
         method: 'POST',
-        data: {
-          "search": "",
-          "pagesize": 10,
-          "pagenumber": 1,
-        }
+        data: {}
       }).success(callback);
     },
 
@@ -307,7 +303,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
     getAllMatches: function(callback) {
       $http({
-        url: adminURL + 'match/find',
+        url: adminURL + 'match/findLimited',
         method: 'POST',
         data: {
           "search": "",
@@ -360,6 +356,7 @@ var navigationservice = angular.module('navigationservice', [])
         method: 'POST',
         withCredentials: true,
         data: {
+          "_id": formData._id,
           "cupName": formData.cupName,
           "status": formData.status,
           "team1": formData.team1,

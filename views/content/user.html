@@ -9,9 +9,8 @@
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
-        <div layout="row">
+        <!-- <div layout="row">
           <md-input-container class="md-block search" flex-gt-sm>
-            <!-- Use floating placeholder instead of label -->
             <md-icon class="material-icons md-24">search</md-icon>
             <input ng-model="user.search" type="text" placeholder="Search" ng-required="true">
           </md-input-container>
@@ -22,16 +21,16 @@
               <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
             </md-select>
           </md-input-container>
-        </div>
+        </div> -->
         <div class="scroll">
           <table class="table">
             <thead>
               <tr>
-                <th>
+                <!-- <th>
                   <div class="checkbox-optimized text-center">
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
-                </th>
+                </th> -->
                 <!-- <th>Sr No</th> -->
                 <th>Name</th>
                 <th>Contact</th>
@@ -42,16 +41,15 @@
             </thead>
             <tbody>
               <tr ng-repeat="user in users">
-                <td>
+                <!-- <td>
                   <div class="checkbox-optimized text-center">
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
-                </td>
+                </td> -->
                 <!-- <td>1</td> -->
                 <td>{{user.name}}</td>
                 <td>{{user.mobile}}</td>
                 <td>{{user.expiry | date:'mediumDate'}}</td>
-                <!-- <td>{{user.status}}</td> -->
                 <td class="action-btn">
                   <md-button class="md-icon-button" aria-label="EDIT">
                     <md-tooltip md-direction="top">

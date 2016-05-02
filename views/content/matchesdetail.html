@@ -13,7 +13,7 @@
               <md-input-container class="md-block">
                 <label>Team1</label>
                 <md-select name="team1" ng-model="project.team1" required>
-                  <md-option ng-repeat="team in teams" value="{{team._id}}">{{team.name}}</md-option>
+                  <md-option ng-repeat="team in teams" value="{{team._id}}" ng-if="team._id !== project.team2">{{team.name}}</md-option>
                 </md-select>
                 <div class="errors" ng-messages="matchForm.team1.$error" ng-if="matchForm.$dirty">
                   <div ng-message="required">Required</div>
@@ -26,7 +26,7 @@
               <md-input-container class="md-block">
                 <label>Team2</label>
                 <md-select name="team2" ng-model="project.team2" required>
-                  <md-option ng-repeat="team in teams" value="{{team._id}}">{{team.name}}</md-option>
+                  <md-option ng-repeat="team in teams" value="{{team._id}}" ng-if="team._id !== project.team1">{{team.name}}</md-option>
                 </md-select>
                 <div class="errors" ng-messages="matchForm.team1.$error" ng-if="matchForm.$dirty">
                   <div ng-message="required">Required</div>
@@ -66,6 +66,7 @@
         </form>
         <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
           <md-button class="md-raised md-primary" ng-click="submitForm(project)">Save</md-button>
+          <md-button class="md-raised md-primary" ui-sref="matches">cancel</md-button>
           <md-button class="md-raised md-primary" ui-sref="matchupdates">Match Updates</md-button>
         </div>
       </div>

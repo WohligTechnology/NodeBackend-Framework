@@ -9,9 +9,8 @@
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
-        <div layout="row">
+        <!-- <div layout="row">
           <md-input-container class="md-block search" flex-gt-sm>
-            <!-- Use floating placeholder instead of label -->
             <md-icon class="material-icons md-24">search</md-icon>
             <input ng-model="user.search" type="text" placeholder="Search" ng-required="true">
           </md-input-container>
@@ -22,12 +21,12 @@
               <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
             </md-select>
           </md-input-container>
-        </div>
+        </div> -->
         <div class="scroll">
           <table class="table">
             <thead>
               <tr>
-                <th>
+  <!-- <th>
                   <div class="checkbox-optimized text-center">
                     <md-tooltip md-direction="top">
                       Select all
@@ -35,7 +34,7 @@
                     <md-checkbox class="md-primary">
                     </md-checkbox>
                   </div>
-                </th>
+                </th> -->
                 <th>title</th>
                 <th>Action</th>
               </tr>
@@ -43,11 +42,11 @@
 
             <tbody>
               <tr ng-repeat="notification in notifications">
-                <td>
+                <!-- <td>
                   <div class="checkbox-optimized text-center">
                     <md-checkbox class="md-primary" aria-label="select all"></md-checkbox>
                   </div>
-                </td>
+                </td> -->
                 <!-- <td>{{data.id}}</td> -->
                 <td>{{notification.title}}</td>
                 <td class="action-btn">
