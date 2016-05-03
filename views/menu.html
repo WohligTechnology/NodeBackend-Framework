@@ -4,9 +4,11 @@
       <span>Sortvest</span>
     </div>
   </md-toolbar> -->
-  <md-list>
-    <md-list-item class="{{menu.classis}}" ng-repeat="menu in navigation" ui-sref="{{menu.link}}">
+  <div class="menu-nav">
+    <md-list>
+      <md-list-item class="{{menu.classis}}" ng-repeat="menu in navigation" ui-sref="{{menu.link}}">
         {{menu.name}}
-    </md-list-item>
-  </md-list>
+      </md-list-item>
+    </md-list>
+  </div>
 </div>

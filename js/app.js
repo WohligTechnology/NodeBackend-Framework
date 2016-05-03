@@ -144,3 +144,17 @@ firstapp.directive('fancyboxBox', function($document) {
     }
   };
 });
+
+
+
+function rateCalc(rate) {
+  var realRate = rate + 1;
+  return (realRate / (realRate - 1)) - 1;
+}
+
+function getBalls(data) {
+  var overs = parseInt(data);
+  var balls = (data - overs) * 10;
+  return Math.round(overs * 6 + balls);
+
+}

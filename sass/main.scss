@@ -317,6 +317,26 @@ sidemenu {
     display: inline-block;
   }
 }
+.menu-nav {
+  .md-button {
+    margin: 0;
+    &:hover {
+      background: #3F51B5;
+      color: #fff;
+    }
+  }
+  md-list-item.active {
+    background: #3F51B5;
+    color: #fff;
+  }
+  md-list {
+    display: block;
+    padding: 0 0 8px;
+  }
+}
+.matchupdates {
+  padding: 0 0 20px;
+}
 //bootstrap forms
 /* Start writing sass here */
 @import "fancybox-override";
