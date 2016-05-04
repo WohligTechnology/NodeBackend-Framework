@@ -369,7 +369,7 @@ var navigationservice = angular.module('navigationservice', [])
         }
       }).success(callback);
     },
-    editMatchTeam1Submit: function(formData, callback) {
+    editMatchTeamSubmit: function(formData, callback) {
       console.log(formData);
       $http({
         url: adminURL + 'match/save',
@@ -385,6 +385,8 @@ var navigationservice = angular.module('navigationservice', [])
           "team2Overs": formData.team2Overs,
           "comment": formData.comment,
           "status": formData.status,
+          "rate1": formData.rate1,
+          "rate2": formData.rate2,
         }
       }).success(callback);
     },

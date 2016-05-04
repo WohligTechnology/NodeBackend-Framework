@@ -554,13 +554,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
       if ($scope.match.favorite == 1) {
         console.log($scope.match.rate1);
-        $scope.match.matchRate1 = $filter('number')($scope.match.rate1,2);
+        $scope.match.matchRate1 = $filter('number')($scope.match.rate1, 2);
         console.log($scope.match.rate2);
-        $scope.match.matchRate2 = $filter('number')($scope.match.rate2,2);
+        $scope.match.matchRate2 = $filter('number')($scope.match.rate2, 2);
         console.log(rateCalc($scope.match.matchRate2));
         console.log(rateCalc($scope.match.matchRate1));
-        $scope.match.matchRate3 = $filter('number')(rateCalc($scope.match.matchRate2),2);
-        $scope.match.matchRate4 = $filter('number')(rateCalc($scope.match.matchRate1),2);
+        $scope.match.matchRate3 = $filter('number')(rateCalc($scope.match.matchRate2), 2);
+        $scope.match.matchRate4 = $filter('number')(rateCalc($scope.match.matchRate1), 2);
       }
       if ($scope.match.favorite == 2) {
         $scope.match.matchRate3 = $scope.match.rate1;
@@ -597,16 +597,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       console.log(data);
     });
 
-    $scope.submitteam1Form = function(formValid) {
+    $scope.submitteamForm = function(formValid) {
       console.log('form values: ', $scope.project);
-      NavigationService.editMatchTeam1Submit(formValid, function(data) {
+      NavigationService.editMatchTeamSubmit(formValid, function(data) {
         console.log(data);
-        if (formValid.$valid) {
-          var toast = $mdToast.simple()
-            .textContent('Action Toast!')
+        if (data.value == true) {
+          $mdToast.show(
+            $mdToast.simple()
+            .textContent('Sucessfully Submited')
+            // .position(top)
+            .hideDelay(3000)
+          );
         } else {
 
         }
+        // if (formValid.$valid) {
+        //   var toast = $mdToast.simple()
+        //     .textContent('Soft')
+        // } else {
+        //   var toast = $mdToast.simple()
+        //     .textContent('Hard')
+        // }
       });
     };
 
