@@ -76,23 +76,13 @@
                       <input type="text" name="Comment" ng-model="match.comment" />
                     </md-input-container>
                     <div layout="row">
-                      <md-input-container>
-                        <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
-                          Wicket
-                        </md-switch>
-                      </md-input-container>
+                      <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
+                        Wicket
+                      </md-switch>
                     </div>
-                    <div class="text-center">
-                      <md-button class="md-raised md-primary" ng-click="submitteam1Form(match)">Save</md-button>
-                    </div>
-                    <!-- <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                      <md-button class="md-raised md-primary">Save</md-button>
-                    </div> -->
                   </form>
-                  <!-- </md-content> -->
                 </md-tab>
                 <md-tab label="{{match.team2.name}}">
-                  <!-- <md-content layout-padding> -->
                   <md-container class="md-block" layout-align="center center">
                     <h4>Second Innings</h4>
                   </md-container>
@@ -155,15 +145,13 @@
                       <input type="text" name="Comment" ng-model="match.comment" />
                     </md-input-container>
                     <div layout="row">
-                      <md-input-container>
-                        <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
-                          Wicket
-                        </md-switch>
-                      </md-input-container>
+                      <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
+                        Wicket
+                      </md-switch>
                     </div>
-                    <div class="text-center">
+                    <!-- <div class="text-center">
                       <md-button class="md-raised md-primary" ng-click="submitteam2Form(match)">Save</md-button>
-                    </div>
+                    </div> -->
                     <!-- <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                       <md-button class="md-raised md-primary">Save</md-button>
                     </div> -->
@@ -196,7 +184,7 @@
                         <div layout-gt-sm="row">
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Rates</label>
-                            <input required type="text" name="rate1" ng-model="match.matchRate1|number:2">
+                            <input required type="text" name="rate1" ng-model="match.matchRate1">
                             <div ng-messages="matchForm.rate1.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
@@ -212,7 +200,7 @@
                         <div layout-gt-sm="row">
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Rates</label>
-                            <input required type="text" name="rates" ng-model="match.matchRate3|number:2">
+                            <input required type="text" name="rates" ng-model="match.matchRate3">
                             <div ng-messages="matchForm.rate3.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
@@ -231,6 +219,9 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="text-center">
+            <md-button class="md-raised md-primary" ng-click="submitteam1Form(match)">Save</md-button>
           </div>
         </div>
       </md-content>

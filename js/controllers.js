@@ -576,7 +576,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     console.log("Testing Consoles");
 
     $scope.template = TemplateService.changecontent("matchupdates");
-    $scope.menutitle = NavigationService.makeactive("Match Updates");
+    $scope.menutitle = NavigationService.makeactive("Matches");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.matchForm = {};

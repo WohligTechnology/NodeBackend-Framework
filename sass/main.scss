@@ -78,7 +78,7 @@ a {
   @include box-shadow(none);
 }
 a {
-  color: #3e50b4;
+  color: $brand-primary;
 }
 a.navbar-brand.logo:hover {
   color: darken(#fff, 10%);
@@ -238,9 +238,19 @@ switch-mrg {
     }
   }
 }
-sidemenu {
-  .md-no-style.md-button {
-    margin: 0;
+.sidemenu {
+  md-list-item {
+    &.active a,
+    a:hover,
+    a:focus,
+    a.md-button:not([disabled]):hover {
+      color: #fff;
+      background: $brand-primary;
+    }
+    .md-button {
+      margin: 1px 0 0;
+      @include transition(all ease 300ms);
+    }
   }
 }
 .borderless {
@@ -297,7 +307,10 @@ sidemenu {
 }
 .fixed-left {
   position: fixed!important;
-  margin-top: 65px;
+  margin-top: 64px;
+  md-list {
+    padding: 0 0 8px;
+  }
 }
 .pad-left {
   padding-left: 320px;
@@ -336,6 +349,11 @@ sidemenu {
 }
 .matchupdates {
   padding: 0 0 20px;
+}
+.panel-abt {
+  .md-tab {
+    padding: 12px 8px;
+  }
 }
 //bootstrap forms
 /* Start writing sass here */
