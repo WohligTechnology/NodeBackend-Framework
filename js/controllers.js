@@ -505,7 +505,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.footer = "";
     TemplateService.sidemenu = "";
   })
-  .controller('MatchUpdatesCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $mdToast, $document) {
+  .controller('MatchUpdatesCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $mdToast, $document, $filter) {
     //Used to name the .html file
 
 
@@ -553,11 +553,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
       if ($scope.match.favorite == 1) {
-        $scope.match.matchRate1 = $scope.match.rate1;
-        $scope.match.matchRate2 = $scope.match.rate2;
-
-        $scope.match.matchRate3 = rateCalc($scope.match.matchRate2);
-        $scope.match.matchRate4 = rateCalc($scope.match.matchRate1);
+        console.log($scope.match.rate1);
+        $scope.match.matchRate1 = $filter('number')($scope.match.rate1,2);
+        console.log($scope.match.rate2);
+        $scope.match.matchRate2 = $filter('number')($scope.match.rate2,2);
+        console.log(rateCalc($scope.match.matchRate2));
+        console.log(rateCalc($scope.match.matchRate1));
+        $scope.match.matchRate3 = $filter('number')(rateCalc($scope.match.matchRate2),2);
+        $scope.match.matchRate4 = $filter('number')(rateCalc($scope.match.matchRate1),2);
       }
       if ($scope.match.favorite == 2) {
         $scope.match.matchRate3 = $scope.match.rate1;
@@ -588,6 +591,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       SocketFunction(data);
       console.log(data);
     });
+    NavigationService.getOneSession($stateParams.id, function(data) {
+      SocketFunction(data);
+      console.log("Data session");
+      console.log(data);
+    });
 
     $scope.submitteam1Form = function(formValid) {
       console.log('form values: ', $scope.project);
@@ -601,18 +609,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
       });
     };
-    $scope.submitteam2Form = function(formValid) {
-      console.log('form values: ', $scope.project);
-      NavigationService.editMatchTeam2Submit(formValid, function(data) {
-        console.log(data);
-        if (formValid.$valid) {
-          var toast = $mdToast.simple()
-            .textContent('Action Toast!')
-        } else {
 
-        }
-      });
-    };
+    // $scope.submitteam2Form = function(formValid) {
+    //   console.log('form values: ', $scope.project);
+    //   NavigationService.editMatchTeam2Submit(formValid, function(data) {
+    //     console.log(data);
+    //     if (formValid.$valid) {
+    //       var toast = $mdToast.simple()
+    //         .textContent('Action Toast!')
+    //     } else {
+    //
+    //     }
+    //   });
+    // };
 
 
     // $scope.submitForm = function(input, formValid) {

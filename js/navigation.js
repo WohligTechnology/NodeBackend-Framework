@@ -380,24 +380,37 @@ var navigationservice = angular.module('navigationservice', [])
           "team1Wicket": formData.team1Wicket,
           "team1score": formData.team1score,
           "team1Overs": formData.team1Overs,
-          "comment": formData.comment,
-          "status": formData.status,
-        }
-      }).success(callback);
-    },
-    editMatchTeam2Submit: function(formData, callback) {
-      console.log(formData);
-      $http({
-        url: adminURL + 'match/save',
-        method: 'POST',
-        withCredentials: true,
-        data: {
-          "_id": formData._id,
           "team2Wicket": formData.team2Wicket,
           "team2score": formData.team2score,
           "team2Overs": formData.team2Overs,
           "comment": formData.comment,
           "status": formData.status,
+        }
+      }).success(callback);
+    },
+    // editMatchTeam2Submit: function(formData, callback) {
+    //   console.log(formData);
+    //   $http({
+    //     url: adminURL + 'match/save',
+    //     method: 'POST',
+    //     withCredentials: true,
+    //     data: {
+    //       "_id": formData._id,
+    //       "team2Wicket": formData.team2Wicket,
+    //       "team2score": formData.team2score,
+    //       "team2Overs": formData.team2Overs,
+    //       "comment": formData.comment,
+    //       "status": formData.status,
+    //     }
+    //   }).success(callback);
+    // },
+    getOneSession: function(id, callback) {
+      $http({
+        url: adminURL + 'session/findOne',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "_id": id
         }
       }).success(callback);
     },

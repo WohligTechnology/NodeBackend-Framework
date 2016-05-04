@@ -184,14 +184,14 @@
                         <div layout-gt-sm="row">
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Rates</label>
-                            <input required type="text" name="rate1" ng-model="match.matchRate1">
+                            <input type="text" name="rate1" ng-model="match.matchRate1">
                             <div ng-messages="matchForm.rate1.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
                           </md-input-container>
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Rates</label>
-                            <input required type="number" name="rate2" ng-model="match.matchRate2">
+                            <input type="text" name="rate2" ng-model="match.matchRate2">
                             <div ng-messages="matchForm.rate2.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
@@ -200,14 +200,14 @@
                         <div layout-gt-sm="row">
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Rates</label>
-                            <input required type="text" name="rates" ng-model="match.matchRate3">
+                            <input type="text" name="rates" ng-model="match.matchRate3">
                             <div ng-messages="matchForm.rate3.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
                           </md-input-container>
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Rates</label>
-                            <input required type="number" name="rates" ng-model="match.matchRate4">
+                            <input type="text" name="rates" ng-model="match.matchRate4">
                             <div ng-messages="matchForm.rate4.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
@@ -229,154 +229,155 @@
     <div class="col-md-4" layout-padding>
       <md-content class="minhght">
         <div class="brd">
-          <md-tabs md-dynamic-height md-border-bottom>
-            <md-tab label="FIRST INNING">
-              <div layout-fill class="inset" ng-cloak paddi layout-align="space-around">
-                <md-content>
-                  <div class="scroll">
-                    <div class="card rate" ng-if="match._id" ng-show="match.session1.length>0 || match.session2.length>0">
-                      <div class="item item-divider font-light">
-                        SESS
-                      </div>
-                      <div class="inn-tabs">
-                        <ul>
-                          <li class="text-up {{classa}}" ng-click="tabchange('first',1)">
-                            first innings
-                          </li>
-                          <li class="text-up {{classb}}" ng-click="tabchange('second',2)" ng-show="match.isSecondInning">
-                            second innings
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="inn-det" ng-show="tab=='first'">
-                        <div class="list-data">
-                          <ul ng-repeat="ses in match.session1|orderBy : ses.over:true">
-                            <li>
-                              <div class="ovr f18 text-up color-black">
-                                {{ses.over}} (ovr)
-                              </div>
+          <div class="panel-abt">
+            <md-tabs md-dynamic-height md-border-bottom>
+              <md-tab label="FIRST INNING">
+                <div layout-fill class="inset" ng-cloak paddi layout-align="space-around">
+                  <md-content>
+                    <div class="scroll">
+                      <div class="card rate" ng-if="match._id" ng-show="match.session1.length>0 || match.session2.length>0">
+                        <div class="item item-divider font-light">
+                          SESS
+                        </div>
+                        <div class="inn-tabs">
+                          <ul>
+                            <li class="text-up {{classa}}" ng-click="tabchange('first',1)">
+                              first innings
                             </li>
-                            <li class="f20">
-                              -
-                            </li>
-                            <li>
-                              <div class="div-rates f24 " ng-class="{'color-green':match.inning1Overs >= ses.over,'postive-color':match.inning1Overs < ses.over}">
-                                {{ses.run}} <span ng-if="match.inning1Overs < ses.over">- {{ses.run + 1}}</span> <span class="f16" ng-if="match.inning1Overs >= ses.over">(Completed)</span>
-                              </div>
+                            <li class="text-up {{classb}}" ng-click="tabchange('second',2)" ng-show="match.isSecondInning">
+                              second innings
                             </li>
                           </ul>
                         </div>
-                      </div>
-                      <div class="inn-det" ng-show="tab=='second'">
-                        <div class="list-data">
-                          <ul ng-repeat="ses in match.session2|orderBy : ses.over:true">
-                            <li>
-                              <div class="ovr f18 text-up color-black">
-                                {{ses.over}} (ovr)
-                              </div>
-                            </li>
-                            <li class="f20">
-                              -
-                            </li>
-                            <li>
-                              <div class="div-rates f24 " ng-class="{'color-green':match.inning2Overs >= ses.over,'postive-color':match.inning2Overs < ses.over}">
-                                {{ses.run}} <span ng-if="match.inning2Overs < ses.over">- {{ses.run + 1}}</span> <span class="f16" ng-if="match.inning2Overs >= ses.over">(Completed)</span>
-                              </div>
-                            </li>
-                          </ul>
+                        <div class="inn-det" ng-show="tab=='first'">
+                          <div class="list-data">
+                            <ul ng-repeat="ses in match.session1|orderBy : ses.over:true">
+                              <li>
+                                <div class="ovr f18 text-up color-black">
+                                  {{ses.over}} (ovr)
+                                </div>
+                              </li>
+                              <li class="f20">
+                                -
+                              </li>
+                              <li>
+                                <div class="div-rates f24 " ng-class="{'color-green':match.inning1Overs >= ses.over,'postive-color':match.inning1Overs < ses.over}">
+                                  {{ses.run}} <span ng-if="match.inning1Overs < ses.over">- {{ses.run + 1}}</span> <span class="f16" ng-if="match.inning1Overs >= ses.over">(Completed)</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </md-content>
-              </div>
-            </md-tab>
-            <md-tab label="Second INNING">
-              <div class="inset" ng-cloak paddi layout-align="space-around">
-                <md-content>
-                  <div class="scroll">
-                    <div class="card rate" ng-if="match._id" ng-show="match.session1.length>0 || match.session2.length>0">
-                      <div class="item item-divider font-light">
-                        SESS
-                      </div>
-                      <div class="inn-tabs">
-                        <ul>
-                          <li class="text-up {{classa}}" ng-click="tabchange('first',1)">
-                            first innings
-                          </li>
-                          <li class="text-up {{classb}}" ng-click="tabchange('second',2)" ng-show="match.isSecondInning">
-                            second innings
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="inn-det" ng-show="tab=='first'">
-                        <div class="list-data">
-                          <ul ng-repeat="ses in match.session1|orderBy : ses.over:true">
-                            <li>
-                              <div class="ovr f18 text-up color-black">
-                                {{ses.over}} (ovr)
-                              </div>
-                            </li>
-                            <li class="f20">
-                              -
-                            </li>
-                            <li>
-                              <div class="div-rates f24 " ng-class="{'color-green':match.inning1Overs >= ses.over,'postive-color':match.inning1Overs < ses.over}">
-                                {{ses.run}} <span ng-if="match.inning1Overs < ses.over">- {{ses.run + 1}}</span> <span class="f16" ng-if="match.inning1Overs >= ses.over">(Completed)</span>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="inn-det" ng-show="tab=='second'">
-                        <div class="list-data">
-                          <ul ng-repeat="ses in match.session2|orderBy : ses.over:true">
-                            <li>
-                              <div class="ovr f18 text-up color-black">
-                                {{ses.over}} (ovr)
-                              </div>
-                            </li>
-                            <li class="f20">
-                              -
-                            </li>
-                            <li>
-                              <div class="div-rates f24 " ng-class="{'color-green':match.inning2Overs >= ses.over,'postive-color':match.inning2Overs < ses.over}">
-                                {{ses.run}} <span ng-if="match.inning2Overs < ses.over">- {{ses.run + 1}}</span> <span class="f16" ng-if="match.inning2Overs >= ses.over">(Completed)</span>
-                              </div>
-                            </li>
-                          </ul>
+                        <div class="inn-det" ng-show="tab=='second'">
+                          <div class="list-data">
+                            <ul ng-repeat="ses in match.session2|orderBy : ses.over:true">
+                              <li>
+                                <div class="ovr f18 text-up color-black">
+                                  {{ses.over}} (ovr)
+                                </div>
+                              </li>
+                              <li class="f20">
+                                -
+                              </li>
+                              <li>
+                                <div class="div-rates f24 " ng-class="{'color-green':match.inning2Overs >= ses.over,'postive-color':match.inning2Overs < ses.over}">
+                                  {{ses.run}} <span ng-if="match.inning2Overs < ses.over">- {{ses.run + 1}}</span> <span class="f16" ng-if="match.inning2Overs >= ses.over">(Completed)</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </md-content>
-              </div>
-            </md-tab>
-          </md-tabs>
+                  </md-content>
+                </div>
+              </md-tab>
+              <md-tab label="Second INNING">
+                <div class="inset" ng-cloak paddi layout-align="space-around">
+                  <md-content>
+                    <div class="scroll">
+                      <div class="card rate" ng-if="match._id" ng-show="match.session1.length>0 || match.session2.length>0">
+                        <div class="item item-divider font-light">
+                          SESS
+                        </div>
+                        <div class="inn-tabs">
+                          <ul>
+                            <li class="text-up {{classa}}" ng-click="tabchange('first',1)">
+                              first innings
+                            </li>
+                            <li class="text-up {{classb}}" ng-click="tabchange('second',2)" ng-show="match.isSecondInning">
+                              second innings
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="inn-det" ng-show="tab=='first'">
+                          <div class="list-data">
+                            <ul ng-repeat="ses in match.session1|orderBy : ses.over:true">
+                              <li>
+                                <div class="ovr f18 text-up color-black">
+                                  {{ses.over}} (ovr)
+                                </div>
+                              </li>
+                              <li class="f20">
+                                -
+                              </li>
+                              <li>
+                                <div class="div-rates f24 " ng-class="{'color-green':match.inning1Overs >= ses.over,'postive-color':match.inning1Overs < ses.over}">
+                                  {{ses.run}} <span ng-if="match.inning1Overs < ses.over">- {{ses.run + 1}}</span> <span class="f16" ng-if="match.inning1Overs >= ses.over">(Completed)</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="inn-det" ng-show="tab=='second'">
+                          <div class="list-data">
+                            <ul ng-repeat="ses in match.session2|orderBy : ses.over:true">
+                              <li>
+                                <div class="ovr f18 text-up color-black">
+                                  {{ses.over}} (ovr)
+                                </div>
+                              </li>
+                              <li class="f20">
+                                -
+                              </li>
+                              <li>
+                                <div class="div-rates f24 " ng-class="{'color-green':match.inning2Overs >= ses.over,'postive-color':match.inning2Overs < ses.over}">
+                                  {{ses.run}} <span ng-if="match.inning2Overs < ses.over">- {{ses.run + 1}}</span> <span class="f16" ng-if="match.inning2Overs >= ses.over">(Completed)</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </md-content>
+                </div>
+              </md-tab>
+            </md-tabs>
+          </div>
+        </div>
       </md-content>
-      </div>
     </div>
-  </div>
 
-  <md-content>
-    <div class="editmatch-text">
-      <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls >0">
+    <md-content>
+      <div class="editmatch-text">
+        <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls >0">
         <span ng-if="match.bat==1">{{match.team1.name}}</span>
         <span ng-if="match.bat==2">{{match.team2.name}}</span> need
         <span class="f20 postive-color">{{match.remainingRuns}} runs</span> in <span class="f20 postive-color">
           {{match.remainingBalls}} balls</span> to win
       </h4>
-      <h4 class="font-light text-color" ng-if="match.remainingRuns <= 0">
+        <h4 class="font-light text-color" ng-if="match.remainingRuns <= 0">
         <span>{{match.team1.name}}</span>
         <span ng-if="match.bat==2">{{match.team2.name}}</span>
          <span class="f20 postive-color">WON</span>
       </h4>
-      <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls <=0">
+        <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls <=0">
         <span>{{match.team1.name}}</span>
         <span ng-if="match.bat==2">{{match.team2.name}}</span>
         <span class="f20 postive-color">LOST</span>
       </h4>
-    </div>
-  </md-content>
-  <command></command>
+      </div>
+    </md-content>
+    <command></command>
 </section>
