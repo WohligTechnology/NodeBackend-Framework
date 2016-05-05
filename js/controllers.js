@@ -34,7 +34,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       if (data.value === true) {
         $scope.loadMatches();
       }
-    })
+    });
   };
 })
 
@@ -59,7 +59,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log(data);
         $scope.adminusers = data.data.data;
       });
-    }
+    };
     $scope.loadAdminUsers();
     $scope.deleteAdminUsers = function(id) {
       NavigationService.deleteAdminUsersData(id, function(data) {
@@ -67,7 +67,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (data.value === true) {
           $scope.loadAdminUsers();
         }
-      })
+      });
     };
   })
   .controller('UserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -94,7 +94,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log(data);
         $scope.users = data.data.data;
       });
-    }
+    };
     $scope.loadUsers();
     $scope.deleteUser = function(id) {
       NavigationService.deleteUsersData(id, function(data) {
@@ -102,7 +102,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (data.value === true) {
           $scope.loadUsers();
         }
-      })
+      });
     };
   })
   .controller('TeamCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -126,7 +126,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log(data);
         $scope.teams = data.data;
       });
-    }
+    };
     $scope.loadTeams();
     $scope.deleteTeam = function(id) {
       NavigationService.deleteTeamData(id, function(data) {
@@ -134,7 +134,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (data.value === true) {
           $scope.loadTeam();
         }
-      })
+      });
     };
   })
   .controller('CreateTeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -158,7 +158,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       console.log('form values: ', formValid);
       NavigationService.teamCreateSubmit(formValid, function(data) {
         console.log(data);
-      })
+      });
       $state.go("team");
     };
   })
@@ -576,8 +576,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.match.matchRate4 = $filter('number')(rateCalc($scope.match.matchRate1), 2);
       }
       if ($scope.match.favorite == 2) {
-        $scope.match.matchRate3 = $scope.match.rate1;
-        $scope.match.matchRate4 = $scope.match.rate2;
+        $scope.match.matchRate3 = $filter('number')($scope.match.rate1,2);
+        $scope.match.matchRate4 = $filter('number')($scope.match.rate2,2);
 
         $scope.match.matchRate1 = $filter('number')(rateCalc($scope.match.matchRate4),2);
         $scope.match.matchRate2 = $filter('number')(rateCalc($scope.match.matchRate3),2);
