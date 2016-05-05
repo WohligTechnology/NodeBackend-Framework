@@ -24,7 +24,7 @@
                           <div>
                             <label>Runs</label>
                           </div>
-                          {{match.team1score}}
+                          {{match.team1Runs}}
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -49,7 +49,7 @@
                     <div layout-gt-sm="row">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>No of Runs</label>
-                        <input required type="text" name="team1score" ng-model="match.team1score" />
+                        <input required type="text" name="team1score" ng-model="match.team1Runs" />
                         <!-- {{match.team1score}} -->
                         <div ng-messages="matchForm.team1score.$error">
                           <div ng-message="required">This is required.</div>
@@ -93,7 +93,7 @@
                           <div>
                             <label>Runs</label>
                           </div>
-                          {{match.team2score}}
+                          {{match.team2Runs}}
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -118,7 +118,7 @@
                     <div layout-gt-sm="row">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>No of Runs</label>
-                        <input required type="text" name="team2score" ng-model="match.team2score" />
+                        <input required type="text" name="team2score" ng-model="match.team2Runs" />
                         <!-- {{match.team1score}} -->
                         <div ng-messages="matchForm.team2score.$error">
                           <div ng-message="required">This is required.</div>
@@ -184,14 +184,14 @@
                         <div layout-gt-sm="row">
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Rates</label>
-                            <input type="text" name="rate1" ng-model="match.rate1">
+                            <input type="text" name="rate1" ng-model="match.matchRate1">
                             <div ng-messages="matchForm.rate1.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
                           </md-input-container>
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Rates</label>
-                            <input type="text" name="rate2" ng-model="match.rate2">
+                            <input type="text" name="rate2" ng-model="match.matchRate3">
                             <div ng-messages="matchForm.rate2.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
@@ -200,14 +200,14 @@
                         <div layout-gt-sm="row">
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Rates</label>
-                            <input type="text" name="rates" ng-model="match.matchRate3" disabled="">
+                            <input type="text" name="rate3" ng-model="match.matchRate2" readonly="">
                             <div ng-messages="matchForm.rate3.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
                           </md-input-container>
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Rates</label>
-                            <input type="text" name="rates" ng-model="match.matchRate4" disabled="">
+                            <input type="text" name="rate4" ng-model="match.matchRate4" readonly="">
                             <div ng-messages="matchForm.rate4.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
@@ -357,27 +357,28 @@
           </div>
         </div>
       </md-content>
+      <md-content>
+        <div class="editmatch-text">
+          <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls >0">
+          <span ng-if="match.bat==1">{{match.team1.name}}</span>
+          <span ng-if="match.bat==2">{{match.team2.name}}</span> need
+          <span class="f20 postive-color">{{match.remainingRuns}} runs</span> in <span class="f20 postive-color">
+            {{match.remainingBalls}} balls</span> to win
+        </h4>
+          <h4 class="font-light text-color" ng-if="match.remainingRuns <= 0">
+          <span>{{match.team1.name}}</span>
+          <span ng-if="match.bat==2">{{match.team2.name}}</span>
+           <span class="f20 postive-color">WON</span>
+        </h4>
+          <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls <=0">
+          <span>{{match.team1.name}}</span>
+          <span ng-if="match.bat==2">{{match.team2.name}}</span>
+          <span class="f20 postive-color">LOST</span>
+        </h4>
+        </div>
+      </md-content>
     </div>
 
-    <md-content>
-      <div class="editmatch-text">
-        <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls >0">
-        <span ng-if="match.bat==1">{{match.team1.name}}</span>
-        <span ng-if="match.bat==2">{{match.team2.name}}</span> need
-        <span class="f20 postive-color">{{match.remainingRuns}} runs</span> in <span class="f20 postive-color">
-          {{match.remainingBalls}} balls</span> to win
-      </h4>
-        <h4 class="font-light text-color" ng-if="match.remainingRuns <= 0">
-        <span>{{match.team1.name}}</span>
-        <span ng-if="match.bat==2">{{match.team2.name}}</span>
-         <span class="f20 postive-color">WON</span>
-      </h4>
-        <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls <=0">
-        <span>{{match.team1.name}}</span>
-        <span ng-if="match.bat==2">{{match.team2.name}}</span>
-        <span class="f20 postive-color">LOST</span>
-      </h4>
-      </div>
-    </md-content>
+
     <command></command>
 </section>

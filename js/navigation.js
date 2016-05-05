@@ -306,7 +306,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
     getAllMatches: function(callback) {
       $http({
-        url: adminURL + 'match/findLimited',
+        url: adminURL + 'match/findLimitedForBackend',
         method: 'POST',
         data: {
           "search": "",
@@ -342,15 +342,19 @@ var navigationservice = angular.module('navigationservice', [])
         }
       }).success(callback);
     },
-    getOneMatch: function(id, callback) {
-      $http({
-        url: adminURL + 'match/findOneForBackend',
-        method: 'POST',
-        withCredentials: true,
-        data: {
-          "_id": id
-        }
-      }).success(callback);
+    getOneMatch: function(form, callback) {
+      console.log(form);
+      io.socket.get(adminURL + "match/findOneForBackend", form, function(resData) {
+        callback(resData);
+      });
+      // $http({
+      //   url: adminURL + 'match/findOneForBackend',
+      //   method: 'POST',
+      //   withCredentials: true,
+      //   data: {
+      //     "_id": id
+      //   }
+      // }).success(callback);
     },
     editMatchSubmit: function(formData, callback) {
       console.log(formData);

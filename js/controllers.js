@@ -508,7 +508,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   .controller('MatchUpdatesCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $mdToast, $document, $filter) {
     //Used to name the .html file
 
+    var form = {
+      "_id": $stateParams.id
+    };
 
+
+    $scope.tabchange = function(tab, a) {
+      $scope.tab = tab;
+      if (a == 1) {
+        // $ionicScrollDelegate.scrollTop();
+        $scope.classa = "actives";
+        $scope.classb = '';
+      } else {
+        // $ionicScrollDelegate.scrollTop();
+        $scope.classa = '';
+        $scope.classb = "actives";
+      }
+    };
+
+    matchID = $stateParams.id;
     var SocketFunction = function(data, isSocket) {
       console.log(data);
       data.data.session1 = _.filter(data.data.session, function(n) {
@@ -517,7 +535,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       data.data.session2 = _.filter(data.data.session, function(n) {
         return n.inning == 2;
       });
-
       $scope.match = data.data;
       $scope.match.isSecondInning = $scope.match.bat != $scope.match.firstBat;
 
@@ -533,7 +550,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.match.inning1Overs = 99999;
 
-        $scope.tabchange('second', 2);
+        // $scope.tabchange('second', 2);
         if ($scope.match.bat == 1) {
           $scope.match.playedBalls = getBalls($scope.match.team1Overs);
           $scope.match.currentRuns = $scope.match.team1Runs;
@@ -551,14 +568,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       }
 
 
-
+      console.log($scope.match.favorite);
       if ($scope.match.favorite == 1) {
-        console.log($scope.match.rate1);
         $scope.match.matchRate1 = $filter('number')($scope.match.rate1, 2);
-        console.log($scope.match.rate2);
         $scope.match.matchRate2 = $filter('number')($scope.match.rate2, 2);
-        console.log(rateCalc($scope.match.matchRate2));
-        console.log(rateCalc($scope.match.matchRate1));
         $scope.match.matchRate3 = $filter('number')(rateCalc($scope.match.matchRate2), 2);
         $scope.match.matchRate4 = $filter('number')(rateCalc($scope.match.matchRate1), 2);
       }
@@ -566,17 +579,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.match.matchRate3 = $scope.match.rate1;
         $scope.match.matchRate4 = $scope.match.rate2;
 
-        $scope.match.matchRate1 = rateCalc($scope.match.matchRate4);
-        $scope.match.matchRate2 = rateCalc($scope.match.matchRate3);
+        $scope.match.matchRate1 = $filter('number')(rateCalc($scope.match.matchRate4),2);
+        $scope.match.matchRate2 = $filter('number')(rateCalc($scope.match.matchRate3),2);
       }
       console.log($scope.match);
-      if (isSocket) {
+      // if (isSocket) {
         $scope.$apply();
-      }
+      // }
 
     };
 
-    console.log("Testing Consoles");
+
+    io.socket.on('message', function(data) {
+      SocketFunction(data, true);
+    });
 
     $scope.template = TemplateService.changecontent("matchupdates");
     $scope.menutitle = NavigationService.makeactive("Matches");
@@ -587,21 +603,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // NavigationService.getTeams(function(data) {
     //   $scope.teams = data.data;
     // })
-    NavigationService.getOneMatch($stateParams.id, function(data) {
+    NavigationService.getOneMatch(form, function(data) {
       SocketFunction(data);
-      console.log(data);
     });
-    NavigationService.getOneSession($stateParams.id, function(data) {
-      SocketFunction(data);
-      console.log("Data session");
-      console.log(data);
-    });
+
 
     $scope.submitteamForm = function(formValid) {
       console.log('form values: ', $scope.project);
       NavigationService.editMatchTeamSubmit(formValid, function(data) {
         console.log(data);
-        if (data.value == true) {
+        if (data.value === true) {
           $mdToast.show(
             $mdToast.simple()
             .textContent('Sucessfully Submited')

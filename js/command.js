@@ -42,7 +42,6 @@ command.directive('command', function($document, $http) {
         replace: false,
         templateUrl: 'views/directive/command.html',
         link: function(scope, element, attr) {
-            var matchID = "57235d6f78e708d44687cee5";
             scope.command = {
                 input: ""
             };
