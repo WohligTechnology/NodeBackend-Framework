@@ -366,8 +366,14 @@ ul.sessionData {
         width: 50%;
         .color-green {
           color:green;
+          font-size: 16px;
+          line-height: 200%;
         }
     }
+}
+h4 {
+    font-size: 18px;
+    font-weight: 300;
 }
 //bootstrap forms
 /* Start writing sass here */

@@ -140,10 +140,10 @@
                                                 </div>
                                             </md-input-container>
                                         </div>
-                                        <md-input-container class="md-block">
+                                        <!-- <md-input-container class="md-block">
                                             <label>Comment</label>
                                             <input type="text" name="Comment" ng-model="match.comment"/>
-                                        </md-input-container>
+                                        </md-input-container> -->
                                         <div layout="row">
                                             <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
                                                 Wicket
@@ -227,7 +227,7 @@
             </md-content>
         </div>
         <div class="col-md-4" layout-padding>
-            <md-content class="minhght">
+            <md-content class="">
                 <div class="brd">
                     <div class="panel-abt">
                         <md-tabs md-dynamic-height md-border-bottom>
@@ -236,7 +236,7 @@
                                     <md-content>
                                         <div class="inn-det">
                                             <div class="list-data">
-                                                <ul  class="sessionData" ng-repeat="ses in match.session1|orderBy : ses.over:true">
+                                                <ul  class="sessionData clearfix"  ng-repeat="ses in match.session1|orderBy : ses.over:true">
                                                     <li>
                                                         <div class="ovr f18 text-up color-black">
                                                             {{ses.over}}
@@ -265,7 +265,7 @@
 
                                         <div class="inn-det">
                                             <div class="list-data">
-                                                <ul class="sessionData" ng-repeat="ses in match.session2|orderBy : ses.over:true">
+                                                <ul class="sessionData clearfix" ng-repeat="ses in match.session2|orderBy : ses.over:true">
                                                     <li>
                                                         <div class="ovr f18 text-up color-black">
                                                             {{ses.over}}

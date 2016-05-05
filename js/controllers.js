@@ -227,7 +227,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 NavigationService.userCreateSubmit(input, function(data) {
                     console.log(data);
                     $state.go("user");
-                })
+                });
             } else {
                 $scope.nomatch = true;
             }
@@ -260,7 +260,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     NavigationService.getOneUser($stateParams.id, function(data) {
         $scope.project = data.data;
-        $scope.project.expiry = new Date(data.data.expiry)
+        $scope.project.expiry = new Date(data.data.expiry);
         console.log('userForm', $scope.adminForm);
     });
 
@@ -271,7 +271,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.editUserSubmit(input, function(data) {
                 console.log(data);
                 $state.go("user");
-            })
+            });
         } else {
             $scope.nomatch = true;
         }
@@ -307,7 +307,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('form values: ', formValid);
         NavigationService.adminuserCreateSubmit(formValid, function(data) {
             console.log(data);
-        })
+        });
         $state.go("adminuser");
     };
 })
@@ -372,7 +372,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log(data);
                 $scope.notifications = data.data.data;
             });
-        }
+        };
         $scope.loadNotification();
         $scope.deleteNotification = function(id) {
             NavigationService.deleteNotificationData(id, function(data) {
@@ -380,7 +380,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if (data.value === true) {
                     $scope.loadNotification();
                 }
-            })
+            });
         };
     })
     .controller('CreateNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -396,7 +396,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log('form values: ', formValid);
             NavigationService.notificationCreateSubmit(formValid, function(data) {
                 console.log(data);
-            })
+            });
             $state.go("notification");
         };
     })
@@ -447,12 +447,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.teams = [];
     NavigationService.getAllTeam(function(data) {
         $scope.teams = data.data;
-    })
+    });
     $scope.submitForm = function(formValid) {
         console.log('form values: ', formValid);
         NavigationService.matchesCreateSubmit(formValid, function(data) {
             console.log(data);
-        })
+        });
         $state.go("matches");
     };
 })
@@ -473,7 +473,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.teams = [];
     NavigationService.getAllTeam(function(data) {
         $scope.teams = data.data;
-    })
+    });
     NavigationService.getOneMatch($stateParams.id, function(data) {
         console.log(data);
         $scope.project = data.data;
@@ -717,7 +717,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     .then(function() {
                         $log.debug("toggle " + navID + " is done");
                     });
-            }
+            };
         }
         $scope.close = function() {
             $mdSidenav('left').close()
