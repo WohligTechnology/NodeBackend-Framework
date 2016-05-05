@@ -1,4 +1,3 @@
-var adminURL = "http://192.168.1.104:1337/";
 var imgpath = adminURL + "upload/readFile";
 var uploadURL = adminURL + "upload";
 // if (isproduction) {
@@ -357,6 +356,7 @@ var navigationservice = angular.module('navigationservice', [])
       //   }
       // }).success(callback);
     },
+
     editMatchSubmit: function(formData, callback) {
       console.log(formData);
       $http({
