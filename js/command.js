@@ -88,6 +88,7 @@ command.directive('command', function($document, $http) {
                                             _id: matchID,
                                             changeFavourite: true
                                         }).then(function() {
+                                            globalfunction.changeFav();
                                             console.log("Favorite Changed ");
                                         });
                                     }
