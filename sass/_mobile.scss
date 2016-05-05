@@ -9,6 +9,11 @@
     padding-top: 38px;
   }
 }
+@media (max-width: $screen-sm-max) {
+  .md-sidenav-left {
+    margin-top: 50px;
+  }
+}
 @media (max-width: $screen-xs-max) {
   .navbar {
     margin-bottom: 10px;
@@ -22,14 +27,9 @@
     display: inline-block;
   }
   .scroll {
+    overflow-x: scroll;
     .table > thead > tr > th {
       border-bottom: 0 solid #ddd;
     }
-  }
-  .md-sidenav-left {
-    margin-top: 56px;
-  }
-  .scroll {
-    overflow-x: scroll;
   }
 }

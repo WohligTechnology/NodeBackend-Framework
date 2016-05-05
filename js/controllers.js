@@ -452,8 +452,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('form values: ', formValid);
         NavigationService.matchesCreateSubmit(formValid, function(data) {
             console.log(data);
+            $state.go("matches");
         });
-        $state.go("matches");
+
     };
 })
 

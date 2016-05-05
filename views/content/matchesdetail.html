@@ -12,7 +12,7 @@
             <div class="col-md-6">
               <md-input-container class="md-block">
                 <label>Team1</label>
-                <md-select name="team1" ng-model="project.team1.name" required>
+                <md-select name="team1" ng-model="project.team1" required>
                   <md-option ng-repeat="team in teams" value="{{team._id}}" ng-if="team._id !== project.team2">{{team.name}}</md-option>
                 </md-select>
                 <div class="errors" ng-messages="matchForm.team1.$error" ng-if="matchForm.$dirty">
