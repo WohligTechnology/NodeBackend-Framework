@@ -489,9 +489,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.submitForm = function(project) {
     console.log(project);
     var project2 = _.clone(project);
+    project2.newOvers = project2.overs;
+
     NavigationService.matchesCreateSubmit(project2, function(data) {
-      project2.newOvers = project2.overs;
-      console.log(data);
+      console.log(project2);
       $state.go("matches");
     });
 
@@ -571,10 +572,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.matchSave = function(match) {
       var newMatch = {
         "_id": match._id,
-        team1score: match.team1score,
+        team1Runs: match.team1Runs,
         team1Wicket: match.team1Wicket,
         team1Overs: match.team1Overs,
-        team2score: match.team2score,
+        team2Runs: match.team2Runs,
         team2Wicket: match.team2Wicket,
         team2Overs: match.team2Overs,
         rate1: 1,
@@ -596,8 +597,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       console.log(overs);
       console.log(runs);
       $http.post(adminURL + "session/changeDlruns", {
-        "changeDlruns": runs,
-        "changeNewOvers": overs,
+        "changeDlruns": runs+"",
+        "changeNewOvers": overs+"",
         "_id": $stateParams.id,
       }).then(function() {
         console.log("Change the Suspended");
@@ -704,6 +705,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Matches");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
     $scope.matchForm = {};
     // $scope.teams = [];
     // NavigationService.getTeams(function(data) {
@@ -712,7 +714,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     NavigationService.getOneMatch(form, function(data) {
       SocketFunction(data);
     });
-
 
     $scope.submitteamForm = function(formValid) {
       console.log('form values: ', $scope.project);
