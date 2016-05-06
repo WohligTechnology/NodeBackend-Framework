@@ -507,10 +507,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.matchSave = function(match) {
             var newMatch = {
                 "_id": match._id,
-                team1score: match.team1score,
+                team1Runs: match.team1Runs,
                 team1Wicket: match.team1Wicket,
                 team1Overs: match.team1Overs,
-                team2score: match.team2score,
+                team2Runs: match.team2Runs,
                 team2Wicket: match.team2Wicket,
                 team2Overs: match.team2Overs,
                 rate1: 1,
@@ -534,8 +534,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log(overs);
             console.log(runs);
             $http.post(adminURL + "session/changeDlruns", {
-                "changeDlruns": runs,
-                "changeNewOvers": overs,
+                "changeDlruns": runs+"",
+                "changeNewOvers": overs+"",
                 "_id": $stateParams.id,
             }).then(function() {
                 console.log("Change the Suspended");
