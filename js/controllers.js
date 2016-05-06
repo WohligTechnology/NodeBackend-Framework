@@ -4,9 +4,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('MatchesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file
-
-  console.log("Testing Consoles");
-
   $scope.template = TemplateService.changecontent("matches");
   $scope.menutitle = NavigationService.makeactive("Matches");
   TemplateService.title = $scope.menutitle;
@@ -72,9 +69,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   })
   .controller('UserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
-
-    console.log("Testing Consoles");
-
     $scope.template = TemplateService.changecontent("user");
     $scope.menutitle = NavigationService.makeactive("User");
     TemplateService.title = $scope.menutitle;
@@ -107,7 +101,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   })
   .controller('TeamCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
-    console.log("Testing Consoles");
     $scope.template = TemplateService.changecontent("team");
     $scope.menutitle = NavigationService.makeactive("Team");
     TemplateService.title = $scope.menutitle;
@@ -139,9 +132,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   })
   .controller('CreateTeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
     //Used to name the .html file
-
-    console.log("Testing Consoles");
-
     $scope.template = TemplateService.changecontent("teamdetail");
     $scope.menutitle = NavigationService.makeactive("Team");
     TemplateService.title = $scope.menutitle;
@@ -165,9 +155,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('EditTeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
   //Used to name the .html file
-
-  console.log("Testing Consoles");
-
   $scope.template = TemplateService.changecontent("teamdetail");
   $scope.menutitle = NavigationService.makeactive("Team");
   TemplateService.title = $scope.menutitle;
@@ -201,9 +188,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('CreateUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
   //Used to name the .html file
-
-  console.log("Testing Consoles");
-
   $scope.template = TemplateService.changecontent("userdetail");
   $scope.menutitle = NavigationService.makeactive("User");
   TemplateService.title = $scope.menutitle;
@@ -240,9 +224,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
   //Used to name the .html file
-
-  console.log("Testing Consoles");
-
   $scope.template = TemplateService.changecontent("userdetail");
   $scope.menutitle = NavigationService.makeactive("User");
   TemplateService.title = $scope.menutitle;
@@ -284,9 +265,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('CreateAdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
   //Used to name the .html file
-
-  console.log("Testing Consoles");
-
   $scope.template = TemplateService.changecontent("adminuserdetail");
   $scope.menutitle = NavigationService.makeactive("Admin User");
   TemplateService.title = $scope.menutitle;
@@ -314,9 +292,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('EditAdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
   //Used to name the .html file
-
-  console.log("Testing Consoles");
-
   $scope.template = TemplateService.changecontent("adminuserdetail");
   $scope.menutitle = NavigationService.makeactive("Admin User");
   TemplateService.title = $scope.menutitle;
@@ -351,9 +326,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('NotificationCtrl', function($scope, TemplateService, NavigationService, $stateParams, $timeout, $state) {
     //Used to name the .html file
-
-    console.log("Testing Consoles");
-
     $scope.template = TemplateService.changecontent("notification");
     $scope.menutitle = NavigationService.makeactive("Notification");
     TemplateService.title = $scope.menutitle;
@@ -403,9 +375,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('EditNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
   //Used to name the .html file
-
-  console.log("Testing Consoles");
-
   $scope.template = TemplateService.changecontent("notificationedit");
   $scope.menutitle = NavigationService.makeactive("Notification");
   TemplateService.title = $scope.menutitle;
@@ -433,9 +402,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('CreateMatchCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
   //Used to name the .html file
-
-  console.log("Testing Consoles");
-
   $scope.template = TemplateService.changecontent("matchesdetail");
   $scope.menutitle = NavigationService.makeactive("Matches");
   TemplateService.title = $scope.menutitle;
@@ -463,9 +429,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('EditMatchCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
   //Used to name the .html file
-
-  console.log("Testing Consoles");
-
   $scope.template = TemplateService.changecontent("matchesdetail");
   $scope.menutitle = NavigationService.makeactive("Matches");
   TemplateService.title = $scope.menutitle;
@@ -502,9 +465,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
-
-    console.log("Testing Consoles");
-
     $scope.template = TemplateService.changecontent("login");
     $scope.menutitle = NavigationService.makeactive("Login");
     TemplateService.title = $scope.menutitle;
