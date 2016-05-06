@@ -385,7 +385,7 @@ h4 {
   width: 40px;
   border: 0;
   padding-left: 3px;
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
@@ -406,14 +406,16 @@ h4 {
   }
 }
 .forScores md-tab-content {
-    overflow: visible !important;
-    .firstBat {
-        position: absolute;
-        right: 0px;
-        top: -44px;
-    }
+  overflow: visible !important;
+  .firstBat {
+    position: absolute;
+    right: 0;
+    top: -44px;
+  }
+  .mr10 {
+    margin-top: 10px;
+  }
 }
-
 //bootstrap forms
 /* Start writing sass here */
 @import "fancybox-override";
