@@ -2,6 +2,19 @@
   <h4 class="modal-title">Are you sure you want to delete?</h4>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary btn-outline btn-small" type="button" ng-click="close(true)">Yes</button>
+  <button class="btn btn-primary btn-outline btn-small" type="button" ng-click="deleteTeam(team._id)">Yes</button>
   <button class="btn btn-primary btn-outline btn-small" type="button" ng-click="close(false)">No</button>
 </div> -->
+<md-dialog aria-label="Delete">
+  <md-dialog-content class="md-dialog-content">
+    <p>Are you sure you want to delete?</p>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="deleteClicked();">
+        Delete
+      </md-button>
+      <md-button>
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </md-dialog-content>
+</md-dialog>
