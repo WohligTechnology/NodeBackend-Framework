@@ -338,7 +338,7 @@ var navigationservice = angular.module('navigationservice', [])
           "status": formData.status,
           "team1": formData.team1,
           "team2": formData.team2,
-          "firstBat": formData.firstBat,
+          "firstBat": formData.batFirst,
           "overs": formData.overs,
         }
       }).success(callback);
@@ -370,8 +370,9 @@ var navigationservice = angular.module('navigationservice', [])
           "status": formData.status,
           "team1": formData.team1,
           "team2": formData.team2,
-          "firstBat": formData.firstBat,
+          "firstBat": formData.batFirst,
           "overs": formData.overs,
+          "newOvers": formData.newOvers,
         }
       }).success(callback);
     },
@@ -389,6 +390,7 @@ var navigationservice = angular.module('navigationservice', [])
           "team2Wicket": formData.team2Wicket,
           "team2score": formData.team2score,
           "team2Overs": formData.team2Overs,
+          "newOvers": formData.newOvers,
           "comment": formData.comment,
           "status": formData.status,
           "rate1": formData.rate1,

@@ -411,6 +411,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.page = {
     header: "Create Match"
   };
+  $scope.batFirst = [{
+    id: 0,
+    name: "team1"
+  }, {
+    id: 1,
+    name: "team2"
+  }];
   $scope.teams = [];
   NavigationService.getAllTeam(function(data) {
     $scope.teams = data.data;
@@ -419,7 +426,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     console.log(project);
     var project2 = _.clone(project);
     NavigationService.matchesCreateSubmit(project2, function(data) {
-
+      project2.newOvers = project2.overs;
       console.log(data);
       $state.go("matches");
     });
@@ -436,18 +443,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.page = {
     header: "Edit Match"
   };
+  $scope.batFirst = [{
+    id: 1,
+    name: "team1"
+  }, {
+    id: 2,
+    name: "team2"
+  }];
   $scope.matchForm = {};
   $scope.teams = [];
   NavigationService.getAllTeam(function(data) {
+    project2.newOvers = project2.overs;
     $scope.teams = data.data;
   });
 
-  NavigationService.getOneMatch({"_id":$stateParams.id}, function(data) {
+  NavigationService.getOneMatch({
+    "_id": $stateParams.id
+  }, function(data) {
 
     $scope.project = data.data;
     $scope.project.team1 = $scope.project.team1._id;
     $scope.project.team2 = $scope.project.team2._id;
-    $scope.project.firstBat = $scope.project.firstBat._id;
     $scope.$apply();
   });
 

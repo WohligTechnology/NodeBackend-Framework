@@ -13,7 +13,7 @@
               <md-input-container class="md-block">
                 <label>Team1</label>
                 <!-- {{project}} -->
-                <md-select name="team1" ng-model="project.team1" ng-if="teams" required >
+                <md-select name="team1" ng-model="project.team1" ng-if="teams" required>
                   <md-option ng-repeat="team in teams" ng-value="team._id" ng-if="team._id != project.team2">{{team.name}}</md-option>
                 </md-select>
                 <div class="errors" ng-messages="matchForm.team1.$error" ng-if="matchForm.$dirty">
@@ -59,6 +59,17 @@
           </div>
           <div layout-gt-sm="row">
             <div class="col-md-6">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>New Overs</label>
+                <input required type="number" step="any" name="overs" ng-model="project.newOvers" />
+                <div ng-messages="matchForm.newOvers.$error" ng-if="matchForm.$dirty">
+                  <div ng-message="required"> - Please enter a valid overs</div>
+                </div>
+              </md-input-container>
+            </div>
+          </div>
+          <div layout-gt-sm="row">
+            <div class="col-md-6">
               <label>Status</label>
               <md-switch ng-model="project.status" aria-label="{{project.status}}" ng-change="onChange(project.status)">
               </md-switch>
@@ -67,8 +78,8 @@
           <div layout-gt-sm="row">
             <div class="col-md-6">
               <label>FirstBat</label>
-              <md-select name="team1" ng-model="project.firstBat" ng-if="teams" required >
-                <md-option ng-repeat="team in teams" ng-value="team._id" ng-if="team._id == project.team2 || team._id == project.team1">{{team.name}}</md-option>
+              <md-select name="team1" ng-model="project.firstBat">
+                <md-option ng-repeat="teamselect in batFirst" ng-value="teamselect.id">{{teamselect.name}}</md-option>
               </md-select>
             </div>
           </div>

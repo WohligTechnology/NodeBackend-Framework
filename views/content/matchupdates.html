@@ -1,300 +1,287 @@
 <section class="container-fluid">
-    <!-- <div layout="column" ng-cloak> -->
-    <div class="row">
-        <div class="col-md-8">
-            <md-content layout-padding>
-                <md-toolbar class="md-hue-2 md-whiteframe-1dp">
-                    <div class="md-toolbar-tools">
-                        <span>Match Updates</span>
-                    </div>
-                </md-toolbar>
-                <div layout-padding class="brd">
+  <!-- <div layout="column" ng-cloak> -->
+  <div class="row">
+    <div class="col-md-8">
+      <md-content layout-padding>
+        <md-toolbar class="md-hue-2 md-whiteframe-1dp">
+          <div class="md-toolbar-tools">
+            <span>Match Updates</span>
+          </div>
+        </md-toolbar>
+        <div layout-padding class="brd">
+          <div class="row">
+            <div class="col-md-7">
+              <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="{{match.team1.name}}" md-active="match.bat == 1">
+                  <!-- <md-content> -->
+                  <md-container class="md-block" layout-align="center center">
+                    <h4>First Innings</h4>
+                  </md-container>
+                  <div class="matchupdates">
                     <div class="row">
-                        <div class="col-md-7">
-                            <md-tabs md-dynamic-height md-border-bottom>
-                                <md-tab label="{{match.team1.name}}" md-active="match.bat == 1">
-                                    <!-- <md-content> -->
-                                    <md-container class="md-block" layout-align="center center">
-                                        <h4>First Innings</h4>
-                                    </md-container>
-                                    <div class="matchupdates">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="match-made">
-                                                    <div>
-                                                        <label>Runs</label>
-                                                    </div>
-                                                    {{match.team1Runs}}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="match-made">
-                                                    <div>
-                                                        <label>Wicket</label>
-                                                    </div>
-                                                    {{match.team1Wicket}}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="match-made">
-                                                    <div>
-                                                        <label>Overs</label>
-                                                    </div>
-                                                    {{match.team1Overs}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <form name="matchForm">
-                                        <div layout-gt-sm="row">
-                                            <md-input-container class="md-block" flex-gt-sm>
-                                                <label>No of Runs</label>
-                                                <input required type="text" name="team1score" ng-model="match.team1Runs"/>
-                                                <!-- {{match.team1score}} -->
-                                                <div ng-messages="matchForm.team1score.$error">
-                                                    <div ng-message="required">This is required.</div>
-                                                </div>
-                                            </md-input-container>
-                                            <md-input-container class="md-block" flex-gt-sm>
-                                                <label>Wickets</label>
-                                                <input required type="number" step="any" name="team1Wicket" ng-model="match.team1Wicket"/>
-                                                <div ng-messages="matchForm.team1Wicket.$error">
-                                                    <div ng-message="required">This is required.</div>
-                                                </div>
-                                            </md-input-container>
-                                            <md-input-container class="md-block" flex-gt-sm>
-                                                <label>Overs</label>
-                                                <input required type="number" step="any" name="team1Overs" ng-model="match.team1Overs" min="0" max="100"/>
-                                                <div ng-messages="matchForm.team1Overs.$error">
-                                                    <div ng-message="required">This is required.</div>
-                                                    <div ng-message="max">Over Limit</div>
-                                                </div>
-                                            </md-input-container>
-                                        </div>
-                                        <!-- <md-input-container class="md-block">
-                                            <label>Comment</label>
-                                            <input type="text" name="Comment" ng-model="match.comment"/>
-                                        </md-input-container> -->
-                                        <div layout="row">
-                                            <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
-                                                Wicket
-                                            </md-switch>
-                                        </div>
-                                    </form>
-                                </md-tab>
-                                <md-tab label="{{match.team2.name}}" md-active="match.bat == 2">
-                                    <md-container class="md-block" layout-align="center center">
-                                        <h4>Second Innings</h4>
-                                    </md-container>
-                                    <div class="matchupdates">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="match-made">
-                                                    <div>
-                                                        <label>Runs</label>
-                                                    </div>
-                                                    {{match.team2Runs}}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="match-made">
-                                                    <div>
-                                                        <label>Wicket</label>
-                                                    </div>
-                                                    {{match.team2Wicket}}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="match-made">
-                                                    <div>
-                                                        <label>Overs</label>
-                                                    </div>
-                                                    {{match.team2Overs}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <form name="matchForm">
-                                        <div layout-gt-sm="row">
-                                            <md-input-container class="md-block" flex-gt-sm>
-                                                <label>No of Runs</label>
-                                                <input required type="text" name="team2score" ng-model="match.team2Runs"/>
-                                                <!-- {{match.team1score}} -->
-                                                <div ng-messages="matchForm.team2score.$error">
-                                                    <div ng-message="required">This is required.</div>
-                                                </div>
-                                            </md-input-container>
-                                            <md-input-container class="md-block" flex-gt-sm>
-                                                <label>Wickets</label>
-                                                <input required type="number" step="any" name="team1Wicket" ng-model="match.team2Wicket"/>
-                                                <div ng-messages="matchForm.team2Wicket.$error">
-                                                    <div ng-message="required">This is required.</div>
-                                                </div>
-                                            </md-input-container>
-                                            <md-input-container class="md-block" flex-gt-sm>
-                                                <label>Overs</label>
-                                                <input required type="number" step="any" name="team1Overs" ng-model="match.team2Overs" min="0" max="100"/>
-                                                <div ng-messages="matchForm.team2Overs.$error">
-                                                    <div ng-message="required">This is required.</div>
-                                                    <div ng-message="max">Over Limit</div>
-                                                </div>
-                                            </md-input-container>
-                                        </div>
-                                        <!-- <md-input-container class="md-block">
-                                            <label>Comment</label>
-                                            <input type="text" name="Comment" ng-model="match.comment"/>
-                                        </md-input-container> -->
-                                        <div layout="row">
-                                            <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
-                                                Wicket
-                                            </md-switch>
-                                        </div>
-                                        <!-- <div class="text-center">
-                      <md-button class="md-raised md-primary" ng-click="submitteam2Form(match)">Save</md-button>
-                    </div> -->
-                                        <!-- <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                      <md-button class="md-raised md-primary">Save</md-button>
-                    </div> -->
-                                    </form>
-                                    <!-- </md-content> -->
-                                </md-tab>
-                            </md-tabs>
+                      <div class="col-md-4">
+                        <div class="match-made">
+                          <div>
+                            <label>Runs</label>
+                          </div>
+                          {{match.team1Runs}}
                         </div>
-                        <div class="col-md-5">
-                            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                                <md-button class="md-raised md-primary">
-                                    Live
-                                </md-button>
-                            </section>
-                            <div class="panel panel-default">
-                                <div layout-padding>
-                                    <div class="fixtures">
-                                        <div class="country">
-                                            <div class="row">
-                                                <div class="col-xs-6">
-                                                    <div class="title-country">{{match.team1.name}} <span ng-show="match.favorite==1">(F)</span></div>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <div class="title-country">{{match.team2.name}} <span ng-show="match.favorite==2">(F)</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="country-form">
-                                            <form name="matchForm">
-                                                <div layout-gt-sm="row">
-                                                    <md-input-container class="md-block" flex-gt-sm>
-                                                        <label>Back Rates</label>
-                                                        <input type="text" name="rate1" ng-model="match.matchRate1">
-                                                        <div ng-messages="matchForm.rate1.$error">
-                                                            <div ng-message="required">This is required.</div>
-                                                        </div>
-                                                    </md-input-container>
-                                                    <md-input-container class="md-block" flex-gt-sm>
-                                                        <label>Back Rates</label>
-                                                        <input type="text" name="rate2" ng-model="match.matchRate3">
-                                                        <div ng-messages="matchForm.rate2.$error">
-                                                            <div ng-message="required">This is required.</div>
-                                                        </div>
-                                                    </md-input-container>
-                                                </div>
-                                                <div layout-gt-sm="row">
-                                                    <md-input-container class="md-block" flex-gt-sm>
-                                                        <label>Lay Rates</label>
-                                                        <input type="text" name="rate3" ng-model="match.matchRate2" readonly="">
-                                                        <div ng-messages="matchForm.rate3.$error">
-                                                            <div ng-message="required">This is required.</div>
-                                                        </div>
-                                                    </md-input-container>
-                                                    <md-input-container class="md-block" flex-gt-sm>
-                                                        <label>Lay Rates</label>
-                                                        <input type="text" name="rate4" ng-model="match.matchRate4" readonly="">
-                                                        <div ng-messages="matchForm.rate4.$error">
-                                                            <div ng-message="required">This is required.</div>
-                                                        </div>
-                                                    </md-input-container>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="match-made">
+                          <div>
+                            <label>Wicket</label>
+                          </div>
+                          {{match.team1Wicket}}
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="match-made">
+                          <div>
+                            <label>Overs</label>
+                          </div>
+                          {{match.team1Overs}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <form name="matchForm">
+                    <div layout-gt-sm="row">
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>No of Runs</label>
+                        <input required type="text" name="team1score" ng-model="match.team1Runs" />
+                        <!-- {{match.team1score}} -->
+                        <div ng-messages="matchForm.team1score.$error">
+                          <div ng-message="required">This is required.</div>
+                        </div>
+                      </md-input-container>
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>Wickets</label>
+                        <input required type="number" step="any" name="team1Wicket" ng-model="match.team1Wicket" />
+                        <div ng-messages="matchForm.team1Wicket.$error">
+                          <div ng-message="required">This is required.</div>
+                        </div>
+                      </md-input-container>
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>Overs</label>
+                        <input required type="number" step="any" name="team1Overs" ng-model="match.team1Overs" min="0" max="100" />
+                        <div ng-messages="matchForm.team1Overs.$error">
+                          <div ng-message="required">This is required.</div>
+                          <div ng-message="max">Over Limit</div>
+                        </div>
+                      </md-input-container>
+                    </div>
+                    <!-- <md-input-container class="md-block">
+                                            <label>Comment</label>
+                                            <input type="text" name="Comment" ng-model="match.comment"/>
+                                        </md-input-container> -->
+                  </form>
+                </md-tab>
+                <md-tab label="{{match.team2.name}}" md-active="match.bat == 2">
+                  <md-container class="md-block" layout-align="center center">
+                    <h4>Second Innings</h4>
+                  </md-container>
+                  <div class="matchupdates">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="match-made">
+                          <div>
+                            <label>Runs</label>
+                          </div>
+                          {{match.team2Runs}}
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="match-made">
+                          <div>
+                            <label>Wicket</label>
+                          </div>
+                          {{match.team2Wicket}}
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="match-made">
+                          <div>
+                            <label>Overs</label>
+                          </div>
+                          {{match.team2Overs}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <form name="matchForm">
+                    <div layout-gt-sm="row">
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>No of Runs</label>
+                        <input required type="text" name="team2score" ng-model="match.team2Runs" />
+                        <!-- {{match.team1score}} -->
+                        <div ng-messages="matchForm.team2score.$error">
+                          <div ng-message="required">This is required.</div>
+                        </div>
+                      </md-input-container>
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>Wickets</label>
+                        <input required type="number" step="any" name="team1Wicket" ng-model="match.team2Wicket" />
+                        <div ng-messages="matchForm.team2Wicket.$error">
+                          <div ng-message="required">This is required.</div>
+                        </div>
+                      </md-input-container>
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>Overs</label>
+                        <input required type="number" step="any" name="team1Overs" ng-model="match.team2Overs" min="0" max="100" />
+                        <div ng-messages="matchForm.team2Overs.$error">
+                          <div ng-message="required">This is required.</div>
+                          <div ng-message="max">Over Limit</div>
+                        </div>
+                      </md-input-container>
+                    </div>
+                  </form>
+                  <!-- </md-content> -->
+                </md-tab>
+              </md-tabs>
+            </div>
+            <div class="col-md-5">
+              <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                <md-button class="md-raised md-primary">
+                  Live
+                </md-button>
+              </section>
+              <div class="panel panel-default">
+                <div layout-padding>
+                  <div class="fixtures">
+                    <div class="country">
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <div class="title-country">{{match.team1.name}} <span ng-show="match.favorite==1">(F)</span></div>
+                        </div>
+                        <div class="col-xs-6">
+                          <div class="title-country">{{match.team2.name}} <span ng-show="match.favorite==2">(F)</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="country-form">
+                      <form name="matchForm">
+                        <div layout-gt-sm="row">
+                          <md-input-container class="md-block" flex-gt-sm>
+                            <label>Back Rates</label>
+                            <input type="text" name="rate1" ng-model="match.matchRate1">
+                            <div ng-messages="matchForm.rate1.$error">
+                              <div ng-message="required">This is required.</div>
                             </div>
+                          </md-input-container>
+                          <md-input-container class="md-block" flex-gt-sm>
+                            <label>Back Rates</label>
+                            <input type="text" name="rate2" ng-model="match.matchRate3">
+                            <div ng-messages="matchForm.rate2.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
                         </div>
+                        <div layout-gt-sm="row">
+                          <md-input-container class="md-block" flex-gt-sm>
+                            <label>Lay Rates</label>
+                            <input type="text" name="rate3" ng-model="match.matchRate2" readonly="">
+                            <div ng-messages="matchForm.rate3.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                          <md-input-container class="md-block" flex-gt-sm>
+                            <label>Lay Rates</label>
+                            <input type="text" name="rate4" ng-model="match.matchRate4" readonly="">
+                            <div ng-messages="matchForm.rate4.$error">
+                              <div ng-message="required">This is required.</div>
+                            </div>
+                          </md-input-container>
+                        </div>
+                      </form>
                     </div>
-                    <div class="text-center">
-                        <md-button class="md-raised md-primary" ng-click="submitteamForm(match)">Save</md-button>
-                    </div>
+                  </div>
                 </div>
-            </md-content>
+              </div>
+            </div>
+          </div>
+          <div layout="row">
+            <div class="col-md-6">
+              <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
+                Wicket
+              </md-switch>
+            </div>
+            <div class="col-md-6">
+              <div class="text-center">
+                <md-button class="md-raised md-primary" ng-click="submitteamForm(match)">Save</md-button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4" layout-padding>
-            <md-content class="">
-                <div class="brd">
-                    <div class="panel-abt">
-                        <md-tabs md-dynamic-height md-border-bottom>
-                            <md-tab label="FIRST INNING" md-active="!match.isSecondInning">
-                                <div layout-fill class="inset" ng-cloak paddi layout-align="space-around">
-                                    <md-content>
-                                        <div class="inn-det">
-                                            <div class="list-data">
-                                                <ul  class="sessionData clearfix"  ng-repeat="ses in match.session1|orderBy : ses.over:true">
-                                                    <li>
-                                                        <div class="ovr f18 text-up color-black">
-                                                            {{ses.over}}
-                                                            (ovr)
-                                                        </div>
-                                                    </li>
+      </md-content>
+    </div>
+    <div class="col-md-4" layout-padding>
+      <md-content class="">
+        <div class="brd">
+          <div class="panel-abt">
+            <md-tabs md-dynamic-height md-border-bottom>
+              <md-tab label="FIRST INNING" md-active="!match.isSecondInning">
+                <div layout-fill class="inset" ng-cloak paddi layout-align="space-around">
+                  <md-content>
+                    <div class="inn-det">
+                      <div class="list-data">
+                        <ul class="sessionData clearfix" ng-repeat="ses in match.session1|orderBy : ses.over:true">
+                          <li>
+                            <div class="ovr f18 text-up color-black">
+                              {{ses.over}} (ovr)
+                            </div>
+                          </li>
 
-                                                    <li>
-                                                        <div class="div-rates f24 " ng-class="{'color-green':match.inning1Overs >= ses.over,'postive-color':match.inning1Overs < ses.over}">
-                                                            {{ses.run}}
-                                                            <span ng-if="match.inning1Overs < ses.over">-
+                          <li>
+                            <div class="div-rates f24 " ng-class="{'color-green':match.inning1Overs >= ses.over,'postive-color':match.inning1Overs < ses.over}">
+                              {{ses.run}}
+                              <span ng-if="match.inning1Overs < ses.over">-
                                                                 {{ses.run + 1}}</span>
-                                                            <span class="f16" ng-if="match.inning1Overs >= ses.over">(Completed)</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </md-content>
-                                </div>
-                            </md-tab>
-                            <md-tab label="Second INNING" md-active="match.isSecondInning">
-                                <div class="inset" ng-cloak paddi layout-align="space-around">
-                                    <md-content>
-
-                                        <div class="inn-det">
-                                            <div class="list-data">
-                                                <ul class="sessionData clearfix" ng-repeat="ses in match.session2|orderBy : ses.over:true">
-                                                    <li>
-                                                        <div class="ovr f18 text-up color-black">
-                                                            {{ses.over}}
-                                                            (ovr)
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="div-rates f24 " ng-class="{'color-green':match.inning2Overs >= ses.over,'postive-color':match.inning2Overs < ses.over}">
-                                                            {{ses.run}}
-                                                            <span ng-if="match.inning2Overs < ses.over">-
-                                                                {{ses.run + 1}}</span>
-                                                            <span class="f16" ng-if="match.inning2Overs >= ses.over">(Completed)</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </md-content>
-                                </div>
-                            </md-tab>
-                        </md-tabs>
+                              <span class="f16" ng-if="match.inning1Overs >= ses.over">(Completed)</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
+
+                  </md-content>
                 </div>
-            </md-content>
-            <md-content>
-                <div class="editmatch-text">
-                    <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls >0">
+              </md-tab>
+              <md-tab label="Second INNING" md-active="match.isSecondInning">
+                <div class="inset" ng-cloak paddi layout-align="space-around">
+                  <md-content>
+
+                    <div class="inn-det">
+                      <div class="list-data">
+                        <ul class="sessionData clearfix" ng-repeat="ses in match.session2|orderBy : ses.over:true">
+                          <li>
+                            <div class="ovr f18 text-up color-black">
+                              {{ses.over}} (ovr)
+                            </div>
+                          </li>
+
+                          <li>
+                            <div class="div-rates f24 " ng-class="{'color-green':match.inning2Overs >= ses.over,'postive-color':match.inning2Overs < ses.over}">
+                              {{ses.run}}
+                              <span ng-if="match.inning2Overs < ses.over">-
+                                                                {{ses.run + 1}}</span>
+                              <span class="f16" ng-if="match.inning2Overs >= ses.over">(Completed)</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                  </md-content>
+                </div>
+              </md-tab>
+            </md-tabs>
+          </div>
+        </div>
+      </md-content>
+      <md-content>
+        <div class="editmatch-text">
+          <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls >0">
                         <span ng-if="match.bat==1">{{match.team1.name}}</span>
                         <span ng-if="match.bat==2">{{match.team2.name}}</span>
                         need
@@ -306,19 +293,41 @@
                             balls</span>
                         to win
                     </h4>
-                    <h4 class="font-light text-color" ng-if="match.remainingRuns <= 0">
+          <h4 class="font-light text-color" ng-if="match.remainingRuns <= 0">
                         <span>{{match.team1.name}}</span>
                         <span ng-if="match.bat==2">{{match.team2.name}}</span>
                         <span class="f20 postive-color">WON</span>
                     </h4>
-                    <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls <=0">
+          <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls <=0">
                         <span>{{match.team1.name}}</span>
                         <span ng-if="match.bat==2">{{match.team2.name}}</span>
                         <span class="f20 postive-color">LOST</span>
                     </h4>
-                </div>
-            </md-content>
         </div>
+      </md-content>
+      <md-content>
+        <div class="panel panel-default" layout-padding>
+          <div class="country-form">
+            <form name="matchForm1">
+              <h4 class="title-country">D/L</h4>
+              <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>New Over</label>
+                  <input type="text" name="rate1" ng-model="newmatch.newOvers">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>New Score</label>
+                  <input type="text" name="rate2" ng-model="newmatch.newscorce">
+                </md-input-container>
+              </div>
+              <div class="text-center">
+                <md-button class="md-raised md-primary" ng-click="submitteamForm(match)">Save</md-button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </md-content>
+    </div>
 
-        <command></command>
-    </section>
+    <command></command>
+</section>
