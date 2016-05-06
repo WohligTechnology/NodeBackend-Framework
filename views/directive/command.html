@@ -1,14 +1,22 @@
 <div class="cmd">
   <div class="brd">
     <div class="layout-padding">
-      <div layout="row">
-        <md-input-container class="md-block search" flex="66" aria-label="Command" layout-padding>
-          Command: &nbsp;&nbsp;
-          <input name="team2" ng-model="command.input" ng-keyup="commandChange($event)">
+      <div layout="row" class="form-horizontal">
+        <md-input-container class="md-block search" flex="66" aria-label="Command">
+          <div class="row">
+            <div class="col-sm-2 control-label">Command:</div>
+            <div class="col-md-10">
+              <input name="team2" ng-model="command.input" ng-keyup="commandChange($event)">
+            </div>
+          </div>
         </md-input-container>
-        <md-input-container class="md-block search" flex="33" aria-label="comment" layout-padding>
-          Comment: &nbsp;&nbsp;
-          <input name="comment" ng-model="command.comment" ng-keyup="commandChange($event)">
+        <md-input-container class="md-block search" flex="33" aria-label="comment">
+          <div class="row">
+            <div class="col-sm-3 control-label">Comment:</div>
+            <div class="col-md-9">
+              <input name="comment" ng-model="command.comment" ng-keyup="commandChange($event)">
+            </div>
+          </div>
         </md-input-container>
       </div>
     </div>

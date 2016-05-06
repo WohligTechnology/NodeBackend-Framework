@@ -379,6 +379,26 @@ h4 {
 .country-form .md-errors-spacer {
   min-height: 0;
 }
+.div-rates input {
+  width: 40px;
+  border: 0;
+}
+.ovr table td {
+  border-color: #fff !important;
+  padding: 0 8px !important;
+}
+.inset {
+  height: 145px;
+  overflow-y: scroll;
+}
+.titles-made {
+  .title {
+    margin: 0;
+  }
+md-input-container {
+    margin-bottom: 0;
+  }
+}
 //bootstrap forms
 /* Start writing sass here */
 @import "fancybox-override";

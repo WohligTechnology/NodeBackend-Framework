@@ -50,7 +50,7 @@
             <div class="col-md-6">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>No of Overs</label>
-                <input required type="number" step="any" name="overs" ng-model="project.overs" />
+                <input required type="number" step="any" name="overs" ng-model="project.overs" min="0"/>
                 <div ng-messages="matchForm.overs.$error" ng-if="matchForm.$dirty">
                   <div ng-message="required"> - Please enter a valid overs</div>
                 </div>
@@ -61,10 +61,7 @@
             <div class="col-md-6">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>New Overs</label>
-                <input required type="number" step="any" name="overs" ng-model="project.newOvers" />
-                <div ng-messages="matchForm.newOvers.$error" ng-if="matchForm.$dirty">
-                  <div ng-message="required"> - Please enter a valid overs</div>
-                </div>
+                <input type="number" step="any" name="overs" ng-model="project.newOvers" min="0"/>
               </md-input-container>
             </div>
           </div>
@@ -78,7 +75,7 @@
           <div layout-gt-sm="row">
             <div class="col-md-6">
               <label>FirstBat</label>
-              <md-select name="team1" ng-model="project.firstBat">
+              <md-select name="firstBat" ng-model="project.firstBat">
                 <md-option ng-repeat="teamselect in batFirst" ng-value="teamselect.id">{{teamselect.name}}</md-option>
               </md-select>
             </div>

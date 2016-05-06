@@ -39,37 +39,11 @@
                 <md-tab label="{{match.team1.name}}" md-active="match.bat == 1">
                   <!-- <md-content> -->
                   <md-container class="md-block" layout-align="center center">
-                    <h4 ng-if="match.firstBat==1">First Innings</h4>
-                    <h4 ng-if="match.firstBat==2">Second Innings</h4>
-                  </md-container>
-                  <div class="matchupdates">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Runs</label>
-                          </div>
-                          {{match.team1Runs}}
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Wicket</label>
-                          </div>
-                          {{match.team1Wicket}}
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Overs</label>
-                          </div>
-                          {{match.team1Overs}}
-                        </div>
-                      </div>
+                    <div class="firstBat">
+                      <h4 ng-if="match.firstBat==1">First Innings</h4>
+                      <h4 ng-if="match.firstBat==2">Second Innings</h4>
                     </div>
-                  </div>
+                  </md-container>
                   <form name="matchForm">
                     <div layout-gt-sm="row">
                       <md-input-container class="md-block" flex-gt-sm>
@@ -107,34 +81,6 @@
                     <h4 ng-if="match.firstBat==2">First Innings</h4>
                     <h4 ng-if="match.firstBat==1">Second Innings</h4>
                   </md-container>
-                  <div class="matchupdates">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Runs</label>
-                          </div>
-                          {{match.team2Runs}}
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Wicket</label>
-                          </div>
-                          {{match.team2Wicket}}
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Overs</label>
-                          </div>
-                          {{match.team2Overs}}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <form name="matchForm">
                     <div layout-gt-sm="row">
                       <md-input-container class="md-block" flex-gt-sm>
@@ -165,6 +111,11 @@
                   <!-- </md-content> -->
                 </md-tab>
               </md-tabs>
+              <div>
+                <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
+                  Suspend
+                </md-switch>
+              </div>
             </div>
             <div class="col-md-5">
               <div class="panel panel-default">
@@ -210,12 +161,7 @@
             </div>
           </div>
           <div layout="row">
-            <div class="col-md-6">
-              <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
-                Suspend
-              </md-switch>
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="text-center">
                 <md-button class="md-raised md-primary" ng-click="submitteamForm(match)">Save</md-button>
               </div>
@@ -229,6 +175,7 @@
         <div class="brd">
           <div class="panel-abt">
             <md-tabs md-dynamic-height md-border-bottom>
+              <i class="material-icons">save</i>
               <md-tab label="FIRST INNING" md-active="!match.isSecondInning">
                 <div layout-fill class="inset" ng-cloak paddi layout-align="space-around">
                   <md-content>
@@ -237,13 +184,20 @@
                         <ul class="sessionData clearfix" ng-repeat="ses in match.session1|orderBy : ses.over:true">
                           <li>
                             <div class="ovr f18 text-up color-black">
-                              {{ses.over}} (ovr)
+                              <table class="table">
+                                <tr>
+                                  <td> {{ses.over}}</td>
+                                  <td> (ovr)</td>
+                                </tr>
+                              </table>
+
                             </div>
                           </li>
 
                           <li>
                             <div class="div-rates f24 " ng-class="{'color-green':match.inning1Overs >= ses.over,'postive-color':match.inning1Overs < ses.over}">
-                              {{ses.run}}
+                              <!-- {{ses.run}} -->
+                              <input type="text" placholder="runs" ng-model="ses.run">
                               <span ng-if="match.inning1Overs < ses.over">-
                                                                 {{ses.run + 1}}</span>
                               <span class="f16" ng-if="match.inning1Overs >= ses.over">(Completed)</span>
@@ -265,13 +219,15 @@
                         <ul class="sessionData clearfix" ng-repeat="ses in match.session2|orderBy : ses.over:true">
                           <li>
                             <div class="ovr f18 text-up color-black">
-                              {{ses.over}} (ovr)
+                              <tr>
+                                <td> {{ses.over}}</td>
+                                <td> (ovr)</td>
+                              </tr>
                             </div>
                           </li>
-
                           <li>
                             <div class="div-rates f24 " ng-class="{'color-green':match.inning2Overs >= ses.over,'postive-color':match.inning2Overs < ses.over}">
-                              {{ses.run}}
+                              <input type="text" placholder="runs" ng-model="ses.run">
                               <span ng-if="match.inning2Overs < ses.over">-
                                                                 {{ses.run + 1}}</span>
                               <span class="f16" ng-if="match.inning2Overs >= ses.over">(Completed)</span>
@@ -290,7 +246,7 @@
       </md-content>
       <md-content>
         <div class="panel panel-default" layout-padding>
-          <div class="country-form">
+          <div class="country-form titles-made">
             <form name="matchForm1">
               <h4 class="title-country">D/L</h4>
               <div layout-gt-sm="row">
@@ -300,7 +256,7 @@
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
                   <label>New Score</label>
-                  <input type="text" name="rate2" ng-model="newmatch.newscorce">
+                  <input type="text" name="rate2" ng-model="newmatch.newScorce">
                 </md-input-container>
               </div>
               <div class="text-center">
