@@ -514,10 +514,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.matchSave = function(match) {
       var newMatch = {
         "_id": match._id,
-        team1score: match.team1score,
+        team1Runs: match.team1Runs,
         team1Wicket: match.team1Wicket,
         team1Overs: match.team1Overs,
-        team2score: match.team2score,
+        team2Runs: match.team2Runs,
         team2Wicket: match.team2Wicket,
         team2Overs: match.team2Overs,
         rate1: 1,
@@ -539,8 +539,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       console.log(overs);
       console.log(runs);
       $http.post(adminURL + "session/changeDlruns", {
-        "changeDlruns": runs,
-        "changeNewOvers": overs,
+        "changeDlruns": runs+"",
+        "changeNewOvers": overs+"",
         "_id": $stateParams.id,
       }).then(function() {
         console.log("Change the Suspended");
@@ -647,161 +647,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Matches");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-<<<<<<< HEAD
-    TemplateService.header = "";
-    TemplateService.footer = "";
-    TemplateService.sidemenu = "";
-})
 
-.controller('MatchUpdatesCtrl', function($http, $scope, TemplateService, NavigationService, $timeout, $stateParams, $mdToast, $document, $filter) {
-        //Used to name the .html file
-
-        $scope.changeSuspend = function(value) {
-            $http.post(adminURL + "session/changeSuspended", {
-                "_id": $stateParams.id,
-            }).then(function() {
-                console.log("Change the Suspended");
-            });
-        };
-        var form = {
-            "_id": $stateParams.id
-        };
-
-
-        $scope.matchSave = function(match) {
-            var newMatch = {
-                "_id": match._id,
-                team1Runs: match.team1Runs,
-                team1Wicket: match.team1Wicket,
-                team1Overs: match.team1Overs,
-                team2Runs: match.team2Runs,
-                team2Wicket: match.team2Wicket,
-                team2Overs: match.team2Overs,
-                rate1: 1,
-                rate2: 1
-            };
-            if(match.favorite==1)
-            {
-              newMatch.rate1 = match.matchRate1;
-              newMatch.rate2 = match.matchRate2;
-            }
-            else {
-              newMatch.rate1 = match.matchRate3;
-              newMatch.rate2 = match.matchRate4;
-            }
-            $http.post(adminURL + "match/save", newMatch).then(function() {
-                console.log("Change the Suspended");
-            });
-        };
-
-        $scope.dlSave = function(overs, runs) {
-            console.log(overs);
-            console.log(runs);
-            $http.post(adminURL + "session/changeDlruns", {
-                "changeDlruns": runs+"",
-                "changeNewOvers": overs+"",
-                "_id": $stateParams.id,
-            }).then(function() {
-                console.log("Change the Suspended");
-            });
-        };
-
-        globalfunction.changeFav = function() {
-            if ($scope.match.favorite == 1) {
-                $scope.match.favorite = 2;
-            } else {
-                $scope.match.favorite = 1;
-
-            }
-            $scope.$apply();
-        };
-
-        $scope.sessionChange = function(key, sessionID, sessionRuns) {
-            console.log(sessionRuns);
-            if (key.keyCode == 13) {
-                $http.post(adminURL + "session/sessionRuns2", {
-                    _id: sessionID,
-                    run: parseInt(sessionRuns)
-                }).then(function() {
-                    console.log("Session Modified Added");
-                });
-            }
-        };
-
-        $scope.tabchange = function(tab, a) {
-            $scope.tab = tab;
-            if (a == 1) {
-                // $ionicScrollDelegate.scrollTop();
-                $scope.classa = "actives";
-                $scope.classb = '';
-            } else {
-                // $ionicScrollDelegate.scrollTop();
-                $scope.classa = '';
-                $scope.classb = "actives";
-            }
-        };
-
-        matchID = $stateParams.id;
-        var SocketFunction = function(data, isSocket) {
-            data.data.session1 = _.filter(data.data.session, function(n) {
-                return n.inning == 1;
-            });
-            data.data.session2 = _.filter(data.data.session, function(n) {
-                return n.inning == 2;
-            });
-            $scope.match = data.data;
-            $scope.match.isSecondInning = $scope.match.bat != $scope.match.firstBat;
-
-            if ($scope.match.firstBat == 1) {
-                $scope.match.inning1Overs = $scope.match.team1Overs;
-                $scope.match.inning2Overs = $scope.match.team2Overs;
-            } else if ($scope.match.firstBat == 2) {
-                $scope.match.inning1Overs = $scope.match.team2Overs;
-                $scope.match.inning2Overs = $scope.match.team1Overs;
-            }
-
-            if ($scope.match.isSecondInning) {
-
-                $scope.match.inning1Overs = 99999;
-
-                // $scope.tabchange('second', 2);
-                if ($scope.match.bat == 1) {
-                    $scope.match.playedBalls = getBalls($scope.match.team1Overs);
-                    $scope.match.currentRuns = $scope.match.team1Runs;
-                    $scope.match.targetRuns = $scope.match.team2Runs + 1;
-                } else if ($scope.match.bat == 2) {
-                    $scope.match.playedBalls = getBalls($scope.match.team2Overs);
-                    $scope.match.currentRuns = $scope.match.team2Runs;
-                    $scope.match.targetRuns = $scope.match.team1Runs + 1;
-                }
-                $scope.match.totalBalls = getBalls($scope.match.newOvers);
-                $scope.match.remainingBalls = $scope.match.totalBalls - $scope.match.playedBalls;
-
-                $scope.match.remainingRuns = $scope.match.targetRuns - $scope.match.currentRuns;
-
-            }
-            if ($scope.match.favorite == 1) {
-                $scope.match.matchRate1 = $filter('number')($scope.match.rate1, 2);
-                $scope.match.matchRate2 = $filter('number')($scope.match.rate2, 2);
-                $scope.match.matchRate3 = $filter('number')(rateCalc($scope.match.matchRate2), 2);
-                $scope.match.matchRate4 = $filter('number')(rateCalc($scope.match.matchRate1), 2);
-            }
-            if ($scope.match.favorite == 2) {
-                $scope.match.matchRate3 = $filter('number')($scope.match.rate1, 2);
-                $scope.match.matchRate4 = $filter('number')($scope.match.rate2, 2);
-
-                $scope.match.matchRate1 = $filter('number')(rateCalc($scope.match.matchRate4), 2);
-                $scope.match.matchRate2 = $filter('number')(rateCalc($scope.match.matchRate3), 2);
-            }
-            console.log($scope.match);
-            $scope.$apply();
-        };
-
-
-        io.socket.on('message', function(data) {
-            SocketFunction(data, true);
-        });
-=======
     $scope.matchForm = {};
     // $scope.teams = [];
     // NavigationService.getTeams(function(data) {
@@ -810,8 +656,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     NavigationService.getOneMatch(form, function(data) {
       SocketFunction(data);
     });
->>>>>>> origin/master
-
 
     $scope.submitteamForm = function(formValid) {
       console.log('form values: ', $scope.project);
