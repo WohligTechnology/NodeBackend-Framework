@@ -50,34 +50,21 @@
             <div class="col-md-6">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>No of Overs</label>
-                <input required type="number" step="any" name="overs" ng-model="project.overs" min="0"/>
+                <input required type="number" step="any" name="overs" ng-model="project.overs" min="0" />
                 <div ng-messages="matchForm.overs.$error" ng-if="matchForm.$dirty">
                   <div ng-message="required"> - Please enter a valid overs</div>
                 </div>
               </md-input-container>
             </div>
           </div>
-          <!-- <div layout-gt-sm="row">
-            <div class="col-md-6">
-              <md-input-container class="md-block" flex-gt-sm>
-                <label>New Overs</label>
-                <input type="number" step="any" name="overs" ng-model="project.newOvers" min="0"/>
-              </md-input-container>
-            </div>
-          </div> -->
-          <!-- <div layout-gt-sm="row">
-            <div class="col-md-6">
-              <label>Status</label>
-              <md-switch ng-model="project.status" aria-label="{{project.status}}" ng-change="onChange(project.status)">
-              </md-switch>
-            </div>
-          </div> -->
           <div layout-gt-sm="row">
             <div class="col-md-6">
-              <label>FirstBat</label>
-              <md-select name="firstBat" ng-model="project.firstBat">
-                <md-option ng-repeat="teamselect in batFirst" ng-value="teamselect.id">{{teamselect.name}}</md-option>
-              </md-select>
+              <md-input-container class="md-block">
+                <label>FirstBat</label>
+                <md-select name="firstBat" ng-model="project.firstBat">
+                  <md-option ng-repeat="teamselect in batFirst" ng-value="teamselect.id">{{teamselect.name}}</md-option>
+                </md-select>
+              </md-input-container>
             </div>
           </div>
         </form>
