@@ -15,7 +15,8 @@
                 <md-tab label="{{match.team1.name}}" md-active="match.bat == 1">
                   <!-- <md-content> -->
                   <md-container class="md-block" layout-align="center center">
-                    <h4>First Innings</h4>
+                    <h4 ng-if="match.firstBat==1">First Innings</h4>
+                    <h4 ng-if="match.firstBat==2">Second Innings</h4>
                   </md-container>
                   <div class="matchupdates">
                     <div class="row">
@@ -79,7 +80,8 @@
                 </md-tab>
                 <md-tab label="{{match.team2.name}}" md-active="match.bat == 2">
                   <md-container class="md-block" layout-align="center center">
-                    <h4>Second Innings</h4>
+                    <h4 ng-if="match.firstBat==2">First Innings</h4>
+                    <h4 ng-if="match.firstBat==1">Second Innings</h4>
                   </md-container>
                   <div class="matchupdates">
                     <div class="row">
@@ -164,14 +166,14 @@
                         <div layout-gt-sm="row">
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Back Rates</label>
-                            <input type="text" name="rate1" ng-model="match.matchRate1">
+                            <input type="text" name="rate1" ng-model="match.matchRate1" ng-disabled="match.favorite == 2">
                             <div ng-messages="matchForm.rate1.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
                           </md-input-container>
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Back Rates</label>
-                            <input type="text" name="rate2" ng-model="match.matchRate3">
+                            <input type="text" name="rate2" ng-model="match.matchRate3" ng-disabled="match.favorite == 1">
                             <div ng-messages="matchForm.rate2.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
@@ -180,14 +182,14 @@
                         <div layout-gt-sm="row">
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Lay Rates</label>
-                            <input type="text" name="rate3" ng-model="match.matchRate2" readonly="">
+                            <input type="text" name="rate3" ng-model="match.matchRate2" ng-disabled="match.favorite == 2">
                             <div ng-messages="matchForm.rate3.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
                           </md-input-container>
                           <md-input-container class="md-block" flex-gt-sm>
                             <label>Lay Rates</label>
-                            <input type="text" name="rate4" ng-model="match.matchRate4" readonly="">
+                            <input type="text" name="rate4" ng-model="match.matchRate4" ng-disabled="match.favorite == 1">
                             <div ng-messages="matchForm.rate4.$error">
                               <div ng-message="required">This is required.</div>
                             </div>
