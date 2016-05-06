@@ -5,7 +5,7 @@
         <div class="md-toolbar-tools">
           <span>Users</span>
           <span flex="" class="flex"></span>
-          <md-button class="md-raised pull-right" ui-sref="createuser">Create User</md-button>
+          <md-button class="md-raised pull-right" ui-sref="createuser">Create</md-button>
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
@@ -61,7 +61,7 @@
                     <md-tooltip md-direction="top">
                       Delete
                     </md-tooltip>
-                    <md-icon class="material-icons md-18" ng-click="deleteUser(user._id)">delete</md-icon>
+                    <md-icon class="material-icons md-18" ng-click="showConfirm(user._id)">delete</md-icon>
                   </md-button>
                 </td>
               </tr>

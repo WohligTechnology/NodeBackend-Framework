@@ -2,7 +2,7 @@ var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngMaterial', 'ngMessages'])
 
 
-.controller('MatchesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('MatchesCtrl', function($scope, TemplateService, NavigationService, $timeout, $mdDialog, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("matches");
   $scope.menutitle = NavigationService.makeactive("Matches");
@@ -25,17 +25,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
   };
   $scope.loadMatches();
-  $scope.deleteMatches = function(id) {
-    NavigationService.deleteMatchesData(id, function(data) {
+  // $scope.deleteMatches = function(id) {
+  //   NavigationService.deleteMatchesData(id, function(data) {
+  //
+  //     if (data.value === true) {
+  //       $scope.loadMatches();
+  //     }
+  //   });
+  // };
 
+  $scope.deleteClicked = function() {
+    NavigationService.deleteMatchesData($scope.deleteId, function(data) {
       if (data.value === true) {
-        $scope.loadMatches();
+        $mdDialog.hide();
+        $state.reload();
       }
+      console.log("Delete Clicked");
     });
+  };
+  $scope.showConfirm = function(id) {
+    $scope.deleteId = id;
+    $mdDialog.show({
+      scope: $scope,
+      templateUrl: 'views/modal/confDelete.html'
+    });
+  };
+  $scope.cancel = function() {
+    $mdDialog.hide();
   };
 })
 
-.controller('AdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+.controller('AdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $mdDialog, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("adminuser");
     $scope.menutitle = NavigationService.makeactive("Admin User");
@@ -58,16 +78,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       });
     };
     $scope.loadAdminUsers();
-    $scope.deleteAdminUsers = function(id) {
-      NavigationService.deleteAdminUsersData(id, function(data) {
-        console.log(data);
+    $scope.deleteClicked = function() {
+      NavigationService.deleteAdminUsersData($scope.deleteId, function(data) {
         if (data.value === true) {
-          $scope.loadAdminUsers();
+          $mdDialog.hide();
+          $state.reload();
         }
+        console.log("Delete Clicked");
       });
     };
+    $scope.showConfirm = function(id) {
+      $scope.deleteId = id;
+      $mdDialog.show({
+        scope: $scope,
+        templateUrl: 'views/modal/confDelete.html'
+      });
+    };
+    $scope.cancel = function() {
+      $mdDialog.hide();
+    };
   })
-  .controller('UserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('UserCtrl', function($scope, TemplateService, NavigationService, $timeout, $mdDialog, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("user");
     $scope.menutitle = NavigationService.makeactive("User");
@@ -90,16 +121,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       });
     };
     $scope.loadUsers();
-    $scope.deleteUser = function(id) {
-      NavigationService.deleteUsersData(id, function(data) {
-        console.log(data);
+    $scope.deleteClicked = function() {
+      NavigationService.deleteUsersData($scope.deleteId, function(data) {
         if (data.value === true) {
-          $scope.loadUsers();
+          $mdDialog.hide();
+          $state.reload();
         }
+        console.log("Delete Clicked");
       });
     };
+    $scope.showConfirm = function(id) {
+      $scope.deleteId = id;
+      $mdDialog.show({
+        scope: $scope,
+        templateUrl: 'views/modal/confDelete.html'
+      });
+    };
+    $scope.cancel = function() {
+      $mdDialog.hide();
+    };
   })
-  .controller('TeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $mdDialog, $mdMedia) {
+  .controller('TeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $mdDialog, $mdMedia, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("team");
     $scope.menutitle = NavigationService.makeactive("Team");
@@ -116,25 +158,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     ];
     $scope.loadTeams = function() {
       NavigationService.getAllTeam(function(data) {
-        console.log(data);
         $scope.teams = data.data;
       });
     };
     $scope.loadTeams();
-    $scope.deleteClicked = function(id) {
-      console.log("Delete Clcieck");
-      NavigationService.deleteTeamData(id, function(data) {
-        console.log(data);
+    $scope.deleteClicked = function() {
+      NavigationService.deleteTeamData($scope.deleteId, function(data) {
         if (data.value === true) {
-          $scope.loadTeam();
+          $mdDialog.hide();
+          $state.reload();
         }
+        console.log("Delete Clicked");
       });
     };
-    $scope.showConfirm = function() {
+    $scope.showConfirm = function(id) {
+      $scope.deleteId = id;
       $mdDialog.show({
         scope: $scope,
         templateUrl: 'views/modal/confDelete.html'
-      })
+      });
+    };
+    $scope.cancel = function() {
+      $mdDialog.hide();
     };
   })
   .controller('CreateTeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -331,7 +376,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 })
 
-.controller('NotificationCtrl', function($scope, TemplateService, NavigationService, $stateParams, $timeout, $state) {
+.controller('NotificationCtrl', function($scope, TemplateService, NavigationService, $stateParams, $timeout, $state, $mdDialog) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("notification");
     $scope.menutitle = NavigationService.makeactive("Notification");
@@ -353,13 +398,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       });
     };
     $scope.loadNotification();
-    $scope.deleteNotification = function(id) {
-      NavigationService.deleteNotificationData(id, function(data) {
-        console.log(data);
+
+    $scope.deleteClicked = function() {
+      NavigationService.deleteNotificationData($scope.deleteId, function(data) {
         if (data.value === true) {
-          $scope.loadNotification();
+          $mdDialog.hide();
+          $state.reload();
         }
+        console.log("Delete Clicked");
       });
+    };
+    $scope.showConfirm = function(id) {
+      $scope.deleteId = id;
+      $mdDialog.show({
+        scope: $scope,
+        templateUrl: 'views/modal/confDelete.html'
+      });
+    };
+    $scope.cancel = function() {
+      $mdDialog.hide();
     };
   })
   .controller('CreateNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {

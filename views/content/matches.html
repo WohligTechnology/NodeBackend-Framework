@@ -5,7 +5,7 @@
         <div class="md-toolbar-tools">
           <span>Matches</span>
           <span flex="" class="flex"></span>
-          <md-button class="md-raised pull-right" ui-sref="creatematch">Create Match</md-button>
+          <md-button class="md-raised pull-right" ui-sref="creatematch">Create</md-button>
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
@@ -67,7 +67,7 @@
                     </md-tooltip>
                     <md-icon class="material-icons md-18" ui-sref="editmatch({id:match._id})">mode_edit</md-icon>
                   </md-button>
-                  <md-button class="md-icon-button" aria-label="Delete" ng-click="deleteMatches(match._id)">
+                  <md-button class="md-icon-button" aria-label="Delete" ng-click="showConfirm(match._id)">
                     <md-tooltip md-direction="top">
                       Delete
                     </md-tooltip>

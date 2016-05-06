@@ -5,7 +5,7 @@
         <div class="md-toolbar-tools">
           <span>Notification</span>
           <span flex="" class="flex"></span>
-          <md-button class="md-raised pull-right" ui-sref="createnotification">Create Notification</md-button>
+          <md-button class="md-raised pull-right" ui-sref="createnotification">Create</md-button>
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
@@ -35,7 +35,7 @@
                     </md-checkbox>
                   </div>
                 </th> -->
-                <th>title</th>
+                <th>Title</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -60,7 +60,7 @@
                     <md-tooltip md-direction="top">
                       Delete
                     </md-tooltip>
-                    <md-icon class="material-icons md-18" ng-click="deleteNotification(notification._id)">delete</md-icon>
+                    <md-icon class="material-icons md-18" ng-click="showConfirm(notification._id)">delete</md-icon>
                   </md-button>
                 </td>
               </tr>

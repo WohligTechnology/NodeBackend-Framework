@@ -5,7 +5,7 @@
         <div class="md-toolbar-tools">
           <span>Teams</span>
           <span flex="" class="flex"></span>
-          <md-button class="md-raised pull-right" ui-sref="createteam">Create Team</md-button>
+          <md-button class="md-raised pull-right" ui-sref="createteam">Create</md-button>
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
@@ -54,7 +54,7 @@
                       Delete
                     </md-tooltip>
                     <!-- ng-click="deleteTeam(team._id)" -->
-                    <md-icon class="material-icons md-18"  ng-click="showConfirm($event)">delete</md-icon>
+                    <md-icon class="material-icons md-18"  ng-click="showConfirm(team._id)">delete</md-icon>
                   </md-button>
                 </td>
               </tr>

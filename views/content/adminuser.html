@@ -5,7 +5,7 @@
         <div class="md-toolbar-tools">
           <span>Admin User</span>
           <span flex="" class="flex"></span>
-          <md-button class="md-raised pull-right" ui-sref="createadminuser">Create Admin User</md-button>
+          <md-button class="md-raised pull-right" ui-sref="createadminuser">Create</md-button>
         </div>
       </md-toolbar>
       <div layout-padding class="brd">
@@ -57,7 +57,7 @@
                     </md-tooltip>
                     <md-icon class="material-icons md-18" ui-sref="editadminuser({id:adminuser._id})">mode_edit</md-icon>
                   </md-button>
-                  <md-button class="md-icon-button" aria-label="Delete" ng-click="deleteAdminUsers(adminuser._id)">
+                  <md-button class="md-icon-button" aria-label="Delete" ng-click="showConfirm(adminuser._id)">
                     <md-tooltip md-direction="top">
                       Delete
                     </md-tooltip>
