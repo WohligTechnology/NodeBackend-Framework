@@ -405,6 +405,15 @@ h4 {
     margin-bottom: 0;
   }
 }
+.forScores md-tab-content {
+    overflow: visible !important;
+    .firstBat {
+        position: absolute;
+        right: 0px;
+        top: -44px;
+    }
+}
+
 //bootstrap forms
 /* Start writing sass here */
 @import "fancybox-override";
