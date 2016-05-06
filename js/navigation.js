@@ -338,6 +338,7 @@ var navigationservice = angular.module('navigationservice', [])
           "status": formData.status,
           "team1": formData.team1,
           "team2": formData.team2,
+          "firstBat": formData.firstBat,
           "overs": formData.overs,
         }
       }).success(callback);
@@ -369,6 +370,7 @@ var navigationservice = angular.module('navigationservice', [])
           "status": formData.status,
           "team1": formData.team1,
           "team2": formData.team2,
+          "firstBat": formData.firstBat,
           "overs": formData.overs,
         }
       }).success(callback);

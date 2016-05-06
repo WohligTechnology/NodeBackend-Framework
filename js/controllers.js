@@ -441,6 +441,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.matchForm = {};
+  $scope.project = {};
   $scope.page = {
     header: "Create Match"
   };
@@ -448,9 +449,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   NavigationService.getAllTeam(function(data) {
     $scope.teams = data.data;
   });
-  $scope.submitForm = function(formValid) {
-    console.log('form values: ', formValid);
-    NavigationService.matchesCreateSubmit(formValid, function(data) {
+  $scope.submitForm = function(project) {
+    console.log(project);
+    var project2 = _.clone(project);
+    NavigationService.matchesCreateSubmit(project2, function(data) {
+
       console.log(data);
       $state.go("matches");
     });
@@ -477,8 +480,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   });
 
   NavigationService.getOneMatch({"_id":$stateParams.id}, function(data) {
+
     $scope.project = data.data;
-    console.log(data.data);
+    $scope.project.team1 = $scope.project.team1._id;
+    $scope.project.team2 = $scope.project.team2._id;
+    $scope.project.firstBat = $scope.project.firstBat._id;
+    $scope.$apply();
   });
 
   $scope.submitForm = function(formValid) {

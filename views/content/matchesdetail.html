@@ -13,8 +13,8 @@
               <md-input-container class="md-block">
                 <label>Team1</label>
                 <!-- {{project}} -->
-                <md-select name="team1" ng-model="project.team1" ng-if="teams" required ng-model-options="{trackBy: '$value._id'}">
-                  <md-option ng-repeat="team in teams" ng-value="team" ng-if="team._id !== project.team2">{{team.name}}</md-option>
+                <md-select name="team1" ng-model="project.team1" ng-if="teams" required >
+                  <md-option ng-repeat="team in teams" ng-value="team._id" ng-if="team._id != project.team2">{{team.name}}</md-option>
                 </md-select>
                 <div class="errors" ng-messages="matchForm.team1.$error" ng-if="matchForm.$dirty">
                   <div ng-message="required">Required</div>
@@ -26,8 +26,8 @@
             <div class="col-md-6">
               <md-input-container class="md-block">
                 <label>Team2</label>
-                <md-select name="team2" ng-model="project.team2" ng-if="teams" required ng-model-options="{trackBy: '$value._id'}">
-                  <md-option ng-repeat="team in teams" ng-value="team" ng-if="team._id !== project.team1">{{team.name}}</md-option>
+                <md-select name="team2" ng-model="project.team2" ng-if="teams" required>
+                  <md-option ng-repeat="team in teams" ng-value="team._id" ng-if="team._id != project.team1">{{team.name}}</md-option>
                 </md-select>
                 <div class="errors" ng-messages="matchForm.team1.$error" ng-if="matchForm.$dirty">
                   <div ng-message="required">Required</div>
@@ -62,6 +62,14 @@
               <label>Status</label>
               <md-switch ng-model="project.status" aria-label="{{project.status}}" ng-change="onChange(project.status)">
               </md-switch>
+            </div>
+          </div>
+          <div layout-gt-sm="row">
+            <div class="col-md-6">
+              <label>FirstBat</label>
+              <md-select name="team1" ng-model="project.firstBat" ng-if="teams" required >
+                <md-option ng-repeat="team in teams" ng-value="team._id" ng-if="team._id == project.team2 || team._id == project.team1">{{team.name}}</md-option>
+              </md-select>
             </div>
           </div>
         </form>
