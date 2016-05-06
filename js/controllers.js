@@ -432,9 +432,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.submitForm = function(project) {
     console.log(project);
     var project2 = _.clone(project);
+    project2.newOvers = project2.overs;
+
     NavigationService.matchesCreateSubmit(project2, function(data) {
-      project2.newOvers = project2.overs;
-      console.log(data);
+      console.log(project2);
       $state.go("matches");
     });
 
