@@ -359,7 +359,8 @@ ul.sessionData {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 20px;
+  font-size: 14px;
+  font-weight: 600;
   li {
     margin-left: 0;
     padding: 0;
@@ -367,8 +368,9 @@ ul.sessionData {
     width: 50%;
     .color-green {
       color: green;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 200%;
+      font-weight: 600;
     }
   }
 }
@@ -382,6 +384,10 @@ h4 {
 .div-rates input {
   width: 40px;
   border: 0;
+  padding-left: 3px;
+  &:focus{
+    outline: none;
+  }
 }
 .ovr table td {
   border-color: #fff !important;
@@ -395,7 +401,7 @@ h4 {
   .title {
     margin: 0;
   }
-md-input-container {
+  md-input-container {
     margin-bottom: 0;
   }
 }
