@@ -45,6 +45,16 @@ command.directive('command', function($document, $http) {
             scope.command = {
                 input: ""
             };
+            scope.commentChange = function(key,comment) {
+                if (key.keyCode == 13) {
+                  $http.post(adminURL + "session/changeComment", {
+                      _id: matchID,
+                      changeComment: comment
+                  }).then(function() {
+                    console.log("Comment Added");
+                  });
+                }
+            };
             scope.commandChange = function(key) {
                 var returnVal = {};
                 if (key.keyCode == 13) {
@@ -70,7 +80,7 @@ command.directive('command', function($document, $http) {
                                         returnVal.incrementBall = 1;
                                     }
                                     if (extractedChar.string == "SUS" || extractedChar.string == "OPEN") {
-                                        returnVal.suspended = 1;
+                                        scope.changeSuspend();
                                     }
                                     if (extractedChar.string == "MW") {
                                         returnVal.incrementWicket = -1;

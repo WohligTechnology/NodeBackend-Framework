@@ -1,13 +1,13 @@
 <section class="container-fluid">
-  <!-- <div layout="column" ng-cloak> -->
-  <div class="row">
-    <div class="col-md-8">
-      <md-content layout-padding>
-        <md-toolbar class="md-hue-2 md-whiteframe-1dp">
-          <div class="md-toolbar-tools">
-            <span>Match Updates</span>
-            <div class="editmatch-text">
-              <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls >0">
+    <!-- <div layout="column" ng-cloak> -->
+    <div class="row">
+        <div class="col-md-8">
+            <md-content layout-padding>
+                <md-toolbar class="md-hue-2 md-whiteframe-1dp">
+                    <div class="md-toolbar-tools">
+                        <span>Match Updates</span>
+                        <div class="editmatch-text">
+                            <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls >0">
                                 <span ng-if="match.bat==1">{{match.team1.name}}</span>
                                 <span ng-if="match.bat==2">{{match.team2.name}}</span>
                                 need
@@ -19,264 +19,259 @@
                                     balls</span>
                                 to win
                             </h4>
-              <h4 class="font-light text-color" ng-if="match.remainingRuns <= 0">
+                            <h4 class="font-light text-color" ng-if="match.remainingRuns <= 0">
                                 <span>{{match.team1.name}}</span>
                                 <span ng-if="match.bat==2">{{match.team2.name}}</span>
                                 <span class="f20 postive-color">WON</span>
                             </h4>
-              <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls <=0">
+                            <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls <=0">
                                 <span>{{match.team1.name}}</span>
                                 <span ng-if="match.bat==2">{{match.team2.name}}</span>
                                 <span class="f20 postive-color">LOST</span>
                             </h4>
-            </div>
-          </div>
-        </md-toolbar>
-        <div layout-padding class="brd">
-          <div class="row">
-            <div class="col-md-7 forScores">
-              <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab label="{{match.team1.name}}" md-active="match.bat == 1">
-                  <!-- <md-content> -->
-                  <md-container class="md-block" layout-align="center center">
-                    <div class="firstBat">
-                      <h4 ng-if="match.firstBat==1">First Innings</h4>
-                      <h4 ng-if="match.firstBat==2">Second Innings</h4>
+                        </div>
                     </div>
-                  </md-container>
-                  <form name="matchForm" class="mr10">
-                    <div layout-gt-sm="row">
-                      <md-input-container class="md-block" flex-gt-sm>
-                        <label>No of Runs</label>
-                        <input required type="text" name="team1score" ng-model="match.team2score" />
-                        <!-- {{match.team1score}} -->
-                        <div ng-messages="matchForm.team1score.$error">
-                          <div ng-message="required">This is required.</div>
-                        </div>
-                      </md-input-container>
-                      <md-input-container class="md-block" flex-gt-sm>
-                        <label>Wickets</label>
-                        <input required type="number" step="any" name="team1Wicket" ng-model="match.team1Wicket" />
-                        <div ng-messages="matchForm.team1Wicket.$error">
-                          <div ng-message="required">This is required.</div>
-                        </div>
-                      </md-input-container>
-                      <md-input-container class="md-block" flex-gt-sm>
-                        <label>Overs</label>
-                        <input required type="number" step="any" name="team1Overs" ng-model="match.team1Overs" min="0" max="100" />
-                        <div ng-messages="matchForm.team1Overs.$error">
-                          <div ng-message="required">This is required.</div>
-                          <div ng-message="max">Over Limit</div>
-                        </div>
-                      </md-input-container>
-                    </div>
-                    <!-- <md-input-container class="md-block">
+                </md-toolbar>
+                <div layout-padding class="brd">
+                    <div class="row">
+                        <div class="col-md-7 forScores" ng-if="match.bat">
+                            <md-tabs md-dynamic-height md-border-bottom>
+                                <md-tab label="{{match.team1.name}}" md-active="match.bat == 1">
+                                    <!-- <md-content> -->
+                                    <md-container class="md-block" layout-align="center center">
+                                        <div class="firstBat">
+                                            <h4 ng-if="match.firstBat==1">First Innings</h4>
+                                            <h4 ng-if="match.firstBat==2">Second Innings</h4>
+                                        </div>
+                                    </md-container>
+                                    <form name="matchForm" class="mr10">
+                                        <div layout-gt-sm="row">
+                                            <md-input-container class="md-block" flex-gt-sm>
+                                                <label>No of Runs</label>
+                                                <input required type="text" name="team1score" ng-model="match.team2score"/>
+                                                <!-- {{match.team1score}} -->
+                                                <div ng-messages="matchForm.team1score.$error">
+                                                    <div ng-message="required">This is required.</div>
+                                                </div>
+                                            </md-input-container>
+                                            <md-input-container class="md-block" flex-gt-sm>
+                                                <label>Wickets</label>
+                                                <input required type="number" step="any" name="team1Wicket" ng-model="match.team1Wicket"/>
+                                                <div ng-messages="matchForm.team1Wicket.$error">
+                                                    <div ng-message="required">This is required.</div>
+                                                </div>
+                                            </md-input-container>
+                                            <md-input-container class="md-block" flex-gt-sm>
+                                                <label>Overs</label>
+                                                <input required type="number" step="any" name="team1Overs" ng-model="match.team1Overs" min="0" max="100"/>
+                                                <div ng-messages="matchForm.team1Overs.$error">
+                                                    <div ng-message="required">This is required.</div>
+                                                    <div ng-message="max">Over Limit</div>
+                                                </div>
+                                            </md-input-container>
+                                        </div>
+                                        <!-- <md-input-container class="md-block">
                                             <label>Comment</label>
                                             <input type="text" name="Comment" ng-model="match.comment"/>
                                         </md-input-container> -->
-                  </form>
-                </md-tab>
-                <md-tab label="{{match.team2.name}}" md-active="match.bat == 2">
-                  <md-container class="md-block" layout-align="center center">
-                    <div class="firstBat">
-                      <h4 ng-if="match.firstBat==2">First Innings</h4>
-                      <h4 ng-if="match.firstBat==1">Second Innings</h4>
-                    </div>
-                  </md-container>
-                  <form name="matchForm" class="mr10">
-                    <div layout-gt-sm="row">
-                      <md-input-container class="md-block" flex-gt-sm>
-                        <label>No of Runs</label>
-                        <input required type="text" name="team2score" ng-model="match.team2score" />
-                        <!-- {{match.team1score}} -->
-                        <div ng-messages="matchForm.team2score.$error">
-                          <div ng-message="required">This is required.</div>
-                        </div>
-                      </md-input-container>
-                      <md-input-container class="md-block" flex-gt-sm>
-                        <label>Wickets</label>
-                        <input required type="number" step="any" name="team1Wicket" ng-model="match.team2Wicket" />
-                        <div ng-messages="matchForm.team2Wicket.$error">
-                          <div ng-message="required">This is required.</div>
-                        </div>
-                      </md-input-container>
-                      <md-input-container class="md-block" flex-gt-sm>
-                        <label>Overs</label>
-                        <input required type="number" step="any" name="team1Overs" ng-model="match.team2Overs" min="0" max="100" />
-                        <div ng-messages="matchForm.team2Overs.$error">
-                          <div ng-message="required">This is required.</div>
-                          <div ng-message="max">Over Limit</div>
-                        </div>
-                      </md-input-container>
-                    </div>
-                  </form>
-                  <!-- </md-content> -->
-                </md-tab>
-              </md-tabs>
-              <div>
-                <md-switch class="margin-zero" ng-model="match.status" aria-label="status">
-                  Suspend
-                </md-switch>
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="panel panel-default">
-                <div layout-padding>
-                  <div class="fixtures">
-                    <div class="country">
-                      <div class="row">
-                        <div class="col-xs-6">
-                          <div class="title-country">{{match.team1.name}}
-                            <span ng-show="match.favorite==1">(F)</span>
-                          </div>
-                        </div>
-                        <div class="col-xs-6">
-                          <div class="title-country">{{match.team2.name}}
-                            <span ng-show="match.favorite==2">(F)</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="country-form">
-                      <form name="matchForm">
-                        <div layout-gt-sm="row">
-                          <md-input-container class="md-block" flex-gt-sm>
-                            <label>Back Rates</label>
-                            <input type="text" name="rate1" ng-model="match.matchRate1" ng-disabled="match.favorite == 2">
-                          </md-input-container>
-                          <md-input-container class="md-block" flex-gt-sm>
-                            <label>Back Rates</label>
-                            <input type="text" name="rate2" ng-model="match.matchRate3" ng-disabled="match.favorite == 1">
-                          </md-input-container>
-                        </div>
-                        <div layout-gt-sm="row">
-                          <md-input-container class="md-block" flex-gt-sm>
-                            <label>Lay Rates</label>
-                            <input type="text" name="rate3" ng-model="match.matchRate2" ng-disabled="match.favorite == 2">
-                          </md-input-container>
-                          <md-input-container class="md-block" flex-gt-sm>
-                            <label>Lay Rates</label>
-                            <input type="text" name="rate4" ng-model="match.matchRate4" ng-disabled="match.favorite == 1">
-                          </md-input-container>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div layout="row">
-            <div class="col-md-12">
-              <div class="text-center">
-                <md-button class="md-raised md-primary" ng-click="submitteamForm(match)">Save</md-button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </md-content>
-    </div>
-    <div class="col-md-4" layout-padding>
-      <md-content class="">
-        <div class="brd">
-          <div class="panel-abt">
-            <md-tabs md-dynamic-height md-border-bottom>
-              <i class="material-icons">save</i>
-              <md-tab label="FIRST INNING" md-active="!match.isSecondInning">
-                <div layout-fill class="inset" ng-cloak paddi layout-align="space-around">
-                  <md-content>
-                    <div class="inn-det">
-                      <div class="list-data">
-                        <ul class="sessionData clearfix" ng-repeat="ses in match.session1|orderBy : ses.over:true">
-                          <li>
-                            <div class="ovr f18 text-up color-black">
-                              <table class="table">
-                                <tr>
-                                  <td>
-                                    {{ses.over}}</td>
-                                  <td>
-                                    (ovr)</td>
-                                </tr>
-                              </table>
-
+                                    </form>
+                                </md-tab>
+                                <md-tab label="{{match.team2.name}}" md-active="match.bat == 2">
+                                    <md-container class="md-block" layout-align="center center">
+                                        <div class="firstBat">
+                                            <h4 ng-if="match.firstBat==2">First Innings</h4>
+                                            <h4 ng-if="match.firstBat==1">Second Innings</h4>
+                                        </div>
+                                    </md-container>
+                                    <form name="matchForm" class="mr10">
+                                        <div layout-gt-sm="row">
+                                            <md-input-container class="md-block" flex-gt-sm>
+                                                <label>No of Runs</label>
+                                                <input required type="text" name="team2score" ng-model="match.team2score"/>
+                                                <!-- {{match.team1score}} -->
+                                                <div ng-messages="matchForm.team2score.$error">
+                                                    <div ng-message="required">This is required.</div>
+                                                </div>
+                                            </md-input-container>
+                                            <md-input-container class="md-block" flex-gt-sm>
+                                                <label>Wickets</label>
+                                                <input required type="number" step="any" name="team1Wicket" ng-model="match.team2Wicket"/>
+                                                <div ng-messages="matchForm.team2Wicket.$error">
+                                                    <div ng-message="required">This is required.</div>
+                                                </div>
+                                            </md-input-container>
+                                            <md-input-container class="md-block" flex-gt-sm>
+                                                <label>Overs</label>
+                                                <input required type="number" step="any" name="team1Overs" ng-model="match.team2Overs" min="0" max="100"/>
+                                                <div ng-messages="matchForm.team2Overs.$error">
+                                                    <div ng-message="required">This is required.</div>
+                                                    <div ng-message="max">Over Limit</div>
+                                                </div>
+                                            </md-input-container>
+                                        </div>
+                                    </form>
+                                    <!-- </md-content> -->
+                                </md-tab>
+                            </md-tabs>
+                            <div>
+                                <md-switch class="margin-zero" ng-model="match.suspended" aria-label="status" ng-change="changeSuspend(match.suspended)">
+                                    Suspend
+                                </md-switch>
                             </div>
-                          </li>
-
-                          <li>
-                            <div class="div-rates f24 " ng-class="{'color-green':match.inning1Overs >= ses.over,'postive-color':match.inning1Overs < ses.over}">
-                              <!-- {{ses.run}} -->
-                              <input type="text" placholder="runs" ng-model="ses.run">
-                              <span ng-if="match.inning1Overs < ses.over">-
+                        </div>
+                        <div class="col-md-5">
+                            <div class="panel panel-default">
+                                <div layout-padding>
+                                    <div class="fixtures">
+                                        <div class="country">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <div class="title-country">{{match.team1.name}}
+                                                        <span ng-show="match.favorite==1">(F)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="title-country">{{match.team2.name}}
+                                                        <span ng-show="match.favorite==2">(F)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="country-form">
+                                            <form name="matchForm">
+                                                <div layout-gt-sm="row">
+                                                    <md-input-container class="md-block" flex-gt-sm>
+                                                        <label>Back Rates</label>
+                                                        <input type="text" name="rate1" ng-model="match.matchRate1" ng-disabled="match.favorite == 2">
+                                                    </md-input-container>
+                                                    <md-input-container class="md-block" flex-gt-sm>
+                                                        <label>Back Rates</label>
+                                                        <input type="text" name="rate2" ng-model="match.matchRate3" ng-disabled="match.favorite == 1">
+                                                    </md-input-container>
+                                                </div>
+                                                <div layout-gt-sm="row">
+                                                    <md-input-container class="md-block" flex-gt-sm>
+                                                        <label>Lay Rates</label>
+                                                        <input type="text" name="rate3" ng-model="match.matchRate2" ng-disabled="match.favorite == 2">
+                                                    </md-input-container>
+                                                    <md-input-container class="md-block" flex-gt-sm>
+                                                        <label>Lay Rates</label>
+                                                        <input type="text" name="rate4" ng-model="match.matchRate4" ng-disabled="match.favorite == 1">
+                                                    </md-input-container>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div layout="row">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <md-button class="md-raised md-primary" ng-click="matchSave(match)">Save</md-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </md-content>
+        </div>
+        <div class="col-md-4" layout-padding>
+            <md-content class="">
+                <div class="brd">
+                    <div class="panel-abt">
+                        <md-tabs md-dynamic-height md-border-bottom>
+                            <i class="material-icons">save</i>
+                            <md-tab label="FIRST INNING" md-active="!match.isSecondInning">
+                                <div layout-fill class="inset" ng-cloak paddi layout-align="space-around">
+                                    <md-content>
+                                        <div class="inn-det">
+                                            <div class="list-data">
+                                                <ul class="sessionData clearfix" ng-repeat="ses in match.session1|orderBy : ses.over:true">
+                                                    <li>
+                                                        <div class="ovr f18 text-up color-black">
+                                                            <table class="table">
+                                                                <tr>
+                                                                    <td>
+                                                                        {{ses.over}}</td>
+                                                                    <td>
+                                                                        (ovr)</td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="div-rates f24 " ng-class="{'color-green':match.inning1Overs >= ses.over,'postive-color':match.inning1Overs < ses.over}">
+                                                            <!-- {{ses.run}} -->
+                                                            <input type="number" placholder="runs" ng-model="ses.run" ng-keyup="sessionChange($event,ses._id,ses.run)">
+                                                            <span ng-if="match.inning1Overs < ses.over">-
                                                                 {{ses.run + 1}}</span>
-                              <span class="f16" ng-if="match.inning1Overs >= ses.over">(Completed)</span>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                  </md-content>
-                </div>
-              </md-tab>
-              <md-tab label="Second INNING" md-active="match.isSecondInning">
-                <div class="inset" ng-cloak paddi layout-align="space-around">
-                  <md-content>
-
-                    <div class="inn-det">
-                      <div class="list-data">
-                        <ul class="sessionData clearfix" ng-repeat="ses in match.session2|orderBy : ses.over:true">
-                          <li>
-                            <div class="ovr f18 text-up color-black">
-                              <tr>
-                                <td>
-                                  {{ses.over}}</td>
-                                <td>
-                                  (ovr)</td>
-                              </tr>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="div-rates f24 " ng-class="{'color-green':match.inning2Overs >= ses.over,'postive-color':match.inning2Overs < ses.over}">
-                              <input type="text" placholder="runs" ng-model="ses.run">
-                              <span ng-if="match.inning2Overs < ses.over">-
+                                                            <span class="f16" ng-if="match.inning1Overs >= ses.over">(Completed)</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </md-content>
+                                </div>
+                            </md-tab>
+                            <md-tab label="Second INNING" md-active="match.isSecondInning">
+                                <div class="inset" ng-cloak paddi layout-align="space-around">
+                                    <md-content>
+                                        <div class="inn-det">
+                                            <div class="list-data">
+                                                <ul class="sessionData clearfix" ng-repeat="ses in match.session2|orderBy : ses.over:true">
+                                                    <li>
+                                                        <div class="ovr f18 text-up color-black">
+                                                            <tr>
+                                                                <td>
+                                                                    {{ses.over}}</td>
+                                                                <td>
+                                                                    (ovr)</td>
+                                                            </tr>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="div-rates f24 " ng-class="{'color-green':match.inning2Overs >= ses.over,'postive-color':match.inning2Overs < ses.over}">
+                                                            <input type="number" placholder="runs" ng-model="ses.run" ng-keyup="sessionChange($event,ses._id,ses.run)">
+                                                            <span ng-if="match.inning2Overs < ses.over">-
                                                                 {{ses.run + 1}}</span>
-                              <span class="f16" ng-if="match.inning2Overs >= ses.over">(Completed)</span>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
+                                                            <span class="f16" ng-if="match.inning2Overs >= ses.over">(Completed)</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </md-content>
+                                </div>
+                            </md-tab>
+                        </md-tabs>
                     </div>
-
-                  </md-content>
                 </div>
-              </md-tab>
-            </md-tabs>
-          </div>
+            </md-content>
+            <md-content>
+                <div class="panel panel-default" layout-padding>
+                    <div class="country-form titles-made">
+                        <form name="matchForm1">
+                            <h4 class="title-country">D/L</h4>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>New Over</label>
+                                    <input type="text" name="rate1" ng-model="match.newOvers">
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>New Score</label>
+                                    <input type="text" name="rate2" ng-model="match.dlRuns">
+                                </md-input-container>
+                            </div>
+                            <div class="text-center">
+                                <md-button class="md-raised md-primary" ng-click="dlSave(match.newOvers,match.dlRuns)">Save</md-button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </md-content>
         </div>
-      </md-content>
-      <md-content>
-        <div class="panel panel-default" layout-padding>
-          <div class="country-form titles-made">
-            <form name="matchForm1">
-              <h4 class="title-country">D/L</h4>
-              <div layout-gt-sm="row">
-                <md-input-container class="md-block" flex-gt-sm>
-                  <label>New Over</label>
-                  <input type="text" name="rate1" ng-model="newmatch.newOvers">
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                  <label>New Score</label>
-                  <input type="text" name="rate2" ng-model="newmatch.newScorce">
-                </md-input-container>
-              </div>
-              <div class="text-center">
-                <md-button class="md-raised md-primary" ng-click="submitnewForm(match)">Save</md-button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </md-content>
-    </div>
 
-    <command></command>
-</section>
+        <command></command>
+    </section>
