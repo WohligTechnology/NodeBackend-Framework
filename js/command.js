@@ -62,7 +62,6 @@ command.directive('command', function($document, $http) {
                                 console.log("Nothing as well");
                             } else {
                                 extractedChar = extractChar(commandArr[0]);
-                                console.log(extractedChar);
                                 if (extractedChar.type == "incorrectType") {
                                     console.log("IncorrectType");
                                 } else if (extractedChar.type == "stringOnly") {
