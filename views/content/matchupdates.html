@@ -19,7 +19,6 @@
                   </md-container>
                   <div class="matchupdates">
                     <div class="row">
-<<<<<<< HEAD
                         <div class="col-md-7">
                             <md-tabs md-dynamic-height md-border-bottom>
                                 <md-tab label="{{match.team1.name}}" md-active="match.bat == 1">
@@ -153,61 +152,7 @@
                                             </md-input-container>
                                         </div>
                                         <!-- <md-input-container class="md-block">
-=======
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Runs</label>
-                          </div>
-                          {{match.team1Runs}}
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Wicket</label>
-                          </div>
-                          {{match.team1Wicket}}
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Overs</label>
-                          </div>
-                          {{match.team1Overs}}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <form name="matchForm">
-                    <div layout-gt-sm="row">
-                      <md-input-container class="md-block" flex-gt-sm>
-                        <label>No of Runs</label>
-                        <input required type="text" name="team1score" ng-model="match.team1Runs" />
-                        <!-- {{match.team1score}} -->
-                        <div ng-messages="matchForm.team1score.$error">
-                          <div ng-message="required">This is required.</div>
-                        </div>
-                      </md-input-container>
-                      <md-input-container class="md-block" flex-gt-sm>
-                        <label>Wickets</label>
-                        <input required type="number" step="any" name="team1Wicket" ng-model="match.team1Wicket" />
-                        <div ng-messages="matchForm.team1Wicket.$error">
-                          <div ng-message="required">This is required.</div>
-                        </div>
-                      </md-input-container>
-                      <md-input-container class="md-block" flex-gt-sm>
-                        <label>Overs</label>
-                        <input required type="number" step="any" name="team1Overs" ng-model="match.team1Overs" min="0" max="100" />
-                        <div ng-messages="matchForm.team1Overs.$error">
-                          <div ng-message="required">This is required.</div>
-                          <div ng-message="max">Over Limit</div>
-                        </div>
-                      </md-input-container>
-                    </div>
-                    <!-- <md-input-container class="md-block">
->>>>>>> origin/master
+
                                             <label>Comment</label>
                                             <input type="text" name="Comment" ng-model="match.comment"/>
                                         </md-input-container> -->
@@ -226,7 +171,6 @@
                           </div>
                           {{match.team2Runs}}
                         </div>
-<<<<<<< HEAD
                         <div class="col-md-5">
                             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                                 <md-button class="md-raised md-primary">
@@ -285,23 +229,6 @@
                                     </div>
                                 </div>
                             </div>
-=======
-                      </div>
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Wicket</label>
-                          </div>
-                          {{match.team2Wicket}}
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="match-made">
-                          <div>
-                            <label>Overs</label>
-                          </div>
-                          {{match.team2Overs}}
->>>>>>> origin/master
                         </div>
                       </div>
                     </div>
