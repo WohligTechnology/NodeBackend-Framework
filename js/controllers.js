@@ -486,13 +486,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   }];
   $scope.matchstatuss = [{
     id: 0,
-    name: "Pre"
+    name: "pre"
   }, {
     id: 1,
-    name: "Live"
+    name: "live"
   }, {
     id: 2,
-    name: "End"
+    name: "complete"
   }];
   $scope.teams = [];
   NavigationService.getAllTeam(function(data) {
@@ -529,13 +529,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   }];
   $scope.matchstatuss = [{
     id: 0,
-    name: "Pre"
+    name: "pre"
   }, {
     id: 1,
-    name: "Live"
+    name: "live"
   }, {
     id: 2,
-    name: "End"
+    name: "complete"
   }];
   $scope.matchForm = {};
   $scope.teams = [];
