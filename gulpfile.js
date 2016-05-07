@@ -1,39 +1,36 @@
 var jsArray = [
-    './js/sails.io.js',
-    './bower_components/jquery/dist/jquery.min.js',
-    './bower_components/flexslider/jquery.flexslider-min.js',
-    './bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-    './bower_components/fancyBox/source/jquery.fancybox.js',
-    './bower_components/angular/angular.js',
-    './bower_components/angular-animate/angular-animate.js',
-    './bower_components/angular-flexslider/angular-flexslider.js',
-    './bower_components/bootstrap/dist/js/bootstrap.min.js',
-    './bower_components/ng-Dialog/js/ngDialog.min.js',
-    './bower_components/lodash/lodash.js',
-    './bower_components/angular-sanitize/angular-sanitize.min.js',
-    './bower_components/jquery/dist/jquery.js',
-    './bower_components/ui-router/release/angular-ui-router.min.js',
-    './bower_components/angular-bootstrap/ui-bootstrap.min.js',
-    './bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-    './bower_components/angular-material/angular-material.js',
-    './bower_components/angular-aria/angular-aria.js',
-    './js/command.js',
-    './js/app.js',
-    './js/controllers.js',
-    './js/templateservice.js',
-    './js/navigation.js',
+  './js/sails.io.js',
+  './bower_components/jquery/dist/jquery.js',
+  './bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+  './bower_components/angular/angular.js',
+  './bower_components/angular-animate/angular-animate.js',
+  './bower_components/angular-flexslider/angular-flexslider.js',
+  './bower_components/lodash/lodash.js',
+  './bower_components/angular-sanitize/angular-sanitize.min.js',
+  './bower_components/ui-router/release/angular-ui-router.min.js',
+  './bower_components/angular-bootstrap/ui-bootstrap.min.js',
+  './bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+  './bower_components/lodash/lodash.js',
+  './bower_components/angular-material/angular-material.js',
+  './bower_components/angular-aria/angular-aria.js',
+  './bower_components/angular-messages/angular-messages.min.js',
+  './js/command.js',
+  './js/app.js',
+  './js/controllers.js',
+  './js/templateservice.js',
+  './js/navigation.js',
 
-    //please do not change it
-    './w/js/templates.js',
+  //please do not change it
+  './w/js/templates.js',
 ];
 var replacehostFrom = "http://localhost/demo/";
 var replacehostTo = "http://wohlig.co.in/demo2/";
 
 var ftpdetails = {
-    host: 'wohlig.co.in',
-    user: 'enter your username',
-    pass: 'enter your password',
-    remotePath: "public_html/satofrontback"
+  host: 'wohlig.co.in',
+  user: 'enter your username',
+  pass: 'enter your password',
+  remotePath: "public_html/satofrontback"
 };
 // var ftpdetails = {
 //     host: 'uandvcreativess.com',
@@ -78,245 +75,252 @@ var prompt = require("gulp-prompt");
 var templateCacheBootstrap = "firstapp.run(['$templateCache', function($templateCache) {";
 
 gulp.task('imagemin', function() {
-    return gulp.src('./img/**')
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{
-                removeViewBox: false
-            }]
-        }))
-        .pipe(gulp.dest('./img2/'));
+  return gulp.src('./img/**')
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{
+        removeViewBox: false
+      }]
+    }))
+    .pipe(gulp.dest('./img2/'));
 });
 
 
 gulp.task('deploy', function() {
-    return gulp.src('./index.html')
-        .pipe(prompt.prompt([{
-            type: 'input',
-            name: 'username',
-            message: 'Enter FTP username:'
-        }, {
-            type: 'password',
-            name: 'password',
-            message: 'Enter FTP password:'
-        }], function(res) {
+  return gulp.src('./index.html')
+    .pipe(prompt.prompt([{
+      type: 'input',
+      name: 'username',
+      message: 'Enter FTP username:'
+    }, {
+      type: 'password',
+      name: 'password',
+      message: 'Enter FTP password:'
+    }], function(res) {
 
-            ftpdetails.user = res.username;
-            ftpdetails.pass = res.password;
+      ftpdetails.user = res.username;
+      ftpdetails.pass = res.password;
 
-            gulp.start('ftp');
+      gulp.start('ftp');
 
-        }));
+    }));
 });
 
 
 gulp.task('deployindex', function() {
-    return gulp.src('./index.html')
-        .pipe(prompt.prompt([{
-            type: 'input',
-            name: 'username',
-            message: 'Enter FTP username:'
-        }, {
-            type: 'password',
-            name: 'password',
-            message: 'Enter FTP password:'
-        }], function(res) {
+  return gulp.src('./index.html')
+    .pipe(prompt.prompt([{
+      type: 'input',
+      name: 'username',
+      message: 'Enter FTP username:'
+    }, {
+      type: 'password',
+      name: 'password',
+      message: 'Enter FTP password:'
+    }], function(res) {
 
-            ftpdetails.user = res.username;
-            ftpdetails.pass = res.password;
+      ftpdetails.user = res.username;
+      ftpdetails.pass = res.password;
 
-            gulp.start('ftpindex');
+      gulp.start('ftpindex');
 
-        }));
+    }));
 });
 
 
 gulp.task('ftp', function() {
-    return gulp.src('./production/**')
-        .pipe(ftp(ftpdetails))
-        .pipe(gutil.noop());
+  return gulp.src('./production/**')
+    .pipe(ftp(ftpdetails))
+    .pipe(gutil.noop());
 });
 
 
 gulp.task('ftpindex', function() {
-    return gulp.src(['./production/index.gz.html', './production/w/index.html'])
-        .pipe(ftp(ftpdetails))
-        .pipe(gutil.noop());
+  return gulp.src(['./production/index.gz.html', './production/w/index.html'])
+    .pipe(ftp(ftpdetails))
+    .pipe(gutil.noop());
 });
 
 
 
 gulp.task('clean:production', function() {
-    return gulp.src('./production', {
-            read: false
-        })
-        .pipe(wait(200))
-        .pipe(clean({
-            force: true
-        }));
+  return gulp.src('./production', {
+      read: false
+    })
+    .pipe(wait(200))
+    .pipe(clean({
+      force: true
+    }));
 });
 
 gulp.task('clean:tmp', function() {
-    return gulp.src('./tmp', {
-            read: false
-        })
-        .pipe(wait(200))
-        .pipe(clean({
-            force: true
-        }));
+  return gulp.src('./tmp', {
+      read: false
+    })
+    .pipe(wait(200))
+    .pipe(clean({
+      force: true
+    }));
 });
 
 
 gulp.task('clean:w', function() {
-    return gulp.src('./w', {
-            read: false
-        })
-        .pipe(wait(200))
-        .pipe(clean());
+  return gulp.src('./w', {
+      read: false
+    })
+    .pipe(wait(200))
+    .pipe(clean());
 });
 
 gulp.task('minify:css', function() {
-    return gulp.src('./w/main.css')
-        .pipe(minifyCss({
-            keepSpecialComments: 0,
-            rebase: false
-        }))
-        .pipe(rename('w.css'))
-        .pipe(replace('url(../', 'url('))
-        .pipe(replace("url('../", "url('"))
-        .pipe(replace('url("../', 'url("'))
-        .pipe(gulp.dest('./w/'));
+  return gulp.src('./w/main.css')
+    .pipe(minifyCss({
+      keepSpecialComments: 0,
+      rebase: false
+    }))
+    .pipe(rename('w.css'))
+    .pipe(replace('url(../', 'url('))
+    .pipe(replace("url('../", "url('"))
+    .pipe(replace('url("../', 'url("'))
+    .pipe(gulp.dest('./w/'));
 });
 
 gulp.task('gzipfile', function() {
-    gulp.src('./w/index.html')
-        .pipe(gzip({
-            preExtension: 'gz'
-        }))
-        .pipe(gulp.dest('./production/'));
+  gulp.src('./w/index.html')
+    .pipe(gzip({
+      preExtension: 'gz'
+    }))
+    .pipe(gulp.dest('./production/'));
 });
 gulp.task('copy:indexhtml', function() {
-    return gulp.src('./w/index.html')
-        .pipe(gulpCopy("./production/"));
+  return gulp.src('./w/index.html')
+    .pipe(gulpCopy("./production/"));
 });
 
 gulp.task('tarball', function() {
-    gulp.src('./production/**')
-        .pipe(tar('production.tar'), {
-            "mode": 0755,
-            "type": 'directory'
-        })
-        .pipe(gulp.dest('./'));
+  gulp.src('./production/**')
+    .pipe(tar('production.tar'), {
+      "mode": 0755,
+      "type": 'directory'
+    })
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('inlinesource', function() {
-    return gulp.src('./w/index.html')
-        .pipe(inline({
-            base: './w',
-            disabledTypes: ['svg', 'img'] // Only inline css files
-        }))
-        .pipe(gulp.dest('./w/'));
+  return gulp.src('./w/index.html')
+    .pipe(inline({
+      base: './w',
+      disabledTypes: ['svg', 'img'] // Only inline css files
+    }))
+    .pipe(gulp.dest('./w/'));
 });
 
 
 
 gulp.task('uglify:js', function() {
-    return gulp.src('./w/w.js')
-        .pipe(uglify({
-            mangle: false
-        }))
-        .pipe(gulp.dest('./w'));
+  return gulp.src('./w/w.js')
+    .pipe(uglify({
+      mangle: false
+    }))
+    .pipe(gulp.dest('./w'));
 });
 
 gulp.task('concat:js', function() {
-    return gulp.src(jsArray)
-        .pipe(concat('w.js'))
-        .pipe(replace(replacehostFrom, replacehostTo))
-        .pipe(gulp.dest('./w'));
+  return gulp.src(jsArray)
+    .pipe(concat('w.js'))
+    .pipe(replace(replacehostFrom, replacehostTo))
+    .pipe(gulp.dest('./w'));
 });
 
 gulp.task('templatecache', function() {
-    return gulp.src('./w/views/**/*.html')
+  return gulp.src('./w/views/**/*.html')
 
-    .pipe(templateCache({
-            root: "views/",
-            templateHeader: templateCacheBootstrap
-        }))
-        .pipe(gulp.dest('./w/js/'));
+  .pipe(templateCache({
+      root: "views/",
+      templateHeader: templateCacheBootstrap
+    }))
+    .pipe(gulp.dest('./w/js/'));
 });
 
 
 gulp.task('copy:img', function() {
-    return gulp.src("./img/**")
-        .pipe(gulpCopy("./production/"));
+  return gulp.src("./img/**")
+    .pipe(gulpCopy("./production/"));
 });
 
 gulp.task('copy:fonts', function() {
-    return gulp.src("./fonts/**")
-        .pipe(gulpCopy("./production/"));
+  return gulp.src("./fonts/**")
+    .pipe(gulpCopy("./production/"));
 });
 
 
 gulp.task('sass:production', function() {
-    gulp.src('./sass/*.scss')
-        .pipe(sass({
-            outputStyle: 'compressed'
-        }).on('error', sass.logError))
-        .pipe(gulp.dest('./w'));
+  gulp.src('./sass/*.scss')
+    .pipe(sass({
+      outputStyle: 'compressed'
+    }).on('error', sass.logError))
+    .pipe(gulp.dest('./w'));
 });
 
 gulp.task('sass:development', function() {
-    gulp.src('./sass/*.scss')
-        .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./css'))
-        .pipe(connect.reload());
+  gulp.src('./sass/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./css'))
+    .pipe(connect.reload());
 });
 gulp.task('minify:indexproduction', function() {
-    var opts = {
-        conditionals: true,
-        spare: true
-    };
-    return gulp.src('./indexproduction.html')
-        .pipe(minifyHTML(opts))
-        .pipe(rename('index.html'))
-        .pipe(gulp.dest('./w/'));
+  var opts = {
+    conditionals: true,
+    spare: true
+  };
+  return gulp.src('./indexproduction.html')
+    .pipe(minifyHTML(opts))
+    .pipe(rename('index.html'))
+    .pipe(gulp.dest('./w/'));
 });
 gulp.task('minify:views', function() {
-    var opts = {
-        conditionals: true,
-        spare: true
-    };
+  var opts = {
+    conditionals: true,
+    spare: true
+  };
 
-    return gulp.src('./views/**/*.html')
-        .pipe(minifyHTML(opts))
-        .pipe(gulp.dest('./w/views/'));
+  return gulp.src('./views/**/*.html')
+    .pipe(minifyHTML(opts))
+    .pipe(gulp.dest('./w/views/'));
 });
 gulp.task('connect:html', function() {
-    gulp.src('./**/*.html')
-        .pipe(connect.reload());
+  gulp.src('./**/*.html')
+    .pipe(connect.reload());
 });
 gulp.task('connect:js', function() {
-    gulp.src('./js/*.js')
-        .pipe(connect.reload());
+  gulp.src('./js/*.js')
+    .pipe(connect.reload());
 });
 gulp.task('watch:all', function() {
-    connect.server({
-        root: './',
-        livereload: true
-    });
-    gulp.src(__filename)
-        .pipe(open({
-            uri: 'http://localhost:8080'
-        }));
-    gulp.watch(['./**/*.html', './sass/*.scss', './js/*.js'], ['sass:development', 'connect:html', 'connect:js']);
+  connect.server({
+    root: './',
+    livereload: true
+  });
+  gulp.src(__filename)
+    .pipe(open({
+      uri: 'http://localhost:8080'
+    }));
+  gulp.watch(['./**/*.html', './sass/*.scss', './js/*.js'], ['sass:development', 'connect:html', 'connect:js']);
 });
 
 gulp.task('zip', function() {
-    return gulp.src('./production/**/*')
-        .pipe(zip('production.zip'))
-        .pipe(gulp.dest('./'));
+  return gulp.src('./production/**/*')
+    .pipe(zip('production.zip'))
+    .pipe(gulp.dest('./'));
+});
+
+gulp.task('renamePHP', function() {
+  var rename = require('gulp-rename');
+  return gulp.src("./production/index.html")
+    .pipe(rename("./production/index.php"))
+    .pipe(gulp.dest("./"));
 });
 
 
@@ -327,5 +331,5 @@ gulp.task('minifyhtml', ["minify:indexHTML", "minify:views", "templatecache"]);
 gulp.task('copy', ["copy:img", "copy:fonts"]);
 
 
-gulp.task('production', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', ["minify:css", "templatecache"], "concat:js", 'clean:tmp', "uglify:js", 'clean:tmp', "inlinesource", 'clean:tmp', "gzipfile", 'clean:tmp', 'clean:tmp', "zip"));
-gulp.task('productionwindows', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', ["minify:css", "templatecache"], 'clean:tmp', "concat:js", 'clean:tmp', "uglify:js", 'clean:tmp', "inlinesource", 'clean:tmp', "copy:indexhtml", 'clean:tmp', 'clean:tmp', "zip"));
+gulp.task('productionc', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', 'clean:production', "gzipfile", 'clean:tmp', 'clean:tmp', "zip", 'deploy'));
+gulp.task('production', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', "copy:indexhtml", 'clean:tmp', 'clean:tmp', "zip",'renamePHP'));
