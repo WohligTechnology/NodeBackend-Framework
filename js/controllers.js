@@ -45,7 +45,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
   $scope.cancel = function() {
     $mdDialog.hide();
-      $state.reload();
+    $state.reload();
   };
 })
 
@@ -91,7 +91,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.cancel = function() {
       $mdDialog.hide();
-        $state.reload();
+      $state.reload();
     };
   })
   .controller('UserCtrl', function($scope, TemplateService, NavigationService, $timeout, $mdDialog, $state) {
@@ -179,7 +179,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.cancel = function() {
       $mdDialog.hide();
-        $state.reload();
+      $state.reload();
     };
   })
   .controller('CreateTeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -418,7 +418,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.cancel = function() {
       $mdDialog.hide();
-        $state.reload();
+      $state.reload();
     };
   })
   .controller('CreateNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -484,6 +484,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     id: 1,
     name: "team2"
   }];
+  $scope.matchstatuss = [{
+    id: 0,
+    name: "Pre"
+  }, {
+    id: 1,
+    name: "Live"
+  }, {
+    id: 2,
+    name: "End"
+  }];
   $scope.teams = [];
   NavigationService.getAllTeam(function(data) {
     $scope.teams = data.data;
@@ -516,6 +526,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   }, {
     id: 2,
     name: "team2"
+  }];
+  $scope.matchstatuss = [{
+    id: 0,
+    name: "Pre"
+  }, {
+    id: 1,
+    name: "Live"
+  }, {
+    id: 2,
+    name: "End"
   }];
   $scope.matchForm = {};
   $scope.teams = [];

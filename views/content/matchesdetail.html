@@ -67,6 +67,16 @@
               </md-input-container>
             </div>
           </div>
+          <div layout-gt-sm="row">
+            <div class="col-md-6">
+              <md-input-container class="md-block">
+                <label>Status</label>
+                <md-select name="matchstatus" ng-model="project.matchstatus">
+                  <md-option ng-repeat="matchstatus in matchstatuss" ng-value="matchstatus.name">{{matchstatus.name}}</md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+          </div>
         </form>
         <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
           <md-button class="md-raised md-primary" ng-click="submitForm(project)">Save</md-button>

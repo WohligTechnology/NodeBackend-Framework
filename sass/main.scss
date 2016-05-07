@@ -79,8 +79,10 @@ a {
 a {
   color: $brand-primary;
 }
-a.navbar-brand.logo:hover {
+a.navbar-brand.logo:hover,
+a.navbar-brand.logo:focus {
   color: darken(#fff, 10%);
+  outline: none;
 }
 .form-control:focus {
   border-color: $brand-primary;
