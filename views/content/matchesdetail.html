@@ -71,9 +71,36 @@
             <div class="col-md-6">
               <md-input-container class="md-block">
                 <label>Status</label>
-                <md-select name="matchstatus" ng-model="project.matchstatus">
+                <md-select name="matchstatus" ng-model="project.status">
                   <md-option ng-repeat="matchstatus in matchstatuss" ng-value="matchstatus.name">{{matchstatus.name}}</md-option>
                 </md-select>
+              </md-input-container>
+            </div>
+          </div>
+          <div layout-gt-sm="row">
+            <div class="col-md-6">
+              <div class="colors">
+                <label>Date of Match : </label>
+              </div>
+              <md-datepicker ng-model="project.date" md-placeholder="Enter date">
+              </md-datepicker>
+            </div>
+          </div>
+          <div layout-gt-sm="row">
+            <div class="col-md-6">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Hours of Match</label>
+                <input required md-no-asterisk type="text" value="00" name="Tournament" ng-model="project.hour" />
+                <!-- <input required md-no-asterisk type="text" name="Tournament" ng-model="project.time" /> -->
+              </md-input-container>
+            </div>
+          </div>
+          <div layout-gt-sm="row">
+            <div class="col-md-6">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Minutes of Match</label>
+                <input required md-no-asterisk type="text" value="00" name="Tournament" ng-model="project.minutes" />
+                <!-- <input required md-no-asterisk type="text" name="Tournament" ng-model="project.time" /> -->
               </md-input-container>
             </div>
           </div>
