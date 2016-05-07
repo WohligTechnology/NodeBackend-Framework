@@ -25,14 +25,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
   };
   $scope.loadMatches();
-  // $scope.deleteMatches = function(id) {
-  //   NavigationService.deleteMatchesData(id, function(data) {
-  //
-  //     if (data.value === true) {
-  //       $scope.loadMatches();
-  //     }
-  //   });
-  // };
 
   $scope.deleteClicked = function() {
     NavigationService.deleteMatchesData($scope.deleteId, function(data) {
@@ -47,11 +39,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.deleteId = id;
     $mdDialog.show({
       scope: $scope,
-      templateUrl: 'views/modal/confDelete.html'
+      templateUrl: 'views/modal/confDelete.html',
+      clickOutsideToClose: true
     });
   };
   $scope.cancel = function() {
     $mdDialog.hide();
+      $state.reload();
   };
 })
 
@@ -91,11 +85,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.deleteId = id;
       $mdDialog.show({
         scope: $scope,
-        templateUrl: 'views/modal/confDelete.html'
+        templateUrl: 'views/modal/confDelete.html',
+        clickOutsideToClose: true
       });
     };
     $scope.cancel = function() {
       $mdDialog.hide();
+        $state.reload();
     };
   })
   .controller('UserCtrl', function($scope, TemplateService, NavigationService, $timeout, $mdDialog, $state) {
@@ -133,12 +129,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.showConfirm = function(id) {
       $scope.deleteId = id;
       $mdDialog.show({
+        templateUrl: 'views/modal/confDelete.html',
         scope: $scope,
-        templateUrl: 'views/modal/confDelete.html'
+        clickOutsideToClose: true
       });
     };
     $scope.cancel = function() {
       $mdDialog.hide();
+      $state.reload();
     };
   })
   .controller('TeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $mdDialog, $mdMedia, $state) {
@@ -175,11 +173,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.deleteId = id;
       $mdDialog.show({
         scope: $scope,
-        templateUrl: 'views/modal/confDelete.html'
+        templateUrl: 'views/modal/confDelete.html',
+        clickOutsideToClose: true
       });
     };
     $scope.cancel = function() {
       $mdDialog.hide();
+        $state.reload();
     };
   })
   .controller('CreateTeamCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -412,11 +412,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.deleteId = id;
       $mdDialog.show({
         scope: $scope,
-        templateUrl: 'views/modal/confDelete.html'
+        templateUrl: 'views/modal/confDelete.html',
+        clickOutsideToClose: true
       });
     };
     $scope.cancel = function() {
       $mdDialog.hide();
+        $state.reload();
     };
   })
   .controller('CreateNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -597,8 +599,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       console.log(overs);
       console.log(runs);
       $http.post(adminURL + "session/changeDlruns", {
-        "changeDlruns": runs+"",
-        "changeNewOvers": overs+"",
+        "changeDlruns": runs + "",
+        "changeNewOvers": overs + "",
         "_id": $stateParams.id,
       }).then(function() {
         console.log("Change the Suspended");
