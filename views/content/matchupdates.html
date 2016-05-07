@@ -24,10 +24,13 @@
                                 <span ng-if="match.bat==2">{{match.team2.name}}</span>
                                 <span class="f20 postive-color">WON</span>
                             </h4>
-                            <h4 class="font-light text-color" ng-if="match.remainingRuns > 0 && match.remainingBalls <=0">
+                            <h4 class="font-light text-color" ng-if="match.remainingRuns > 1 && match.remainingBalls <=0">
                                 <span ng-if="match.bat==1">{{match.team1.name}}</span>
                                 <span ng-if="match.bat==2">{{match.team2.name}}</span>
                                 <span class="f20 postive-color">LOST</span>
+                            </h4>
+                            <h4 class="font-light text-color" ng-if="match.remainingRuns == 1 && match.remainingBalls <=0">
+                                MATCH TIE
                             </h4>
                         </div>
                     </div>
