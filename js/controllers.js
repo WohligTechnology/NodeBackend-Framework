@@ -551,13 +551,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     NavigationService.getOneMatch({
         "_id": $stateParams.id
     }, function(data) {
-
-        console.log(data.data);
         $scope.project = data.data;
         $scope.project.date = moment($scope.project.startTime).toDate();
         $scope.project.minutes = moment($scope.project.startTime).minute();
         $scope.project.hour = moment($scope.project.startTime).hours();
-      
+
         $scope.project.team1 = $scope.project.team1._id;
         $scope.project.team2 = $scope.project.team2._id;
         $scope.$apply();
