@@ -97,7 +97,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       templateUrl: "views/template.html",
       controller: 'MatchUpdatesCtrl'
     });
-  $urlRouterProvider.otherwise("/matches");
+  $urlRouterProvider.otherwise("/login");
   $locationProvider.html5Mode(isproduction);
 });
 
