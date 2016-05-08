@@ -1,7 +1,7 @@
 {
-  "name": "angularframeworkfrontend",
+  "name": "SatoFrontBack",
   "version": "0.0.1",
-  "description": "AngularFrameworkFrontend",
+  "description": "SatoFrontBack",
   "main": "gulpfile.js",
   "dependencies": {
     "crypto-js": "^3.1.6",
@@ -11,7 +11,6 @@
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.2.0",
     "gulp-copy": "0.0.2",
-    "gulp-ftp": "^1.1.0",
     "gulp-gzip": "^1.2.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-inline": "0.0.15",
