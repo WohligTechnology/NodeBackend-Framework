@@ -1,16 +1,21 @@
-<header ng-controller="headerctrl">
-  <nav class="navbar">
-    <!-- <div class="container"> -->
-    <div class="navbar-header">
-      <!-- <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
+<header ng-controller="headerctrl" style="width:100%;">
+    <nav class="navbar">
+        <!-- <div class="container"> -->
+        <div class="navbar-header">
+            <!-- <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
         Toggle left
       </md-button> -->
-      <md-button class="md-icon-button" md-ink-ripple="#000000" aria-label="Menu" ng-click="toggleLeft()" hide-gt-md>
-        <i class="material-icons black">menu</i>
-      </md-button>
-    </div>
-    <div class="navbar-header">
-      <a class="navbar-brand logo" href="#/home"><span class="color-white">Stal</span>wart </a>
-    </div>
-  </nav>
+            <md-button class="md-icon-button" md-ink-ripple="#000000" aria-label="Menu" ng-click="toggleLeft()" hide-gt-md>
+                <i class="material-icons black">menu</i>
+            </md-button>
+        </div>
+        <div class="navbar-header" style="width:100%;">
+            <a class="navbar-brand logo" href="#/home">
+                <span class="color-white">Stal</span>wart
+            </a>
+            <div class="pull-right">
+                <md-button ng-click="logout()" class="md-raised">Logout</md-button>
+            </div>
+        </div>
+    </nav>
 </header>

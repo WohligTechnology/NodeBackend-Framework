@@ -51,6 +51,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('AdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $mdDialog, $state) {
         //Used to name the .html file
+        NavigationService.nonAdminLeave();
         $scope.template = TemplateService.changecontent("adminuser");
         $scope.menutitle = NavigationService.makeactive("Admin User");
         TemplateService.title = $scope.menutitle;
@@ -96,6 +97,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('UserCtrl', function($scope, TemplateService, NavigationService, $timeout, $mdDialog, $state) {
         //Used to name the .html file
+        NavigationService.nonAdminLeave();
         $scope.template = TemplateService.changecontent("user");
         $scope.menutitle = NavigationService.makeactive("User");
         TemplateService.title = $scope.menutitle;
@@ -240,6 +242,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('CreateUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
     //Used to name the .html file
+    NavigationService.nonAdminLeave();
     $scope.template = TemplateService.changecontent("userdetail");
     $scope.menutitle = NavigationService.makeactive("User");
     TemplateService.title = $scope.menutitle;
@@ -276,6 +279,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
     //Used to name the .html file
+    NavigationService.nonAdminLeave();
     $scope.template = TemplateService.changecontent("userdetail");
     $scope.menutitle = NavigationService.makeactive("User");
     TemplateService.title = $scope.menutitle;
@@ -317,6 +321,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('CreateAdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
     //Used to name the .html file
+    NavigationService.nonAdminLeave();
     $scope.template = TemplateService.changecontent("adminuserdetail");
     $scope.menutitle = NavigationService.makeactive("Admin User");
     TemplateService.title = $scope.menutitle;
@@ -344,6 +349,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('EditAdminUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
     //Used to name the .html file
+    NavigationService.nonAdminLeave();
     $scope.template = TemplateService.changecontent("adminuserdetail");
     $scope.menutitle = NavigationService.makeactive("Admin User");
     TemplateService.title = $scope.menutitle;
@@ -378,6 +384,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('NotificationCtrl', function($scope, TemplateService, NavigationService, $stateParams, $timeout, $state, $mdDialog) {
         //Used to name the .html file
+        NavigationService.nonAdminLeave();
         $scope.template = TemplateService.changecontent("notification");
         $scope.menutitle = NavigationService.makeactive("Notification");
         TemplateService.title = $scope.menutitle;
@@ -422,6 +429,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
     })
     .controller('CreateNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+      NavigationService.nonAdminLeave();
         $scope.template = TemplateService.changecontent("notificationdetail");
         $scope.menutitle = NavigationService.makeactive("Notification");
         TemplateService.title = $scope.menutitle;
@@ -441,6 +449,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('EditNotificationCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
     //Used to name the .html file
+    NavigationService.nonAdminLeave();
     $scope.template = TemplateService.changecontent("notificationedit");
     $scope.menutitle = NavigationService.makeactive("Notification");
     TemplateService.title = $scope.menutitle;
@@ -574,7 +583,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 })
 
-.controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $mdToast) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("login");
     $scope.menutitle = NavigationService.makeactive("Login");
@@ -583,6 +592,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.header = "";
     TemplateService.footer = "";
     TemplateService.sidemenu = "";
+    $.jStorage.flush();
+
+    $scope.login = function(email, password) {
+        var shaObj = new jsSHA("SHA-512", "TEXT");
+        shaObj.update(email + password);
+        var hash = shaObj.getHash("HEX");
+        console.log(hash);
+        if (hash == "60f3cc13a31d5fdeb303d51df9911fd1a9daa0876e1ac0f12f563bd015a8b58018ce95aef3d44f595b8dc442d76c52578e35e004de45636b2cb8ba31148d7ab6") {
+            //password adminisawesome
+            $.jStorage.set("userAccess", "admin");
+            $state.go("matches");
+        } else if (hash == "6c7fd8def57b4911ae76dc1066d8740cc888f53918739c3eb8a13b7de51996635fed6fb27dfde5373cdcd4bf34410790bf67bc5af1be0398bff3b570a8ba9301") {
+            //password adminrocks
+            $.jStorage.set("userAccess", "operator");
+            $state.go("matches");
+        } else {
+            $mdToast.show($mdToast.simple().textContent('Email or Password Incorrect!'));
+        }
+    };
+
+
 })
 
 .controller('MatchUpdatesCtrl', function($http, $scope, TemplateService, NavigationService, $timeout, $stateParams, $mdToast, $document, $filter) {
@@ -803,12 +833,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //
         // };
     })
-    .controller('headerctrl', function($scope, TemplateService, $timeout, $log, $mdSidenav, $uibModal) {
+    .controller('headerctrl', function($scope, TemplateService, $timeout, $log, $mdSidenav, $uibModal, $state) {
         $scope.template = TemplateService;
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
             $(window).scrollTop(0);
         });
         $scope.toggleLeft = buildDelayedToggler('left');
+
+        $scope.userAccess = $.jStorage.get("userAccess");
+        if ($scope.userAccess != 'admin' && $scope.userAccess != 'operator') {
+            $state.go("login");
+        }
+        $scope.logout = function() {
+            $state.go("login");
+        };
         /**
          * Supplies a function that will continue to operate until the
          * time is up.
