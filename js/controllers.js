@@ -22,6 +22,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         NavigationService.getAllMatches(function(data) {
             console.log(data);
             $scope.matches = data.data.data;
+            $scope.gotValue = true;
         });
     };
     $scope.loadMatches();
@@ -69,6 +70,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.loadAdminUsers = function() {
             NavigationService.getAllAdminUsers(function(data) {
                 console.log(data);
+                $scope.gotValue = true;
                 $scope.adminusers = data.data.data;
             });
         };
@@ -114,6 +116,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.loadUsers = function() {
             NavigationService.getAllUsers(function(data) {
+              $scope.gotValue = true;
                 console.log(data);
                 $scope.users = data.data.data;
             });
@@ -158,6 +161,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         ];
         $scope.loadTeams = function() {
             NavigationService.getAllTeam(function(data) {
+              $scope.gotValue = true;
                 $scope.teams = data.data;
             });
         };
@@ -190,6 +194,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Team");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.gotValue = true;
         $scope.page = {
             header: "Create Team"
         };
@@ -225,6 +230,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     NavigationService.getOneTeam($stateParams.id, function(data) {
         $scope.project = data.data;
+        $scope.gotValue = true;
         console.log('teamForm', $scope.teamForm);
     });
 
@@ -249,6 +255,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userForm = {};
     $scope.nomatch = false;
     $scope.navigation = NavigationService.getnav();
+    $scope.gotValue = true;
     $scope.page = {
         header: "Create User"
     };
@@ -297,6 +304,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     NavigationService.getOneUser($stateParams.id, function(data) {
         $scope.project = data.data;
+        $scope.gotValue = true;
         $scope.project.expiry = new Date(data.data.expiry);
         console.log('userForm', $scope.adminForm);
     });
@@ -327,6 +335,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.adminForm = {};
+    $scope.gotValue = true;
     $scope.page = {
         header: "Create Admin User"
     };
@@ -369,6 +378,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     NavigationService.getOneAdminUser($stateParams.id, function(data) {
         $scope.project = data.data;
+        $scope.gotValue = true;
         console.log('adminForm', $scope.adminForm);
     });
 
@@ -401,6 +411,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.loadNotification = function() {
             NavigationService.getAllNotification(function(data) {
                 console.log(data);
+                $scope.gotValue = true;
                 $scope.notifications = data.data.data;
             });
         };
@@ -435,6 +446,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.notificationForm = {};
+        $scope.gotValue = true;
         $scope.page = {
             header: "Create Notification"
         };
@@ -460,6 +472,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     NavigationService.getOneNotification($stateParams.id, function(data) {
         $scope.project = data.data;
+        $scope.gotValue = true;
         console.log('notificationForm', $scope.notificationForm);
     });
 
@@ -481,6 +494,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Matches");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.gotValue = true;
     $scope.matchForm = {};
     $scope.project = {
         minutes: "00",
@@ -567,6 +581,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.project.team1 = $scope.project.team1._id;
         $scope.project.team2 = $scope.project.team2._id;
+        $scope.gotValue = true;
         $scope.$apply();
     });
 
@@ -754,6 +769,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.match.matchRate2 = $filter('number')(rateCalc($scope.match.matchRate3), 2);
             }
             console.log($scope.match);
+            $scope.gotValue = true;
             $scope.$apply();
         };
 

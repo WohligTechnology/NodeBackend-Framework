@@ -1,6 +1,12 @@
 <section class="container-fluid">
     <!-- <div layout="column" ng-cloak> -->
-    <div class="row">
+    <div class="loadingRow" ng-hide="gotValue">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        <br><p>
+          Loading
+        </p>
+    </div>
+    <div class="row" ng-show="gotValue">
         <div class="col-md-8">
             <md-content layout-padding>
                 <md-toolbar class="md-hue-2 md-whiteframe-1dp">

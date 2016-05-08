@@ -1,15 +1,21 @@
 <section class="container-fluid">
-  <div layout="column" ng-cloak>
-    <md-content layout-padding>
-      <md-toolbar class="md-hue-2 md-whiteframe-1dp">
-        <div class="md-toolbar-tools">
-          <span>Matches</span>
-          <span flex="" class="flex"></span>
-          <md-button class="md-raised pull-right" ui-sref="creatematch">Create</md-button>
-        </div>
-      </md-toolbar>
-      <div layout-padding class="brd">
-        <!-- <div layout="row">
+    <div class="loadingRow" ng-hide="gotValue">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        <br><p>
+          Loading
+        </p>
+    </div>
+    <div layout="column" ng-cloak ng-show="gotValue">
+        <md-content layout-padding>
+            <md-toolbar class="md-hue-2 md-whiteframe-1dp">
+                <div class="md-toolbar-tools">
+                    <span>Matches</span>
+                    <span flex="" class="flex"></span>
+                    <md-button class="md-raised pull-right" ui-sref="creatematch">Create</md-button>
+                </div>
+            </md-toolbar>
+            <div layout-padding class="brd">
+                <!-- <div layout="row">
           <md-input-container class="md-block search" flex-gt-sm>
             <md-icon class="material-icons md-24">search</md-icon>
             <input ng-model="user.search" type="text" placeholder="Search" ng-required="true">
@@ -22,11 +28,11 @@
             </md-select>
           </md-input-container>
         </div> -->
-        <div class="scroll">
-          <table class="table">
-            <thead>
-              <tr>
-                <!-- <th class="delete-all">
+                <div class="scroll">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <!-- <th class="delete-all">
                   <div class="checkbox-optimized">
                     <md-tooltip md-direction="top">
                       Select all
@@ -42,51 +48,51 @@
                     </md-button>
                   </div>
                 </th> -->
-                <th>Team1</th>
-                <th>Team2</th>
-                <th>Status</th>
-                <th>Overs</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="match in matches">{{}}
-                <!-- <td>
+                                <th>Team1</th>
+                                <th>Team2</th>
+                                <th>Status</th>
+                                <th>Overs</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="match in matches">{{}}
+                                <!-- <td>
                   <div class="checkbox-optimized">
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
                 </td> -->
-                <td>{{match.team1.name}}</td>
-                <td>{{match.team2.name}}</td>
-                <td>{{match.status}}</td>
-                <td>{{match.overs}}</td>
-                <td class="action-btn">
-                  <md-button class="md-icon-button" aria-label="EDIT">
-                    <md-tooltip md-direction="top">
-                      Edit
-                    </md-tooltip>
-                    <md-icon class="material-icons md-18" ui-sref="editmatch({id:match._id})">mode_edit</md-icon>
-                  </md-button>
-                  <md-button class="md-icon-button" aria-label="Delete" ng-click="showConfirm(match._id)">
-                    <md-tooltip md-direction="top">
-                      Delete
-                    </md-tooltip>
-                    <md-icon class="material-icons md-18">delete</md-icon>
-                  </md-button>
-                  <md-button class="md-icon-button" aria-label="Update Match">
-                    <md-tooltip md-direction="top">
-                      Update Match
-                    </md-tooltip>
-                    <md-icon class="material-icons md-18" ui-sref="matchupdates({id:match._id})">sync</md-icon>
-                  </md-button>
-                  <!-- <md-icon class="material-icons md-24">mode_edit</md-icon>
+                                <td>{{match.team1.name}}</td>
+                                <td>{{match.team2.name}}</td>
+                                <td>{{match.status}}</td>
+                                <td>{{match.overs}}</td>
+                                <td class="action-btn">
+                                    <md-button class="md-icon-button" aria-label="EDIT">
+                                        <md-tooltip md-direction="top">
+                                            Edit
+                                        </md-tooltip>
+                                        <md-icon class="material-icons md-18" ui-sref="editmatch({id:match._id})">mode_edit</md-icon>
+                                    </md-button>
+                                    <md-button class="md-icon-button" aria-label="Delete" ng-click="showConfirm(match._id)">
+                                        <md-tooltip md-direction="top">
+                                            Delete
+                                        </md-tooltip>
+                                        <md-icon class="material-icons md-18">delete</md-icon>
+                                    </md-button>
+                                    <md-button class="md-icon-button" aria-label="Update Match">
+                                        <md-tooltip md-direction="top">
+                                            Update Match
+                                        </md-tooltip>
+                                        <md-icon class="material-icons md-18" ui-sref="matchupdates({id:match._id})">sync</md-icon>
+                                    </md-button>
+                                    <!-- <md-icon class="material-icons md-24">mode_edit</md-icon>
                 <md-icon class="material-icons md-24">delete</md-icon> -->
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </md-content>
-  </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </md-content>
+    </div>
 </section>
