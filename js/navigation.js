@@ -371,6 +371,7 @@ var navigationservice = angular.module('navigationservice', [])
                     "team2": formData.team2,
                     "firstBat": formData.batFirst,
                     "overs": formData.overs,
+                    "newOvers": formData.overs,
                     "startTime": formData.startTime,
                 }
             }).success(callback);
@@ -404,6 +405,7 @@ var navigationservice = angular.module('navigationservice', [])
                     "team2": formData.team2,
                     "firstBat": formData.batFirst,
                     "overs": formData.overs,
+                    "newOvers": formData.overs,
                     "startTime": formData.startTime,
                 }
             }).success(callback);
