@@ -644,7 +644,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "_id": $stateParams.id
         };
 
-
         $scope.matchSave = function(match) {
             var newMatch = {
                 "_id": match._id,
@@ -670,8 +669,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.dlSave = function(overs, runs) {
-            console.log(overs);
-            console.log(runs);
             $http.post(adminURL + "session/changeDlruns", {
                 "changeDlruns": runs + "",
                 "changeNewOvers": overs + "",
@@ -690,7 +687,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
             $scope.$apply();
         };
-
+        $scope.changeWicket = function(value) {
+          var newMatch = {
+              "_id": $scope.match._id,
+              isWicket: value
+          };
+          $http.post(adminURL + "match/save", newMatch).then(function() {
+              console.log("Change the Wicket");
+          });
+        };
         $scope.sessionChange = function(key, sessionID, sessionRuns) {
             console.log(sessionRuns);
             if (key.keyCode == 13) {

@@ -11,6 +11,7 @@
       <md-toolbar class="md-hue-2 md-whiteframe-1dp">
         <div class="md-toolbar-tools">
           <span>Users</span>
+          <input type="input" ng-model="search.name" value="" style="float:right;color:black;margin-left: 50px;" placeholder="search">
           <span flex="" class="flex"></span>
           <md-button class="md-raised pull-right" ui-sref="createuser">Create</md-button>
         </div>
@@ -47,7 +48,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="user in users">
+              <tr ng-repeat="user in users|filter:search.name">
                 <!-- <td>
                   <div class="checkbox-optimized text-center">
                     <md-checkbox class="md-primary"></md-checkbox>
