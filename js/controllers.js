@@ -497,8 +497,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.gotValue = true;
     $scope.matchForm = {};
     $scope.project = {
-        minutes: "00",
-        hour: "00",
+        minutes: "05",
+        hour: "30",
         date: new Date()
     };
     $scope.page = {
