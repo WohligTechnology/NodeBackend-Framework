@@ -10,7 +10,7 @@
     <md-content layout-padding>
       <md-toolbar class="md-hue-2 md-whiteframe-1dp">
         <div class="md-toolbar-tools">
-          <span>Users</span>
+          <span>Users (Total: {{users.length}})</span>
           <input type="input" ng-model="search.name" value="" style="float:right;color:black;margin-left: 50px;" placeholder="search">
           <span flex="" class="flex"></span>
           <md-button class="md-raised pull-right" ui-sref="createuser">Create</md-button>
@@ -39,7 +39,7 @@
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
                 </th> -->
-                <!-- <th>Sr No</th> -->
+                <th>Sr No</th>
                 <th>Name</th>
                 <th>Contact</th>
                 <th>Expiry</th>
@@ -54,7 +54,7 @@
                     <md-checkbox class="md-primary"></md-checkbox>
                   </div>
                 </td> -->
-                <!-- <td>1</td> -->
+                <td>{{$index+1}}</td>
                 <td>{{user.name}}</td>
                 <td>{{user.mobile}}</td>
                 <td>{{user.expiry | date:'mediumDate'}}</td>
